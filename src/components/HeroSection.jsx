@@ -1,9 +1,54 @@
 import demoUrl from "../assets/demo.png";
 import Tag from "./Tag";
 import {ChevronRight} from "lucide-react"
-import { motion } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
+import { useEffect } from "react";
+
+const SubtitleWord = ({ word, index, totalWords, lineDelay }) => {
+    const controls = useAnimationControls();
+    const duration = 0.5; 
+    const wordDelay = 2; 
+
+    useEffect(() => {
+        const animate = async () => {
+            await controls.start({
+                opacity: 1,
+                y: 0,
+                transition: {
+                    duration: 0.3,
+                    delay: lineDelay + index * 0.05,
+                }
+            });
+
+            controls.start({
+                color: ["#6366f1", "#f97316", "#6366f1"],
+                transition: {
+                    duration: duration * totalWords,
+                    delay: wordDelay + (index * duration),
+                    repeat: Infinity,
+                    ease: "linear"
+                }
+            });
+        };
+        
+        animate();
+    }, [controls, index, totalWords]);
+
+    return (
+        <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={controls}
+            className="inline-block"
+        >
+            {word}
+        </motion.span>
+    );
+};
 
 const HeroSection = () => {
+    const subtitleWords1 = "Pay only for the features you need and scale as your business grows.".split(" ");
+    const subtitleWords2 = "Launch your professional website in weeks, not months, with our streamlined development process.".split(" ");
+
     return (
         <section className="hero-section text-center mt-32 flex flex-col">
             <motion.div
@@ -32,21 +77,38 @@ const HeroSection = () => {
                 </span>
             </motion.h1>
 
-            <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="mt-5 text-gray-600 sm:text-xl max-w-2xl mx-auto flex flex-col gap-2"
+            <motion.div 
+                className="mt-5 text-gray-600 sm:text-xl max-w-2xl mx-auto flex flex-col gap-4"
             >
-                <span>Pay only for the features you need and scale as your business grows.</span>
-                <span>Launch your professional website in weeks, not months, with our streamlined development process.</span>
-            </motion.h2>
+                <div className="flex flex-wrap justify-center gap-x-2">
+                    {subtitleWords1.map((word, index) => (
+                        <SubtitleWord
+                            key={index}
+                            word={word}
+                            index={index}
+                            totalWords={subtitleWords1.length + subtitleWords2.length}
+                            lineDelay={0.4}
+                        />
+                    ))}
+                </div>
+                <div className="flex flex-wrap justify-center gap-x-2">
+                    {subtitleWords2.map((word, index) => (
+                        <SubtitleWord
+                            key={index}
+                            word={word}
+                            index={index + subtitleWords1.length}
+                            totalWords={subtitleWords1.length + subtitleWords2.length}
+                            lineDelay={0.8}
+                        />
+                    ))}
+                </div>
+            </motion.div>
 
             <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="mx-auto mt-5 max-w-fit space-x-4"
+                transition={{ duration: 0.5, delay: 1.6 }}
+                className="mx-auto mt-8 max-w-fit space-x-4"
             >
                 <a href="#get-started" className="rounded-full mx-auto max-w-fit px-5 py-2 text-sm font-medium shadow-sm border-black bg-black text-white hover:ring-gray-400 hover:ring-2">Get Started</a>
                 <a href="#features" className="rounded-full mx-auto max-w-fit px-5 py-2 text-sm font-medium shadow-sm border-gray-300 bg-white text-black hover:ring-gray-400 hover:ring-2">Learn More</a>
@@ -55,7 +117,7 @@ const HeroSection = () => {
             <motion.div 
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
+                transition={{ duration: 0.8, delay: 1.8 }}
                 className="mt-5 items-center justify-center"
             >
                 <img src={demoUrl} alt="Demo" className="mx-auto max-h-[300px] sm:max-h-[500px]" />
