@@ -18,7 +18,7 @@ const ProjectsSection = () => {
                 {projects.map((project) => (
                     <motion.div
                         key={project.id}
-                        className="bg-white rounded-xl shadow-lg overflow-hidden"
+                        className="bg-white/20 backdrop-blur-lg rounded-xl shadow-sm ring-1 ring-gray-300 overflow-hidden hover:shadow-lg hover:ring-gray-400 transition-all duration-300"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
