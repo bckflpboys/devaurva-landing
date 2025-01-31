@@ -5,7 +5,7 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import NavBar from './components/NavBar';
 import HeroSection from "./components/HeroSection";
-import { partnersLogo } from "./data/partners";
+import { techStack } from "./data/partners";
 import Slider from './components/Slider';
 import RoadMapSection from './components/RoadMapSection';
 import FeaturesSection from './components/FeaturesSection';
@@ -44,7 +44,7 @@ const Home = () => {
       <div className="relative z-20">
         <div className='container mx-auto'>
           <HeroSection />
-          <Slider images={partnersLogo} />
+          <Slider />
           <RoadMapSection />
           <FeaturesSection />
           <ProjectsSection />
