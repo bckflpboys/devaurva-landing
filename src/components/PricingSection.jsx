@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const PricingSection = () => {
     return (
-        <section id="pricing" className="flex text-center py-24 px-6 items-center justify-center flex-col bg-gradient-to-b from-white to-indigo-50/30">
+        <section id="pricing" className="py-20 bg-gradient-to-b from-white to-indigo-50/30">
             <TagLine>Pricing Plans</TagLine>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
