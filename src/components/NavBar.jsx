@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logoUrl from "../assets/logo.png";
+import { Link } from "react-router-dom";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import MobileMenu from "./MobileMenu";
 
@@ -25,26 +25,28 @@ const NavBar = () => {
             <div className={navBarClasses}></div>
             <div className="mx-auto w-full max-w-screen-xl px-2.5 lg:px-20 relative">
                 <div className="flex items-center justify-between">
-                    <div>
-                        <a href="/">
-                            <img src={logoUrl} alt="logo" className="h-20 w-20" />
-                        </a>
+                    <div className="flex items-center gap-2">
+                        <Link to="/" className="relative group">
+                            <span className="text-2xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient">
+                                DevAura
+                            </span>
+                        </Link>
                     </div>
                     <nav className="hidden md:block">
                         <ul className="flex flex-row space-x-4 p-4 font-semibold">
                             <li>
-                                <a href="#features" className="text-grey-600">Features</a>
+                                <Link to="/#features" className="text-grey-600">Features</Link>
                             </li>
                             <li>
-                                <a href="#projects" className="text-grey-600">Projects</a>
+                                <Link to="/#projects" className="text-grey-600">Projects</Link>
                             </li>
                             <li>
-                                <a href="#pricing" className="text-grey-600">Pricing</a>
+                                <Link to="/#pricing" className="text-grey-600">Pricing</Link>
                             </li>
                         </ul>
                     </nav>
                     <div className="hidden md:block">
-                        <a href="#contact" className="bg-black px-4 py-2 rounded-md text-white cursor-pointer ml-2">Contact</a>
+                        <Link to="/#contact" className="bg-black px-4 py-2 rounded-md text-white cursor-pointer ml-2">Contact</Link>
                     </div>
                     <MobileMenu />
                 </div>

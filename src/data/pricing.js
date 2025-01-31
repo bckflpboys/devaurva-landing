@@ -49,11 +49,26 @@ export const pricingPlans = [
             "12 Months Premium Hosting",
             "Advanced Security Features",
             "Custom API Development",
-            "Multi-language Support",
-            "Advanced Analytics Dashboard",
+            "Database Integration",
+            "Advanced Analytics",
             "6 Months Support & Maintenance"
         ],
         isPopular: false,
-        tag: "Enterprise"
+        tag: "Advanced"
+    },
+    {
+        title: "Custom Solution",
+        priceRange: "Custom Quote",
+        description: "Build your perfect package",
+        features: [
+            "Tailored to Your Needs",
+            "Pick & Choose Features",
+            "Custom Development",
+            "Flexible Pricing",
+            "Scalable Solutions",
+            "Priority Support"
+        ],
+        isCustom: true,
+        tag: "Flexible"
     }
 ];
