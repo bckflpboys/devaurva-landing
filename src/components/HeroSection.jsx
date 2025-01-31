@@ -6,8 +6,8 @@ import { useEffect } from "react";
 
 const SubtitleWord = ({ word, index, totalWords, lineDelay }) => {
     const controls = useAnimationControls();
-    const duration = 0.5; 
-    const wordDelay = 2; 
+    const duration = 0.3; 
+    const wordDelay = 1; 
 
     useEffect(() => {
         const animate = async () => {
@@ -58,7 +58,7 @@ const HeroSection = () => {
             >
                 <Tag>
                     <div className="flex items-center cursor-pointer">
-                        <span>Nexx v0.12</span>
+                        <span>Create Now</span>
                         <ChevronRight className="w-6 h-6 ml-1 text-indigo-300 overflow-visible"/>
                     </div>
                 </Tag>
@@ -110,7 +110,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.5, delay: 1.6 }}
                 className="mx-auto mt-8 max-w-fit space-x-4"
             >
-                <a href="#get-started" className="rounded-full mx-auto max-w-fit px-5 py-2 text-sm font-medium shadow-sm border-black bg-black text-white hover:ring-gray-400 hover:ring-2">Get Started</a>
+                <a href="#pricing" className="rounded-full mx-auto max-w-fit px-5 py-2 text-sm font-medium shadow-sm border-black bg-black text-white hover:ring-gray-400 hover:ring-2">Get Started</a>
                 <a href="#features" className="rounded-full mx-auto max-w-fit px-5 py-2 text-sm font-medium shadow-sm border-gray-300 bg-white text-black hover:ring-gray-400 hover:ring-2">Learn More</a>
             </motion.div>
 

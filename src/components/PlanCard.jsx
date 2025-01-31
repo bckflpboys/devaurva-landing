@@ -1,42 +1,52 @@
-import { Check } from "lucide-react";
+import { Check, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 
-const PlanCard = ({ price, title, description, features, isPopular }) => {
+const PlanCard = ({ priceRange, title, description, features, isPopular, tag }) => {
     return (
-        <div className="plan-card ring-1 ring-gray-300 shadow-sm flex flex-col justify-between bg-white/20 backdrop-blur-lg rounded-xl h-full p-8 hover:shadow-lg hover:ring-gray-400 transition-all duration-300 text-left relative">
-            {
-                isPopular && (
-                    <div className="popular-tag absolute -top-6 left-0 bg-orange-500 text-white px-2 py-1 rounded-t-lg w-full text-center">Popular</div>
-                )
-            }
-            <div>
-                <div className="inline-flex items-end">
-                    <h1 className="font-extrabold text-3xl">{price}</h1>
-                    <span className="ml-3 text-gray-500 align-bottom">/month</span>
+        <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className={`plan-card ring-1 ${isPopular ? 'ring-indigo-500 shadow-indigo-100' : 'ring-gray-300'} shadow-lg flex flex-col justify-between bg-white rounded-2xl h-full p-8 hover:shadow-xl hover:scale-105 transition-all duration-300 text-left relative`}
+        >
+            {tag && (
+                <div className={`tag absolute -top-4 left-1/2 -translate-x-1/2 ${isPopular ? 'bg-indigo-600' : 'bg-gray-700'} text-white px-4 py-1 rounded-full text-sm font-medium`}>
+                    {tag}
                 </div>
-                <h2 className="font-bold text-xl my-2">
+            )}
+            <div>
+                <h2 className="font-bold text-2xl mt-3 text-gray-900">
                     {title}
                 </h2>
-                <p>{description}</p>
-                <div className="border-t border-gray-400 opacity-25 my-3 flex-grow"></div>
-                <ul>
-                    {
-                        features.map((feature, index) => (
-                            <li key={index} className="flex flex-row items-center text-gray-700 gap-2 my-2">
-                                <div className="w-4 h-4 bg-neutral-900 rounded-full flex items-center justify-center">
-                                    <Check className="inline-block text-white w-3 h-3" />
+                <p className="text-gray-600 mt-2 text-sm">{description}</p>
+                <div className="mt-4 mb-6">
+                    <div className="text-4xl font-extrabold text-gray-900">
+                        {priceRange}
+                    </div>
+                </div>
+                <div className="border-t border-gray-200 my-6"></div>
+                <ul className="space-y-4">
+                    {features.map((feature, index) => (
+                        <li key={index} className="flex items-start gap-3 text-gray-700">
+                            <div className="mt-1">
+                                <div className={`w-4 h-4 ${isPopular ? 'bg-indigo-600' : 'bg-gray-700'} rounded-full flex items-center justify-center flex-shrink-0`}>
+                                    <Check className="text-white w-3 h-3" />
                                 </div>
-                                <p>{feature}</p>
-                            </li>
-                        ))
-                    }
+                            </div>
+                            <span className="text-sm">{feature}</span>
+                        </li>
+                    ))}
                 </ul>
             </div>
-            <div>
-                <button className="bg-orange-500 hover:bg-orange-600 py-2 mt-3 rounded-lg text-white w-full">
-                    Select Plan
-                </button>
-            </div>
-        </div>
+            <button className={`group flex items-center justify-center gap-2 w-full mt-8 px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ${
+                isPopular 
+                ? 'bg-indigo-600 text-white hover:bg-indigo-700' 
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }`}>
+                Get Started
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </button>
+        </motion.div>
     );
 };
 

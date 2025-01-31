@@ -1,39 +1,59 @@
 export const pricingPlans = [
     {
-        title: "Free Plan",
-        price: 0,
-        description: "For individuals and hobbyists",
+        title: "Budget",
+        priceRange: "R2,000 - R10,000",
+        description: "Perfect for small businesses and startups",
         features: [
-            "Up to 3 forms per month",
-            "Basic AI forms builder",
-            "Basic form customizations",
-            "Data export in CSV format",
+            "Strategic Planning & Basic Design",
+            "Domain Registration & Setup",
+            "3 Business Email Accounts",
+            "3 Months Premium Hosting",
+            "Basic SEO Setup",
+            "Mobile-Responsive Design",
+            "Contact Form Integration",
+            "Social Media Links",
+            "Basic Analytics Setup",
+            "1 Month Support & Maintenance"
         ],
         isPopular: false,
+        tag: "Starter"
     },
     {
-        title: "Basic Plan",
-        price: 39,
-        description: "For startups",
+        title: "Business",
+        priceRange: "R10,000 - R25,000",
+        description: "Ideal for growing businesses",
         features: [
-            "Up to 10 forms per month",
-            "Advanced AI forms builder",
-            "Advanced form customizations",
-            "Data export in CSV and JSON format",
+            "All Budget Features +",
+            "Enhanced Branding Package",
+            "8 Business Email Accounts",
+            "6 Months Premium Hosting",
+            "Advanced SEO Optimization",
+            "Blog/News Section",
+            "Newsletter Integration",
+            "Custom Forms & Features",
+            "Google Business Integration",
+            "3 Months Support & Maintenance"
         ],
         isPopular: true,
+        tag: "Most Popular"
     },
     {
-        title: "Pro Plan",
-        price: 89,
-        description: "For businesses",
+        title: "Professional",
+        priceRange: "R25,000+",
+        description: "For established businesses",
         features: [
-            "Unlimited forms per month",
-            "Pro AI forms builder",
-            "Full form customizations",
-            "Data export in multiple formats",
-            "Priority support",
+            "All Business Features +",
+            "Custom Web Application",
+            "E-commerce Integration",
+            "Unlimited Email Accounts",
+            "12 Months Premium Hosting",
+            "Advanced Security Features",
+            "Custom API Development",
+            "Multi-language Support",
+            "Advanced Analytics Dashboard",
+            "6 Months Support & Maintenance"
         ],
         isPopular: false,
-    },
+        tag: "Enterprise"
+    }
 ];
