@@ -44,7 +44,7 @@ const FeatureCard = ({ feature, index }) => {
 const FeaturesSection = () => {
     return (
         <section id="features" className="flex items-center py-20 px-6 justify-center flex-col bg-gradient-to-b from-white to-indigo-50/30">
-            <TagLine>Our Services</TagLine>
+            <TagLine>Features</TagLine>
 
             <motion.h2 
                 initial={{ opacity: 0, y: 20 }}

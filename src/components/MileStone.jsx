@@ -9,7 +9,7 @@ const MileStone = ({ title, description, lastItem, icon, index }) => {
     });
 
     return (
-        <div ref={ref} className="flex w-full mb-16 last:mb-0">
+        <div ref={ref} className="flex w-full mb-16 last:mb-0 relative">
             {/* Timeline dot and line */}
             <div className="relative flex flex-col items-center mr-8">
                 {/* Glowing background for icon */}

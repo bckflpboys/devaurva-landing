@@ -38,7 +38,7 @@ const roadmap = [
 
 const RoadMapSection = () => {
     return (
-        <section className="relative py-32 overflow-hidden">
+        <section className="relative py-32 overflow-hidden" style={{ position: 'relative' }}>
             {/* Background Elements */}
             <div className="absolute inset-0 bg-gradient-to-b from-white via-indigo-50/30 to-white" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl" />
@@ -69,15 +69,16 @@ const RoadMapSection = () => {
                 </div>
 
                 {/* Timeline Container */}
-                <div className="relative max-w-4xl mx-auto">
+                <div className="relative max-w-4xl mx-auto" style={{ position: 'relative' }}>
                     {/* Decorative Elements */}
                     <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-200 to-transparent" />
                     
                     {/* Timeline Content */}
-                    <div className="relative">
+                    <div className="relative z-10">
                         {roadmap.map((milestone, index) => (
                             <motion.div
                                 key={index}
+                                className="relative"
                                 initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
