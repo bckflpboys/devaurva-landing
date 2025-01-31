@@ -15,16 +15,16 @@ const NavBar = () => {
         }
     });
 
-    const defaultClasses = "transition-all absolute inset-0 -z-1";
+    const defaultClasses = "transition-all h-full w-full -z-1";
     let navBarClasses = scrolled 
         ? `${defaultClasses} border-b border-black/10 bg-white/75 backdrop-blur-sm` 
         : `${defaultClasses} bg-transparent`;
 
     return (
-        <div className="sticky inset-x-0 top-0 w-full z-30">
+        <div className="sticky inset-x-0 top-0 w-full z-30 h-16">
             <div className={navBarClasses}></div>
-            <div className="mx-auto w-full max-w-screen-xl px-2.5 lg:px-20 relative">
-                <div className="flex items-center justify-between">
+            <div className="mx-auto w-full max-w-screen-xl px-2.5 lg:px-20 absolute inset-0">
+                <div className="flex items-center justify-between h-full">
                     <div className="flex items-center gap-2">
                         <Link to="/" className="relative group">
                             <span className="text-2xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient">

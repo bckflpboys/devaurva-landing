@@ -324,6 +324,64 @@ const CustomPlanBuilder = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Mobile Summary Bar - Fixed at bottom */}
+            <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-50">
+                <div className="max-w-screen-xl mx-auto px-4">
+                    <div className="flex items-center justify-between py-3 border-b border-gray-100">
+                        <div className="flex items-center gap-2">
+                            <div className="h-6 w-6 rounded-full bg-indigo-100 flex items-center justify-center">
+                                <span className="text-sm font-semibold text-indigo-600">{selectedFeatures.length}</span>
+                            </div>
+                            <span className="text-sm font-medium text-gray-700">
+                                {selectedFeatures.length === 1 ? 'feature' : 'features'} selected
+                            </span>
+                        </div>
+                        <button 
+                            className="flex items-center gap-1 text-sm text-indigo-600 font-medium bg-indigo-50 px-3 py-1.5 rounded-full hover:bg-indigo-100 transition-colors"
+                            onClick={() => {
+                                const summaryElement = document.getElementById('mobile-summary');
+                                if (summaryElement) {
+                                    summaryElement.classList.toggle('h-0');
+                                    summaryElement.classList.toggle('h-72');
+                                }
+                            }}
+                        >
+                            View Details
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="mobile-summary" className="h-0 overflow-hidden transition-all duration-300">
+                        <div className="bg-gray-50/80 backdrop-blur-sm rounded-t-xl p-4 space-y-2 max-h-72 overflow-y-auto">
+                            {selectedFeatures.map((featureId) => {
+                                const feature = featureCategories
+                                    .flatMap(category => category.features)
+                                    .find(f => f.id === featureId);
+                                return (
+                                    <div key={featureId} className="flex items-center justify-between p-2 bg-white rounded-lg shadow-sm">
+                                        <div className="flex items-center gap-2">
+                                            <div className="h-2 w-2 rounded-full bg-indigo-400"></div>
+                                            <span className="text-sm text-gray-700">{feature.name}</span>
+                                        </div>
+                                        <span className="text-sm font-semibold text-indigo-600">R{feature.price.toLocaleString()}</span>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <div className="flex items-center justify-between py-4 bg-white">
+                        <div className="flex flex-col">
+                            <span className="text-sm text-gray-600">Total Investment</span>
+                            <span className="text-xl font-bold text-indigo-600">R{totalPrice.toLocaleString()}</span>
+                        </div>
+                        <button className="bg-indigo-600 text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-indigo-700 transition-colors">
+                            Continue
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
