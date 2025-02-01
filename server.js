@@ -2,9 +2,16 @@ import express from 'express';
 import cors from 'cors';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import CustomPlan from './server/models/CustomPlan.js';
 
 // Load environment variables
 dotenv.config();
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('MongoDB connection error:', err));
 
 const app = express();
 
@@ -63,6 +70,64 @@ Message: ${message}
             code: 500,
             message: 'Error processing your request' 
         });
+    }
+});
+
+// Custom Plan endpoint
+app.post('/api/custom-plan', async (req, res) => {
+    try {
+        const { name, email, phone, companyName, selectedFeatures, additionalNotes, websiteType, totalPrice } = req.body;
+        
+        // Create new custom plan document
+        const customPlan = new CustomPlan({
+            name,
+            email,
+            phone,
+            companyName,
+            selectedFeatures,
+            additionalNotes,
+            websiteType,
+            totalPrice
+        });
+
+        // Save to database
+        await customPlan.save();
+
+        // Send email notification
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_RECIPIENT || process.env.EMAIL_USER,
+            subject: `New Custom Plan Request from ${name}`,
+            html: `
+                <h2>New Custom Plan Request</h2>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <p><strong>Company:</strong> ${companyName || 'Not provided'}</p>
+                <p><strong>Website Type:</strong> ${websiteType}</p>
+                <p><strong>Total Price:</strong> R${totalPrice.toLocaleString()}</p>
+                <h3>Selected Features:</h3>
+                <ul>
+                    ${selectedFeatures.map(feature => `
+                        <li>
+                            <strong>${feature.name}</strong> - R${feature.price.toLocaleString()}
+                            ${feature.description ? `<br/><em>${feature.description}</em>` : ''}
+                        </li>
+                    `).join('')}
+                </ul>
+                ${additionalNotes ? `
+                    <h3>Additional Notes:</h3>
+                    <p>${additionalNotes}</p>
+                ` : ''}
+            `
+        };
+
+        await transporter.sendMail(mailOptions);
+        
+        res.status(200).json({ message: 'Custom plan request submitted successfully' });
+    } catch (error) {
+        console.error('Error processing custom plan request:', error);
+        res.status(500).json({ error: 'Failed to process custom plan request' });
     }
 });
 

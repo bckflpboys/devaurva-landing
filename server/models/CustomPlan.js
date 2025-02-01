@@ -9,14 +9,27 @@ const customPlanSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    phone: {
+        type: String,
+        required: true
+    },
     companyName: {
         type: String,
         required: false
     },
+    websiteType: {
+        type: String,
+        required: true
+    },
     selectedFeatures: [{
         name: String,
-        description: String
+        description: String,
+        price: Number
     }],
+    totalPrice: {
+        type: Number,
+        required: true
+    },
     additionalNotes: {
         type: String,
         required: false

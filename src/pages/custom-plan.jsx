@@ -14,11 +14,13 @@ const CustomPlanBuilder = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        phone: '',
         companyName: '',
         additionalNotes: ''
     });
     const [submitting, setSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState(null);
+    const [isScrollable, setIsScrollable] = useState(false);
 
     // Scroll to top on component mount
     useEffect(() => {
@@ -53,6 +55,21 @@ const CustomPlanBuilder = () => {
             .filter(feature => selectedFeatures.includes(feature.id))
             .reduce((sum, feature) => sum + feature.price, 0);
         setTotalPrice(total);
+    }, [selectedFeatures]);
+
+    // Add scroll detection
+    useEffect(() => {
+        const summaryElement = document.getElementById('mobile-summary-content');
+        if (summaryElement) {
+            const checkScrollable = () => {
+                setIsScrollable(summaryElement.scrollHeight > summaryElement.clientHeight);
+            };
+            checkScrollable();
+            // Recheck when content changes
+            const observer = new ResizeObserver(checkScrollable);
+            observer.observe(summaryElement);
+            return () => observer.disconnect();
+        }
     }, [selectedFeatures]);
 
     const toggleFeature = (featureId) => {
@@ -106,11 +123,15 @@ const CustomPlanBuilder = () => {
                 throw new Error('Failed to submit form');
             }
 
-            setSubmitStatus({ type: 'success', message: 'Your custom plan request has been sent successfully!' });
+            setSubmitStatus({
+                type: 'success',
+                message: 'Your custom plan request has been sent successfully! We will contact you shortly to discuss your project in detail.'
+            });
             setShowForm(false);
             setFormData({
                 name: '',
                 email: '',
+                phone: '',
                 companyName: '',
                 additionalNotes: ''
             });
@@ -124,6 +145,39 @@ const CustomPlanBuilder = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-white to-indigo-50/30 py-20 px-4">
+            {/* Success Message Modal */}
+            {submitStatus?.type === 'success' && (
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="fixed inset-0 flex items-center justify-center z-[60] px-4"
+                >
+                    <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setSubmitStatus(null)}></div>
+                    <div className="bg-white rounded-2xl p-8 shadow-xl relative max-w-md w-full">
+                        <div className="absolute top-4 right-4">
+                            <button
+                                onClick={() => setSubmitStatus(null)}
+                                className="text-gray-400 hover:text-gray-600 transition-colors"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+                        </div>
+                        <div className="text-center">
+                            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <Check className="w-8 h-8 text-green-600" />
+                            </div>
+                            <h3 className="text-xl font-semibold text-gray-900 mb-2">Thank You!</h3>
+                            <p className="text-gray-600">{submitStatus.message}</p>
+                            <button
+                                onClick={() => setSubmitStatus(null)}
+                                className="mt-6 bg-indigo-600 text-white px-6 py-2.5 rounded-xl font-medium hover:bg-indigo-700 transition-colors"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </motion.div>
+            )}
             <div className="max-w-6xl mx-auto">
                 <TagLine>Custom Plan Builder</TagLine>
                 <motion.div
@@ -391,148 +445,223 @@ const CustomPlanBuilder = () => {
             </div>
 
             {/* Mobile Summary Bar - Fixed at bottom */}
-            <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-50">
+            <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] border-t-2 border-gray-600 z-50">
                 <div className="max-w-screen-xl mx-auto px-4">
-                    <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                        <div className="flex items-center gap-2">
-                            <div className="h-6 w-6 rounded-full bg-indigo-100 flex items-center justify-center">
-                                <span className="text-sm font-semibold text-indigo-600">{selectedFeatures.length}</span>
-                            </div>
-                            <span className="text-sm font-medium text-gray-700">
-                                {selectedFeatures.length === 1 ? 'feature' : 'features'} selected
+                    <div 
+                        onClick={() => {
+                            const summaryElement = document.getElementById('mobile-summary');
+                            if (summaryElement) {
+                                summaryElement.classList.toggle('h-0');
+                                summaryElement.classList.toggle('h-[80vh]');
+                            }
+                        }}
+                        className="flex items-center justify-between py-3 cursor-pointer hover:bg-gray-50 transition-colors rounded-t-xl group"
+                    >
+                        <div className="flex items-center gap-3">
+                            <h2 className="text-xl font-semibold text-gray-900">
+                                Total: R{totalPrice.toLocaleString()}
+                            </h2>
+                            <span className="text-sm text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
+                                {selectedFeatures.length} {selectedFeatures.length === 1 ? 'feature' : 'features'}
                             </span>
                         </div>
-                        <button 
-                            className="flex items-center gap-1 text-sm text-indigo-600 font-medium bg-indigo-50 px-3 py-1.5 rounded-full hover:bg-indigo-100 transition-colors"
-                            onClick={() => {
-                                const summaryElement = document.getElementById('mobile-summary');
-                                if (summaryElement) {
-                                    summaryElement.classList.toggle('h-0');
-                                    summaryElement.classList.toggle('h-72');
-                                }
-                            }}
-                        >
-                            View Details
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                            </svg>
-                        </button>
+                        <div className="flex items-center gap-2 text-indigo-600">
+                            <span className="text-sm font-medium group-hover:underline">View Breakdown</span>
+                            <ChevronRight className="w-5 h-5 transform -rotate-90 group-hover:translate-y-0.5 transition-transform" />
+                        </div>
                     </div>
                     <div id="mobile-summary" className="h-0 overflow-hidden transition-all duration-300">
-                        <div className="bg-gray-50/80 backdrop-blur-sm rounded-t-xl p-4 space-y-2 max-h-72 overflow-y-auto">
-                            {selectedFeatures.map((featureId) => {
-                                const feature = featureCategories
-                                    .flatMap(category => category.features)
-                                    .find(f => f.id === featureId);
-                                return (
-                                    <div key={featureId} className="flex items-center justify-between p-2 bg-white rounded-lg shadow-sm">
-                                        <div className="flex items-center gap-2">
-                                            <div className="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                            <span className="text-sm text-gray-700">{feature.name}</span>
-                                        </div>
-                                        <span className="text-sm font-semibold text-indigo-600">R{feature.price.toLocaleString()}</span>
-                                    </div>
-                                );
-                            })}
+                        <div id="mobile-summary-content" className="py-4 space-y-4 max-h-[calc(80vh-4rem)] overflow-y-auto">
+                            {/* Subtle scroll indicator that only shows when content is scrollable */}
+                            {isScrollable && (
+                                <div className="w-full flex justify-center mb-2">
+                                    <div className="h-1 w-10 rounded-full bg-gray-200"></div>
+                                </div>
+                            )}
+                            
+                            {/* Selected Website Type */}
+                            {selectedType && (
+                                <div className="flex items-center gap-2 p-3 bg-indigo-50 rounded-xl">
+                                    <span className="text-xl">
+                                        {websiteTypes.find(t => t.id === selectedType)?.icon}
+                                    </span>
+                                    <span className="font-medium text-indigo-900">
+                                        {websiteTypes.find(t => t.id === selectedType)?.name}
+                                    </span>
+                                </div>
+                            )}
+
+                            {/* Selected Features List */}
+                            <div className="space-y-4">
+                                {selectedFeatures.length === 0 ? (
+                                    <p className="text-gray-500 text-sm italic">
+                                        No features selected yet
+                                    </p>
+                                ) : (
+                                    featureCategories.map(category => {
+                                        const categoryFeatures = category.features.filter(
+                                            feature => selectedFeatures.includes(feature.id)
+                                        );
+                                        
+                                        if (categoryFeatures.length === 0) return null;
+                                        
+                                        const categoryTotal = categoryFeatures.reduce(
+                                            (sum, feature) => sum + feature.price, 0
+                                        );
+                                        
+                                        return (
+                                            <div key={category.id} className="border border-gray-100 rounded-lg p-3">
+                                                <h3 className="text-sm font-medium text-gray-900 mb-2 flex items-center justify-between">
+                                                    {category.name}
+                                                    <span className="text-indigo-600 font-semibold">
+                                                        R{categoryTotal.toLocaleString()}
+                                                    </span>
+                                                </h3>
+                                                <div className="space-y-2">
+                                                    {categoryFeatures.map(feature => (
+                                                        <div
+                                                            key={feature.id}
+                                                            className="flex items-center justify-between py-1 border-b border-gray-50 last:border-0"
+                                                        >
+                                                            <div className="flex items-center gap-2">
+                                                                <Check className="w-4 h-4 text-emerald-500" />
+                                                                <span className="text-sm text-gray-700">
+                                                                    {feature.name}
+                                                                    {feature.billingCycle && (
+                                                                        <span className="text-emerald-600 text-xs ml-1">
+                                                                            {feature.billingCycle}
+                                                                        </span>
+                                                                    )}
+                                                                </span>
+                                                            </div>
+                                                            <span className="text-sm font-medium text-gray-600">
+                                                                R{feature.price.toLocaleString()}
+                                                            </span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        );
+                                    })
+                                )}
+                            </div>
+
+                            {/* Continue Button */}
+                            <div className="pt-4">
+                                <button
+                                    onClick={() => setShowForm(true)}
+                                    className="w-full bg-indigo-600 text-white py-3 px-4 rounded-xl font-medium hover:bg-indigo-700 transition-colors"
+                                >
+                                    Continue with Selection
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div className="flex items-center justify-between py-4 bg-white">
-                        <div className="flex flex-col">
-                            <span className="text-sm text-gray-600">Total Investment</span>
-                            <span className="text-xl font-bold text-indigo-600">R{totalPrice.toLocaleString()}</span>
-                        </div>
-                        <button className="bg-indigo-600 text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-indigo-700 transition-colors">
-                            Continue
-                        </button>
                     </div>
                 </div>
             </div>
 
             {/* Form Modal */}
             {showForm && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-                    <div className="bg-white rounded-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto">
-                        <div className="flex justify-between items-center mb-4">
-                            <h3 className="text-xl font-semibold text-gray-900">Complete Your Request</h3>
-                            <button 
-                                onClick={() => setShowForm(false)}
-                                className="text-gray-500 hover:text-gray-700"
-                            >
-                                <X className="w-5 h-5" />
-                            </button>
-                        </div>
-                        
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[60]"
+                >
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="bg-white rounded-2xl p-6 max-w-md w-full relative"
+                    >
+                        <button
+                            onClick={() => setShowForm(false)}
+                            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+                        >
+                            <X className="w-5 h-5" />
+                        </button>
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-6">Complete Your Request</h2>
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                                     Full Name *
                                 </label>
                                 <input
                                     type="text"
+                                    id="name"
                                     required
                                     value={formData.name}
-                                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                    className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    placeholder="John Doe"
                                 />
                             </div>
-                            
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                                     Email Address *
                                 </label>
                                 <input
                                     type="email"
+                                    id="email"
                                     required
                                     value={formData.email}
-                                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                    className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    placeholder="john@example.com"
                                 />
                             </div>
-                            
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                                    Phone Number *
+                                </label>
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    required
+                                    value={formData.phone}
+                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                    className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    placeholder="+27 123 456 7890"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-1">
                                     Company Name (Optional)
                                 </label>
                                 <input
                                     type="text"
+                                    id="companyName"
                                     value={formData.companyName}
-                                    onChange={(e) => setFormData(prev => ({ ...prev, companyName: e.target.value }))}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                                    className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    placeholder="Company Ltd."
                                 />
                             </div>
-                            
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                <label htmlFor="additionalNotes" className="block text-sm font-medium text-gray-700 mb-1">
                                     Additional Notes (Optional)
                                 </label>
                                 <textarea
+                                    id="additionalNotes"
                                     value={formData.additionalNotes}
-                                    onChange={(e) => setFormData(prev => ({ ...prev, additionalNotes: e.target.value }))}
-                                    rows={4}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                                />
+                                    onChange={(e) => setFormData({ ...formData, additionalNotes: e.target.value })}
+                                    className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    rows="4"
+                                    placeholder="Any specific requirements or questions..."
+                                ></textarea>
                             </div>
-
-                            {submitStatus && (
-                                <div className={`p-3 rounded-lg ${
-                                    submitStatus.type === 'success' 
-                                        ? 'bg-green-50 text-green-800' 
-                                        : 'bg-red-50 text-red-800'
-                                }`}>
-                                    {submitStatus.message}
-                                </div>
-                            )}
-                            
                             <button
                                 type="submit"
                                 disabled={submitting}
-                                className="w-full bg-indigo-600 text-white py-3 px-4 rounded-xl font-semibold hover:bg-indigo-700 transition-colors disabled:bg-indigo-400"
+                                className={`w-full py-3 px-4 rounded-xl text-white font-medium ${
+                                    submitting
+                                        ? 'bg-gray-400 cursor-not-allowed'
+                                        : 'bg-indigo-600 hover:bg-indigo-700'
+                                } transition-colors`}
                             >
-                                {submitting ? 'Sending...' : 'Submit Request'}
+                                {submitting ? 'Submitting...' : 'Submit Request'}
                             </button>
                         </form>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             )}
         </div>
     );
