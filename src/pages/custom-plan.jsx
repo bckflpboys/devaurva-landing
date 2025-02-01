@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { featureCategories } from '../data/customFeatures';
 import { websiteTypes } from '../data/websiteTypes';
-import { Check, ChevronRight, Info } from 'lucide-react';
+import { Check, ChevronRight, Info, X } from 'lucide-react';
 import TagLine from '../components/TagLine';
 
 const CustomPlanBuilder = () => {
@@ -10,6 +10,15 @@ const CustomPlanBuilder = () => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [selectedType, setSelectedType] = useState(null);
     const [activeCategory, setActiveCategory] = useState(null);
+    const [showForm, setShowForm] = useState(false);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        companyName: '',
+        additionalNotes: ''
+    });
+    const [submitting, setSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null);
 
     // Scroll to top on component mount
     useEffect(() => {
@@ -59,6 +68,58 @@ const CustomPlanBuilder = () => {
         if (!selectedType) return false;
         const websiteType = websiteTypes.find(type => type.id === selectedType);
         return websiteType?.recommendedFeatures.includes(featureId) || false;
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setSubmitting(true);
+        
+        try {
+            // Get the full feature details for selected features
+            const selectedFeaturesDetails = featureCategories
+                .flatMap(category => category.features)
+                .filter(feature => selectedFeatures.includes(feature.id))
+                .map(({ id, name, description, price }) => ({
+                    name,
+                    description,
+                    price
+                }));
+
+            const websiteType = websiteTypes.find(type => type.id === selectedType);
+            
+            const submission = {
+                ...formData,
+                selectedFeatures: selectedFeaturesDetails,
+                websiteType: websiteType ? websiteType.name : null,
+                totalPrice
+            };
+
+            const response = await fetch('http://localhost:3001/api/custom-plan', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(submission)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to submit form');
+            }
+
+            setSubmitStatus({ type: 'success', message: 'Your custom plan request has been sent successfully!' });
+            setShowForm(false);
+            setFormData({
+                name: '',
+                email: '',
+                companyName: '',
+                additionalNotes: ''
+            });
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setSubmitStatus({ type: 'error', message: 'Failed to submit form. Please try again.' });
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -315,7 +376,11 @@ const CustomPlanBuilder = () => {
                                     <p className="text-xs text-gray-500 mb-4">
                                         *Some features include annual billing
                                     </p>
-                                    <button className="w-full bg-indigo-600 text-white py-3 px-4 rounded-xl font-semibold hover:bg-indigo-700 transition-colors">
+                                    <button 
+                                        onClick={() => setShowForm(true)}
+                                        className="w-full bg-indigo-600 text-white py-3 px-4 rounded-xl font-semibold hover:bg-indigo-700 transition-colors"
+                                        disabled={selectedFeatures.length === 0}
+                                    >
                                         Continue with Selection
                                     </button>
                                 </div>
@@ -382,6 +447,93 @@ const CustomPlanBuilder = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Form Modal */}
+            {showForm && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+                    <div className="bg-white rounded-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto">
+                        <div className="flex justify-between items-center mb-4">
+                            <h3 className="text-xl font-semibold text-gray-900">Complete Your Request</h3>
+                            <button 
+                                onClick={() => setShowForm(false)}
+                                className="text-gray-500 hover:text-gray-700"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+                        </div>
+                        
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    Full Name *
+                                </label>
+                                <input
+                                    type="text"
+                                    required
+                                    value={formData.name}
+                                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                />
+                            </div>
+                            
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    Email Address *
+                                </label>
+                                <input
+                                    type="email"
+                                    required
+                                    value={formData.email}
+                                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                />
+                            </div>
+                            
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    Company Name (Optional)
+                                </label>
+                                <input
+                                    type="text"
+                                    value={formData.companyName}
+                                    onChange={(e) => setFormData(prev => ({ ...prev, companyName: e.target.value }))}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                />
+                            </div>
+                            
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    Additional Notes (Optional)
+                                </label>
+                                <textarea
+                                    value={formData.additionalNotes}
+                                    onChange={(e) => setFormData(prev => ({ ...prev, additionalNotes: e.target.value }))}
+                                    rows={4}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                />
+                            </div>
+
+                            {submitStatus && (
+                                <div className={`p-3 rounded-lg ${
+                                    submitStatus.type === 'success' 
+                                        ? 'bg-green-50 text-green-800' 
+                                        : 'bg-red-50 text-red-800'
+                                }`}>
+                                    {submitStatus.message}
+                                </div>
+                            )}
+                            
+                            <button
+                                type="submit"
+                                disabled={submitting}
+                                className="w-full bg-indigo-600 text-white py-3 px-4 rounded-xl font-semibold hover:bg-indigo-700 transition-colors disabled:bg-indigo-400"
+                            >
+                                {submitting ? 'Sending...' : 'Submit Request'}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

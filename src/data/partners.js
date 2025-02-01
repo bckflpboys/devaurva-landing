@@ -63,5 +63,15 @@ export const techStack = [
         id: 13,
         name: "GitHub",
         logo: "https://cdn.worldvectorlogo.com/logos/github-icon-1.svg"
+    },
+    {
+        id: 14,
+        name: "Cloudinary",
+        logo: "https://cdn.worldvectorlogo.com/logos/cloudinary-2.svg"
+    },
+    {
+        id: 15,
+        name: "Vite",
+        logo: "https://vitejs.dev/logo.svg"
     }
 ];

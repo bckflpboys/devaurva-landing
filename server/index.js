@@ -63,4 +63,3 @@ app.post("/api/contact", (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is online on port: ${PORT}`);
 });
-
