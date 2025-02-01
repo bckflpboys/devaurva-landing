@@ -19,19 +19,19 @@ import ScrollToTop from './components/ScrollToTop';
 // Home page component
 const Home = () => {
   useEffect(() => {
-    fetch("http://localhost:3001/api")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return res.json();
-      })
-      .then((data) => { 
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    // fetch("http://localhost:3001/api")
+    //   .then((res) => {
+    //     if (!res.ok) {
+    //       throw new Error('Network response was not ok');
+    //     }
+    //     return res.json();
+    //   })
+    //   .then((data) => { 
+    //     console.log(data);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error fetching data:", error);
+    //   });
   }, []);
 
   return (
