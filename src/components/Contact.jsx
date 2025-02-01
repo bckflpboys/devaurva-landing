@@ -121,7 +121,11 @@ const Contact = () => {
                                         name="firstName"
                                         placeholder="Your Full Name"
                                         onChange={(e) => onFormUpdate("firstName", e.target.value)}
+                                        required
                                     />
+                                    {errors.firstName && (
+                                        <p className="text-red-500 text-sm mt-1">Please enter your full name</p>
+                                    )}
                                 </div>
 
                                 <div className="flex flex-col gap-4">
@@ -135,7 +139,11 @@ const Contact = () => {
                                         name="email"
                                         placeholder="Your Email Address"
                                         onChange={(e) => onFormUpdate("email", e.target.value)}
+                                        required
                                     />
+                                    {errors.email && (
+                                        <p className="text-red-500 text-sm mt-1">Please enter your email address</p>
+                                    )}
                                 </div>
 
                                 <div className="flex flex-col gap-4 md:col-span-2">
@@ -148,7 +156,11 @@ const Contact = () => {
                                         value={formDetails.message}
                                         placeholder="Your Message"
                                         onChange={(e) => onFormUpdate("message", e.target.value)}
+                                        required
                                     />
+                                    {errors.message && (
+                                        <p className="text-red-500 text-sm mt-1">Please enter your message</p>
+                                    )}
                                 </div>
 
                                 <div className="md:col-span-2">
