@@ -15,6 +15,9 @@ import Footer from "./components/Footer";
 import Contact from './components/Contact';
 import CustomPlanBuilder from './pages/custom-plan';
 import ScrollToTop from './components/ScrollToTop';
+import Terms from './pages/terms';
+import Refund from './pages/refund';
+import Privacy from './pages/privacy';
 
 // Home page component
 const Home = () => {
@@ -65,6 +68,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/custom-plan" element={<CustomPlanBuilder />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/refund" element={<Refund />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Routes>
         <Footer />
       </div>

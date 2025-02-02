@@ -89,9 +89,9 @@ const Footer = () => {
                             <h3 className="text-lg font-semibold text-gray-900">Contact Us</h3>
                             <ul className="space-y-3">
                                 <li>
-                                    <a href="mailto:info@devaurva.com" className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors text-sm">
+                                    <a href="mailto:info@devaura.com" className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors text-sm">
                                         <Mail size={16} className="mr-2" />
-                                        info@devaurva.com
+                                        info@devaura.com
                                     </a>
                                 </li>
                                 <li>
@@ -117,15 +117,15 @@ const Footer = () => {
                                 &copy; {new Date().getFullYear()} DevAura. All rights reserved.
                             </p>
                             <div className="flex space-x-6">
-                                <a href="#" className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
-                                    Privacy Policy
-                                </a>
-                                <a href="#" className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
+                                <Link to="/privacy" className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
+                                    Privacy & Cookie Policy
+                                </Link>
+                                <Link to="/terms" className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
                                     Terms of Service
-                                </a>
-                                <a href="#" className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
-                                    Cookie Policy
-                                </a>
+                                </Link>
+                                <Link to="/refund" className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
+                                    Refund Policy
+                                </Link>
                             </div>
                         </div>
                     </div>
