@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 const navItems = [
     {
         title: "Features",
-        url: "#features",
+        url: "/#features",
     },
     {
         title: "Projects",
-        url: "#projects",
+        url: "/#projects",
     },
     {
         title: "Pricing",
-        url: "#pricing",
+        url: "/#pricing",
     },
     {
         title: "Customized Pricing",
@@ -22,7 +22,7 @@ const navItems = [
     },
     {
         title: "Contact Us",
-        url: "#contact",
+        url: "/#contact",
     },
 ];
 

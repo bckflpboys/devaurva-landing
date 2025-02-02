@@ -43,7 +43,7 @@ const Footer = () => {
                             <ul className="space-y-2">
                                 {['Features', 'Projects', 'Pricing'].map((item) => (
                                     <li key={item}>
-                                        <a href={`#${item.toLowerCase()}`} className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
+                                        <a href={`/#${item.toLowerCase()}`} className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
                                             {item}
                                         </a>
                                     </li>
@@ -57,7 +57,7 @@ const Footer = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <a href="#contact" className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
+                                    <a href="/#contact" className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
                                         Contact
                                     </a>
                                 </li>
@@ -76,7 +76,7 @@ const Footer = () => {
                                     'SEO Optimization'
                                 ].map((service) => (
                                     <li key={service}>
-                                        <a href="#features" className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
+                                        <a href="/#features" className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
                                             {service}
                                         </a>
                                     </li>

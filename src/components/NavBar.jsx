@@ -35,13 +35,13 @@ const NavBar = () => {
                     <nav className="hidden md:block">
                         <ul className="flex flex-row space-x-4 p-4 font-semibold">
                             <li>
-                                <a href="#features" className="text-grey-600">Features</a>
+                                <a href="/#features" className="text-grey-600">Features</a>
                             </li>
                             <li>
-                                <a href="#projects" className="text-grey-600">Projects</a>
+                                <a href="/#projects" className="text-grey-600">Projects</a>
                             </li>
                             <li>
-                                <a href="#pricing" className="text-grey-600">Pricing</a>
+                                <a href="/#pricing" className="text-grey-600">Pricing</a>
                             </li>
                             <li>
                                 <Link 
@@ -54,7 +54,7 @@ const NavBar = () => {
                         </ul>
                     </nav>
                     <div className="hidden md:block">
-                        <a href="#contact" className="bg-black px-4 py-2 rounded-md text-white cursor-pointer ml-2">Contact</a>
+                        <a href="/#contact" className="bg-black px-4 py-2 rounded-md text-white cursor-pointer ml-2">Contact</a>
                     </div>
                     <MobileMenu />
                 </div>
