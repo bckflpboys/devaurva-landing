@@ -53,10 +53,10 @@ const MileStone = ({ title, description, lastItem, icon, index }) => {
                     x: useTransform(scrollYProgress, [0, 1], [-20, 0])
                 }}
             >
-                <div className="flex items-center mb-3">
+                <div className="mb-3">
                     {/* Step indicator */}
                     <motion.div
-                        className="relative mr-4 group"
+                        className="relative group"
                         style={{
                             scale: useTransform(scrollYProgress, [0, 1], [0.8, 1])
                         }}
@@ -64,22 +64,23 @@ const MileStone = ({ title, description, lastItem, icon, index }) => {
                         {/* Glowing background for step number */}
                         <div className="absolute -inset-2 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 rounded-lg blur-lg group-hover:opacity-75 transition-opacity" />
                         
-                        {/* Step number container */}
-                        <div className="relative flex items-center px-4 py-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-lg shadow-indigo-500/20">
-                            {/* Animated background patterns */}
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(255,255,255,0.2)_0%,transparent_50%)] rounded-lg" />
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(255,255,255,0.2)_0%,transparent_50%)] rounded-lg" />
-                            
-                            {/* Step text */}
-                            <span className="relative font-bold text-white">Step {index}</span>
+                        {/* Step number container with title */}
+                        <div className="relative flex flex-col items-center">
+                            <div className="flex items-center px-4 py-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-lg shadow-indigo-500/20">
+                                {/* Animated background patterns */}
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(255,255,255,0.2)_0%,transparent_50%)] rounded-lg" />
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(255,255,255,0.2)_0%,transparent_50%)] rounded-lg" />
+                                
+                                {/* Step text */}
+                                <span className="relative font-bold text-white">Step {index}</span>
+                            </div>
+                            <h3 className="mt-2 text-lg font-bold text-gray-900">{title}</h3>
                         </div>
                     </motion.div>
-
-                    <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
                 </div>
 
                 {/* Description card */}
-                <div className="bg-white/50 backdrop-blur-sm rounded-xl p-5 shadow-lg shadow-indigo-500/5 border border-indigo-50">
+                <div className="bg-white/50 backdrop-blur-sm rounded-xl p-5 shadow-lg shadow-indigo-500/5 border border-indigo-200/80 ring-1 ring-indigo-200">
                     <p className="text-gray-600 leading-relaxed">{description}</p>
                 </div>
             </motion.div>

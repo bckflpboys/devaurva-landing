@@ -189,12 +189,22 @@ const CustomPlanBuilder = () => {
                     <h1 className="text-4xl font-bold text-gray-900 mb-4">
                         Build Your Perfect Solution
                     </h1>
-                    <div className="space-y-2 mb-8">
+                    <div className="space-y-2 mb-8 text-center">
                         <h2 className="text-xl font-semibold text-gray-900">Choose Your Website Category</h2>
-                        <p className="text-gray-600">
-                            Select a category below to get recommended features for your type of website.
-                            Each option includes carefully selected features and estimated pricing.
-                        </p>
+                        <ul className="text-gray-600 space-y-1 mt-2 inline-block text-left">
+                            <li className="flex items-center">
+                                <span className="text-indigo-500 mr-2">•</span>
+                                Select a category below to get recommended features
+                            </li>
+                            <li className="flex items-center">
+                                <span className="text-indigo-500 mr-2">•</span>
+                                Each option includes carefully selected features
+                            </li>
+                            <li className="flex items-center">
+                                <span className="text-indigo-500 mr-2">•</span>
+                                See estimated pricing for your website type
+                            </li>
+                        </ul>
                     </div>
 
                     {/* Website Type Selector */}
