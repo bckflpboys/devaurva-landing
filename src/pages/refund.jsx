@@ -33,7 +33,49 @@ const Refund = () => {
                     </section>
 
                     <section className="mb-12">
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Eligibility for Refunds</h2>
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Deposit and Payment Structure</h2>
+                        <p className="text-gray-600 mb-4">
+                            To ensure project commitment and maintain quality service delivery, we implement the following payment structure:
+                        </p>
+                        <div className="grid md:grid-cols-4 gap-6 mb-6">
+                            <div className="bg-white p-6 rounded-xl shadow-md border-2 border-indigo-200/70 hover:border-indigo-300 transition-colors">
+                                <div className="text-2xl font-bold text-indigo-600 mb-2">25%</div>
+                                <h3 className="font-semibold text-gray-900 mb-2">Initial Deposit</h3>
+                                <p className="text-sm text-gray-600">Due before UI/UX design phase</p>
+                            </div>
+                            <div className="bg-white p-6 rounded-xl shadow-md border-2 border-indigo-200/70 hover:border-indigo-300 transition-colors">
+                                <div className="text-2xl font-bold text-indigo-600 mb-2">25%</div>
+                                <h3 className="font-semibold text-gray-900 mb-2">Development Deposit</h3>
+                                <p className="text-sm text-gray-600">Due before coding begins</p>
+                            </div>
+                            <div className="bg-white p-6 rounded-xl shadow-md border-2 border-indigo-200/70 hover:border-indigo-300 transition-colors">
+                                <div className="text-2xl font-bold text-indigo-600 mb-2">25%</div>
+                                <h3 className="font-semibold text-gray-900 mb-2">Midpoint Payment</h3>
+                                <p className="text-sm text-gray-600">Due at major milestone completion</p>
+                            </div>
+                            <div className="bg-white p-6 rounded-xl shadow-md border-2 border-indigo-200/70 hover:border-indigo-300 transition-colors">
+                                <div className="text-2xl font-bold text-indigo-600 mb-2">25%</div>
+                                <h3 className="font-semibold text-gray-900 mb-2">Final Payment</h3>
+                                <p className="text-sm text-gray-600">Due upon project completion</p>
+                            </div>
+                        </div>
+                        <div className="bg-indigo-50/50 p-4 rounded-lg">
+                            <p className="text-gray-600 text-sm mb-3">
+                                <strong className="text-indigo-600">Important Payment Information:</strong>
+                            </p>
+                            <ul className="list-disc pl-6 text-gray-600 space-y-2 text-sm">
+                                <li>Initial 25% deposit is required to begin the UI/UX design phase</li>
+                                <li>Second 25% deposit is required before development work begins</li>
+                                <li>Both initial deposits become non-refundable once their respective phases begin</li>
+                                <li>Deposits ensure resource allocation and project commitment</li>
+                                <li>Subsequent payments are tied to development milestones</li>
+                                <li>Final payment is required before the transfer of any project files or deployment</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section className="mb-12">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">3. Eligibility for Refunds</h2>
                         <p className="text-gray-600 mb-4">
                             To be eligible for a refund, the following conditions must be met:
                         </p>
@@ -46,7 +88,7 @@ const Refund = () => {
                     </section>
 
                     <section className="mb-12">
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">3. Non-Refundable Situations</h2>
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">4. Non-Refundable Situations</h2>
                         <p className="text-gray-600 mb-4">
                             Refunds will not be granted in the following circumstances:
                         </p>
@@ -56,11 +98,23 @@ const Refund = () => {
                             <li>Delays caused by client-side response times or resource availability</li>
                             <li>Completed and approved project milestones</li>
                             <li>Services that have been fully delivered according to specifications</li>
+                            <li>Premium features or add-ons that have been activated or implemented</li>
+                            <li>Third-party integrations or services that have been purchased and configured</li>
+                            <li>Custom development work that has been completed to specifications</li>
+                            <li>Domain registration and hosting services once activated</li>
                         </ul>
+                        <div className="bg-indigo-50/50 p-4 rounded-lg mt-4">
+                            <p className="text-gray-600 text-sm">
+                                <strong className="text-indigo-600">Important Note:</strong> Certain paid features and services are 
+                                non-refundable once activated or implemented. This includes, but is not limited to, premium integrations, 
+                                third-party services, custom development work, and hosting services. Please carefully review the features 
+                                included in your package before making a purchase.
+                            </p>
+                        </div>
                     </section>
 
                     <section className="mb-12">
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">4. Partial Refunds</h2>
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">5. Partial Refunds</h2>
                         <p className="text-gray-600 mb-4">
                             We may issue partial refunds in the following situations:
                         </p>
@@ -73,7 +127,7 @@ const Refund = () => {
                     </section>
 
                     <section className="mb-12">
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">5. Refund Process</h2>
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. Refund Process</h2>
                         <ul className="list-disc pl-6 text-gray-600 space-y-2 mb-4">
                             <li>Submit your refund request to support@devaura.com within 30 days of payment</li>
                             <li>Our team will review and respond to your request within 2 business days</li>
@@ -83,7 +137,7 @@ const Refund = () => {
                     </section>
 
                     <section className="mb-12">
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. Dispute Resolution</h2>
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. Dispute Resolution</h2>
                         <p className="text-gray-600 mb-4">
                             We prioritize resolving any issues through direct communication. If you're experiencing concerns 
                             with our services, please contact our support team immediately. We're committed to finding 
@@ -92,7 +146,7 @@ const Refund = () => {
                     </section>
 
                     <section className="mb-12">
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. Policy Updates</h2>
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">8. Policy Updates</h2>
                         <p className="text-gray-600 mb-4">
                             DevAura reserves the right to modify this refund policy at any time. Changes will be 
                             communicated to all clients and will not affect existing agreements or ongoing projects.
