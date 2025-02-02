@@ -28,14 +28,22 @@ const FeatureCard = ({ feature, index }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="bg-white hover:bg-gradient-to-br hover:from-indigo-50 hover:to-orange-50 border border-indigo-400/30 rounded-xl p-6 h-full group transition-all duration-300 hover:shadow-lg hover:shadow-indigo-100"
+            className="relative bg-white rounded-2xl p-6 h-full group transition-all duration-300 hover:-translate-y-2 border border-indigo-200/80"
         >
+            {/* Gradient border effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-orange-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-sm"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-orange-500 rounded-2xl opacity-0 group-hover:opacity-10"></div>
+            
             <div className="flex flex-col space-y-4">
-                <div className="p-3 bg-indigo-50 rounded-lg w-fit group-hover:bg-white transition-colors duration-300">
+                <div className="p-3 bg-gradient-to-br from-indigo-50 to-orange-50 rounded-xl w-fit group-hover:from-indigo-100 group-hover:to-orange-100 transition-colors duration-300">
                     {getFeatureIcon(feature.title)}
                 </div>
-                <h3 className="font-bold text-xl text-gray-900 group-hover:text-indigo-600 transition-colors duration-300">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                <h3 className="font-bold text-xl text-gray-900 group-hover:text-indigo-600 transition-colors duration-300">
+                    {feature.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                    {feature.description}
+                </p>
             </div>
         </motion.div>
     );

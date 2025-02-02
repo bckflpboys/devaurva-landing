@@ -219,8 +219,8 @@ const CustomPlanBuilder = () => {
                                     onClick={() => setSelectedType(type.id === selectedType ? null : type.id)}
                                     className={`cursor-pointer p-4 rounded-xl transition-all duration-300 ${
                                         selectedType === type.id
-                                            ? 'bg-indigo-50 ring-2 ring-indigo-500'
-                                            : 'bg-white hover:bg-gray-50 ring-1 ring-gray-200'
+                                            ? 'bg-indigo-50 ring-2 ring-indigo-500 border border-indigo-200'
+                                            : 'bg-white hover:bg-gray-50 ring-1 ring-gray-300 border border-gray-300'
                                     }`}
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
@@ -258,11 +258,11 @@ const CustomPlanBuilder = () => {
                                             className={`relative flex items-start p-4 rounded-xl cursor-pointer transition-all duration-300 ${
                                                 selectedFeatures.includes(feature.id)
                                                     ? feature.highlight
-                                                        ? 'bg-emerald-50 ring-2 ring-emerald-500'
-                                                        : 'bg-indigo-50 ring-2 ring-indigo-500'
+                                                        ? 'bg-emerald-50 ring-2 ring-emerald-500 border border-emerald-200'
+                                                        : 'bg-indigo-50 ring-2 ring-indigo-500 border border-indigo-200'
                                                     : feature.highlight
-                                                        ? 'hover:bg-emerald-50/50 ring-1 ring-emerald-200'
-                                                        : 'hover:bg-gray-50 ring-1 ring-gray-200'
+                                                        ? 'hover:bg-emerald-50/50 ring-1 ring-emerald-300 border border-emerald-300'
+                                                        : 'hover:bg-gray-50 ring-1 ring-gray-300 border border-gray-300'
                                             }`}
                                         >
                                             {isRecommendedFeature(feature.id) && (
