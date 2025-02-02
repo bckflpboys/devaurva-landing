@@ -43,6 +43,14 @@ const NavBar = () => {
                             <li>
                                 <Link to="/#pricing" className="text-grey-600">Pricing</Link>
                             </li>
+                            <li>
+                                <Link 
+                                    to="/custom-plan" 
+                                    className="text-grey-600 whitespace-nowrap font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient"
+                                >
+                                    Customized Pricing
+                                </Link>
+                            </li>
                         </ul>
                     </nav>
                     <div className="hidden md:block">

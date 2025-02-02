@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Facebook, Twitter, Instagram, Linkedin, Github, Mail, MapPin, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -40,13 +41,26 @@ const Footer = () => {
                         <div className="space-y-4">
                             <h3 className="text-lg font-semibold text-gray-900">Quick Links</h3>
                             <ul className="space-y-2">
-                                {['Home', 'Features', 'Projects', 'Pricing', 'Contact'].map((item) => (
+                                {['Features', 'Projects', 'Pricing'].map((item) => (
                                     <li key={item}>
                                         <a href={`#${item.toLowerCase()}`} className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
                                             {item}
                                         </a>
                                     </li>
                                 ))}
+                                <li>
+                                    <Link 
+                                        to="/custom-plan" 
+                                        className="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient text-sm"
+                                    >
+                                        Customized Pricing
+                                    </Link>
+                                </li>
+                                <li>
+                                    <a href="#contact" className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
+                                        Contact
+                                    </a>
+                                </li>
                             </ul>
                         </div>
 

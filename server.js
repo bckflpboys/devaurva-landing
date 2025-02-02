@@ -4,6 +4,7 @@ import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import CustomPlan from './server/models/CustomPlan.js';
+import CardPlan from './server/models/CardPlan.js';
 
 // Load environment variables
 dotenv.config();
@@ -128,6 +129,51 @@ app.post('/api/custom-plan', async (req, res) => {
     } catch (error) {
         console.error('Error processing custom plan request:', error);
         res.status(500).json({ error: 'Failed to process custom plan request' });
+    }
+});
+
+// Card Plan endpoint
+app.post('/api/card-plan', async (req, res) => {
+    try {
+        const { name, email, phone, websiteType, planType, planPrice, budget } = req.body;
+        
+        // Create new card plan document
+        const cardPlan = new CardPlan({
+            name,
+            email,
+            phone,
+            websiteType,
+            planType,
+            planPrice,
+            budget
+        });
+
+        // Save to database
+        await cardPlan.save();
+
+        // Send email notification
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_RECIPIENT || process.env.EMAIL_USER,
+            subject: `New ${planType} Plan Request from ${name}`,
+            html: `
+                <h2>New ${planType} Plan Request</h2>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <p><strong>Website Type:</strong> ${websiteType}</p>
+                <p><strong>Selected Plan:</strong> ${planType}</p>
+                <p><strong>Plan Price:</strong> R${planPrice.toLocaleString()}</p>
+                <p><strong>Client Budget:</strong> ${budget === 0 ? 'Uncapped/No Budget' : `R${budget.toLocaleString()}`}</p>
+            `
+        };
+
+        await transporter.sendMail(mailOptions);
+        
+        res.status(200).json({ message: 'Plan request submitted successfully' });
+    } catch (error) {
+        console.error('Error processing card plan request:', error);
+        res.status(500).json({ error: 'Failed to process plan request' });
     }
 });
 

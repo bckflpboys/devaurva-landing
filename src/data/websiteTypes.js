@@ -40,5 +40,12 @@ export const websiteTypes = [
         description: 'Full-featured web application with user accounts and advanced functionality',
         icon: '⚡',
         recommendedFeatures: ['premium-vps', 'auth', 'api', 'analytics', 'payments', 'cms']
+    },
+    {
+        id: 'other',
+        name: 'Other',
+        description: 'Custom website type not listed above',
+        icon: '🌐',
+        recommendedFeatures: ['custom-design', 'premium-hosting', 'seo', 'analytics']
     }
 ];

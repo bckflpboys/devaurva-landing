@@ -6,14 +6,14 @@ export const pricingPlans = [
         features: [
             "Strategic Planning & Basic Design",
             "Domain Registration & Setup",
-            "3 Business Email Accounts",
+            "5 Business Email Accounts",
             "3 Months Premium Hosting",
             "Basic SEO Setup",
             "Mobile-Responsive Design",
             "Contact Form Integration",
             "Social Media Links",
             "Basic Analytics Setup",
-            "1 Month Support & Maintenance"
+            "3 Month Support & Maintenance"
         ],
         isPopular: false,
         tag: "Starter"
@@ -25,7 +25,7 @@ export const pricingPlans = [
         features: [
             "All Budget Features +",
             "Enhanced Branding Package",
-            "8 Business Email Accounts",
+            "100 Business Email Accounts",
             "6 Months Premium Hosting",
             "Advanced SEO Optimization",
             "Blog/News Section",

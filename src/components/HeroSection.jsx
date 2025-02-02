@@ -9,6 +9,9 @@ const SubtitleWord = ({ word, index, totalWords, lineDelay }) => {
     const duration = 0.3; 
     const wordDelay = 1; 
 
+    const shouldHighlight = word === "Pay" || word === "only" || 
+                          word === "features" || word === "you" || word === "need";
+
     useEffect(() => {
         const animate = async () => {
             await controls.start({
@@ -20,13 +23,24 @@ const SubtitleWord = ({ word, index, totalWords, lineDelay }) => {
                 }
             });
 
+            // Start both animations
             controls.start({
                 color: ["#6366f1", "#f97316", "#6366f1"],
+                backgroundColor: shouldHighlight 
+                    ? ["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.15)", "rgba(0, 0, 0, 0)"]
+                    : ["rgba(0, 0, 0, 0)"],
                 transition: {
-                    duration: duration * totalWords,
-                    delay: wordDelay + (index * duration),
-                    repeat: Infinity,
-                    ease: "linear"
+                    color: {
+                        duration: duration * totalWords,
+                        delay: wordDelay + (index * duration),
+                        repeat: Infinity,
+                        ease: "linear"
+                    },
+                    backgroundColor: shouldHighlight ? {
+                        duration: 1.5,
+                        repeat: Infinity,
+                        repeatDelay: 1.5,
+                    } : {}
                 }
             });
         };
@@ -38,7 +52,7 @@ const SubtitleWord = ({ word, index, totalWords, lineDelay }) => {
         <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={controls}
-            className="inline-block"
+            className={`inline-block ${shouldHighlight ? "px-1 rounded" : ""}`}
         >
             {word}
         </motion.span>
@@ -47,7 +61,6 @@ const SubtitleWord = ({ word, index, totalWords, lineDelay }) => {
 
 const HeroSection = () => {
     const subtitleWords1 = "Pay only for the features you need and scale as your business grows.".split(" ");
-    const subtitleWords2 = "Launch your professional website in weeks, not months, with our streamlined development process.".split(" ");
 
     return (
         <section className="hero-section text-center mt-32 flex flex-col">
@@ -57,7 +70,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.5 }}
             >
                 <Tag>
-                    <div className="flex items-center cursor-pointer">
+                    <div className="flex items-center cursor-pointer" onClick={() => document.getElementById('roadmap').scrollIntoView({ behavior: 'smooth' })}>
                         <span>Create Now</span>
                         <ChevronRight className="w-6 h-6 ml-1 text-indigo-300 overflow-visible"/>
                     </div>
@@ -73,7 +86,7 @@ const HeroSection = () => {
                 With DevAura
                 <br />
                 <span className="bg-gradient-to-r from-indigo-500 via-orange-600 to-indigo-500 bg-clip-text text-transparent">
-                    Launch Your Website
+                    Launch in Weeks
                 </span>
             </motion.h1>
 
@@ -86,19 +99,8 @@ const HeroSection = () => {
                             key={index}
                             word={word}
                             index={index}
-                            totalWords={subtitleWords1.length + subtitleWords2.length}
+                            totalWords={subtitleWords1.length}
                             lineDelay={0.4}
-                        />
-                    ))}
-                </div>
-                <div className="flex flex-wrap justify-center gap-x-2">
-                    {subtitleWords2.map((word, index) => (
-                        <SubtitleWord
-                            key={index}
-                            word={word}
-                            index={index + subtitleWords1.length}
-                            totalWords={subtitleWords1.length + subtitleWords2.length}
-                            lineDelay={0.8}
                         />
                     ))}
                 </div>

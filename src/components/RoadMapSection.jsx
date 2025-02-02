@@ -38,7 +38,7 @@ const roadmap = [
 
 const RoadMapSection = () => {
     return (
-        <section className="relative py-32 overflow-hidden" style={{ position: 'relative' }}>
+        <section id="roadmap" className="relative py-32 overflow-hidden" style={{ position: 'relative' }}>
             {/* Background Elements */}
             <div className="absolute inset-0 bg-gradient-to-b from-white via-indigo-50/30 to-white" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl" />
