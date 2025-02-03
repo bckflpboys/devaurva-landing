@@ -19,7 +19,8 @@ const customPlanSchema = new mongoose.Schema({
     },
     websiteType: {
         type: String,
-        required: true
+        required: true,
+        default: 'Custom'
     },
     selectedFeatures: [{
         name: String,

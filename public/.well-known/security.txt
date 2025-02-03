@@ -1,0 +1,5 @@
+Contact: mailto:security@devaurva.com
+Expires: 2026-02-02T00:00:00.000Z
+Preferred-Languages: en
+Policy: https://devaurva.com/security-policy
+Hiring: https://devaurva.com/careers

@@ -63,16 +63,16 @@ const HeroSection = () => {
     const subtitleWords1 = "Pay only for the features you need and scale as your business grows.".split(" ");
 
     return (
-        <section className="hero-section text-center mt-32 flex flex-col">
+        <section className="hero-section text-center mt-32 flex flex-col" role="banner" aria-label="Hero Section">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
             >
                 <Tag>
-                    <div className="flex items-center cursor-pointer" onClick={() => document.getElementById('roadmap').scrollIntoView({ behavior: 'smooth' })}>
+                    <div className="flex items-center cursor-pointer" onClick={() => document.getElementById('roadmap').scrollIntoView({ behavior: 'smooth' })} role="button" tabIndex={0} aria-label="Navigate to roadmap section">
                         <span>Create Now</span>
-                        <ChevronRight className="w-6 h-6 ml-1 text-indigo-300 overflow-visible"/>
+                        <ChevronRight className="w-6 h-6 ml-1 text-indigo-300 overflow-visible" aria-hidden="true"/>
                     </div>
                 </Tag>
             </motion.div>
@@ -92,6 +92,8 @@ const HeroSection = () => {
 
             <motion.div 
                 className="mt-5 text-gray-600 sm:text-xl max-w-2xl mx-auto flex flex-col gap-4"
+                role="contentinfo"
+                aria-label="Value Proposition"
             >
                 <div className="flex flex-wrap justify-center gap-x-2">
                     {subtitleWords1.map((word, index) => (
@@ -111,9 +113,11 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 1.6 }}
                 className="mx-auto mt-8 max-w-fit space-x-4"
+                role="navigation"
+                aria-label="Primary"
             >
-                <a href="#pricing" className="rounded-full mx-auto max-w-fit px-5 py-2 text-sm font-medium shadow-sm border-black bg-black text-white hover:ring-gray-400 hover:ring-2">Get Started</a>
-                <a href="#features" className="rounded-full mx-auto max-w-fit px-5 py-2 text-sm font-medium shadow-sm border-gray-300 bg-white text-black hover:ring-gray-400 hover:ring-2">Learn More</a>
+                <a href="/#pricing" className="rounded-full mx-auto max-w-fit px-5 py-2 text-sm font-medium shadow-sm border-black bg-black text-white hover:ring-gray-400 hover:ring-2" role="button">Get Started</a>
+                <a href="/#features" className="rounded-full mx-auto max-w-fit px-5 py-2 text-sm font-medium shadow-sm border-gray-300 bg-white text-black hover:ring-gray-400 hover:ring-2" role="button">Learn More</a>
             </motion.div>
 
             <motion.div 
@@ -122,7 +126,15 @@ const HeroSection = () => {
                 transition={{ duration: 0.8, delay: 1.8 }}
                 className="mt-5 items-center justify-center"
             >
-                <img src={demoUrl} alt="Demo" className="mx-auto max-h-[300px] sm:max-h-[500px]" />
+                <img 
+                    src={demoUrl} 
+                    alt="DevAura platform interface showcasing web development and design features" 
+                    className="mx-auto max-h-[300px] sm:max-h-[500px]"
+                    width="800"
+                    height="500"
+                    loading="eager"
+                    role="img"
+                />
             </motion.div>
         </section>
     );

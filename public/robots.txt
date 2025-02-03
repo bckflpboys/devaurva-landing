@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://devaurva.com/sitemap.xml
+
+# Directories
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
+# Files
+Disallow: /*.json$
+Disallow: /*.xml$
+Allow: /sitemap.xml

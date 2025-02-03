@@ -87,7 +87,7 @@ app.post('/api/custom-plan', async (req, res) => {
             companyName,
             selectedFeatures,
             additionalNotes,
-            websiteType,
+            websiteType: websiteType || 'Custom', // Set default if not provided
             totalPrice
         });
 
@@ -105,7 +105,7 @@ app.post('/api/custom-plan', async (req, res) => {
                 <p><strong>Email:</strong> ${email}</p>
                 <p><strong>Phone:</strong> ${phone}</p>
                 <p><strong>Company:</strong> ${companyName || 'Not provided'}</p>
-                <p><strong>Website Type:</strong> ${websiteType}</p>
+                <p><strong>Website Type:</strong> ${websiteType || 'Custom'}</p>
                 <p><strong>Total Price:</strong> R${totalPrice.toLocaleString()}</p>
                 <h3>Selected Features:</h3>
                 <ul>

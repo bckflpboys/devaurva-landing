@@ -29,13 +29,14 @@ const FeatureCard = ({ feature, index }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="relative bg-white rounded-2xl p-6 h-full group transition-all duration-300 hover:-translate-y-2 border border-indigo-200/80"
+            role="listitem"
         >
             {/* Gradient border effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-orange-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-sm"></div>
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-orange-500 rounded-2xl opacity-0 group-hover:opacity-10"></div>
             
             <div className="flex flex-col space-y-4">
-                <div className="p-3 bg-gradient-to-br from-indigo-50 to-orange-50 rounded-xl w-fit group-hover:from-indigo-100 group-hover:to-orange-100 transition-colors duration-300">
+                <div className="p-3 bg-gradient-to-br from-indigo-50 to-orange-50 rounded-xl w-fit group-hover:from-indigo-100 group-hover:to-orange-100 transition-colors duration-300" aria-hidden="true">
                     {getFeatureIcon(feature.title)}
                 </div>
                 <h3 className="font-bold text-xl text-gray-900 group-hover:text-indigo-600 transition-colors duration-300">
@@ -51,10 +52,11 @@ const FeatureCard = ({ feature, index }) => {
 
 const FeaturesSection = () => {
     return (
-        <section id="features" className="flex items-center py-20 px-6 justify-center flex-col bg-gradient-to-b from-white to-indigo-50/30">
+        <section id="features" className="flex items-center py-20 px-6 justify-center flex-col bg-gradient-to-b from-white to-indigo-50/30" role="region" aria-labelledby="features-heading">
             <TagLine>Features</TagLine>
 
             <motion.h2 
+                id="features-heading"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -72,7 +74,7 @@ const FeaturesSection = () => {
                 From design to deployment, we offer end-to-end web development services to bring your vision to life
             </motion.p>
 
-            <div className="mt-10 grid items-stretch grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-screen-xl">
+            <div className="mt-10 grid items-stretch grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-screen-xl" role="list" aria-label="Features list">
                 {features.map((feature, index) => (
                     <FeatureCard key={index} feature={feature} index={index} />
                 ))}
