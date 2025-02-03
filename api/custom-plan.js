@@ -19,7 +19,10 @@ export default async function handler(req, res) {
     }
 
     try {
-        await mongoose.connect(process.env.MONGODB_URI);
+        // Connect to MongoDB
+        if (!mongoose.connections[0].readyState) {
+            await mongoose.connect(process.env.MONGODB_URI);
+        }
         
         const { name, email, phone, websiteType, features, budget } = req.body;
         
@@ -35,9 +38,16 @@ export default async function handler(req, res) {
 
         await customPlan.save();
         
-        res.status(200).json({ message: 'Custom plan submitted successfully' });
+        res.status(200).json({ 
+            success: true,
+            message: 'Custom plan submitted successfully' 
+        });
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({ message: 'Server error' });
+        res.status(500).json({ 
+            success: false,
+            message: 'Server error',
+            error: error.message
+        });
     }
 }

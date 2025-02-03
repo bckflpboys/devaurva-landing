@@ -25,7 +25,7 @@ export default async function handler(req, res) {
             service: 'gmail',
             auth: {
                 user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASSWORD
+                pass: process.env.EMAIL_PASS
             }
         });
         
@@ -52,14 +52,15 @@ Message: ${message}
         await transporter.sendMail(mailOptions);
         
         res.status(200).json({ 
-            code: 200,
+            success: true,
             message: 'Message sent successfully' 
         });
     } catch (error) {
         console.error('Error sending email:', error);
         res.status(500).json({ 
-            code: 500,
-            message: 'Error sending message' 
+            success: false,
+            message: 'Error sending message',
+            error: error.message
         });
     }
 }
