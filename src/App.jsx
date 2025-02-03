@@ -6,7 +6,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import HeroSection from "./components/HeroSection";
 import { techStack } from "./data/partners";
-import Slider from './components/Slider';
+import Slider from './components/slider';
 import RoadMapSection from './components/RoadMapSection';
 import FeaturesSection from './components/FeaturesSection';
 import ProjectsSection from './components/ProjectsSection';
