@@ -52,10 +52,10 @@ const Contact = () => {
             let result = await response.json();
             setButtonText("Send");
             setFormDetails(formInitialDetails);
-            if (result.code === 200) {
+            if (result.success) {
                 setStatus({ success: true, message: "Message sent successfully" });
             } else {
-                setStatus({ success: false, message: "Something went wrong, please try again" });
+                setStatus({ success: false, message: result.message || "Something went wrong, please try again" });
             }
         } catch (error) {
             console.error('Error sending message:', error);
