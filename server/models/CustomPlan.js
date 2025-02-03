@@ -19,31 +19,24 @@ const customPlanSchema = new mongoose.Schema({
     },
     websiteType: {
         type: String,
-        required: true,
-        default: 'Custom'
+        required: true
     },
-    selectedFeatures: [{
+    features: [{
+        id: String,
         name: String,
-        description: String,
-        price: Number
+        price: Number,
+        category: String
     }],
     totalPrice: {
         type: Number,
         required: true
     },
-    additionalNotes: {
-        type: String,
-        required: false
-    },
-    status: {
-        type: String,
-        enum: ['pending', 'reviewed', 'quoted', 'accepted', 'rejected'],
-        default: 'pending'
-    },
-    submittedAt: {
+    date: {
         type: Date,
         default: Date.now
     }
 });
 
-export default mongoose.model('CustomPlan', customPlanSchema);
+const CustomPlan = mongoose.models.CustomPlan || mongoose.model('CustomPlan', customPlanSchema);
+
+export default CustomPlan;

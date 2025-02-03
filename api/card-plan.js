@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import nodemailer from 'nodemailer';
 import CardPlan from '../server/models/CardPlan.js';
 
 export default async function handler(req, res) {
@@ -17,6 +18,8 @@ export default async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method not allowed' });
     }
+
+    let savedPlan = null;
 
     try {
         // Connect to MongoDB
@@ -37,18 +40,67 @@ export default async function handler(req, res) {
             date: new Date()
         });
 
-        await cardPlan.save();
+        savedPlan = await cardPlan.save();
+
+        // Create email transporter
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            }
+        });
+        
+        // Email options
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_RECIPIENT || process.env.EMAIL_USER,
+            subject: `New Card Plan Submission from ${name}`,
+            text: `
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Website Type: ${websiteType}
+Plan Type: ${planType}
+Plan Price: R${planPrice}
+Budget: R${budget}
+            `,
+            html: `
+<h2>New Card Plan Submission</h2>
+<p><strong>Name:</strong> ${name}</p>
+<p><strong>Email:</strong> ${email}</p>
+<p><strong>Phone:</strong> ${phone}</p>
+<p><strong>Website Type:</strong> ${websiteType}</p>
+<p><strong>Plan Type:</strong> ${planType}</p>
+<p><strong>Plan Price:</strong> R${planPrice}</p>
+<p><strong>Budget:</strong> R${budget}</p>
+            `
+        };
+
+        // Send email
+        await transporter.sendMail(mailOptions);
         
         res.status(200).json({ 
             success: true,
-            message: 'Card plan submitted successfully' 
+            message: 'Card plan submitted successfully',
+            plan: savedPlan
         });
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({ 
-            success: false,
-            message: 'Server error',
-            error: error.message
-        });
+        // If we saved the plan but email failed, still return partial success
+        if (savedPlan) {
+            res.status(207).json({ 
+                success: true,
+                message: 'Plan saved but email notification failed',
+                error: error.message,
+                plan: savedPlan
+            });
+        } else {
+            res.status(500).json({ 
+                success: false,
+                message: 'Server error',
+                error: error.message
+            });
+        }
     }
 }
