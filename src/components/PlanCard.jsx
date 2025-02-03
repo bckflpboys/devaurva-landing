@@ -113,7 +113,7 @@ const PlanCard = ({ priceRange, title, description, features, isPopular, isCusto
         
         try {
             const { min } = getBudgetRange();
-            const response = await fetch('http://localhost:3001/api/card-plan', {
+            const response = await fetch('/api/card-plan', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -111,7 +111,7 @@ const CustomPlanBuilder = () => {
                 totalPrice
             };
 
-            const response = await fetch('http://localhost:3001/api/custom-plan', {
+            const response = await fetch('/api/custom-plan', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
