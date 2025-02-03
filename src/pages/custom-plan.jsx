@@ -105,9 +105,11 @@ const CustomPlanBuilder = () => {
             const websiteType = websiteTypes.find(type => type.id === selectedType);
             
             const submission = {
-                ...formData,
-                selectedFeatures: selectedFeaturesDetails,
-                websiteType: websiteType ? websiteType.name : null,
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                websiteType: websiteType ? websiteType.name : 'Custom',
+                features: selectedFeaturesDetails,
                 totalPrice
             };
 

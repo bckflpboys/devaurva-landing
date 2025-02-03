@@ -16,7 +16,10 @@ export default async function handler(req, res) {
     }
 
     if (req.method !== 'POST') {
-        return res.status(405).json({ message: 'Method not allowed' });
+        return res.status(405).json({ 
+            success: false,
+            message: 'Method not allowed' 
+        });
     }
 
     let savedPlan = null;
@@ -29,6 +32,13 @@ export default async function handler(req, res) {
         
         const { name, email, phone, websiteType, features, totalPrice } = req.body;
         
+        // Log the received data
+        console.log('Received custom plan data:', {
+            name, email, phone, websiteType,
+            featuresCount: features?.length,
+            totalPrice
+        });
+
         const customPlan = new CustomPlan({
             name,
             email,
@@ -91,16 +101,25 @@ ${formattedFeaturesHtml}
             `
         };
 
+        // Log before sending email
+        console.log('Attempting to send email with options:', {
+            to: mailOptions.to,
+            subject: mailOptions.subject
+        });
+
         // Send email
         await transporter.sendMail(mailOptions);
         
+        // Log after successful email send
+        console.log('Email sent successfully');
+
         res.status(200).json({ 
             success: true,
             message: 'Custom plan submitted successfully',
             plan: savedPlan
         });
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error in custom plan submission:', error);
         // If we saved the plan but email failed, still return partial success
         if (savedPlan) {
             res.status(207).json({ 
