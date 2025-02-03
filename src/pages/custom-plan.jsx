@@ -108,9 +108,12 @@ const CustomPlanBuilder = () => {
                 name: formData.name,
                 email: formData.email,
                 phone: formData.phone,
+                companyName: formData.companyName,
                 websiteType: websiteType ? websiteType.name : 'Custom',
                 features: selectedFeaturesDetails,
-                totalPrice
+                totalPrice,
+                additionalNotes: formData.additionalNotes,
+                status: 'pending'
             };
 
             const response = await fetch('/api/custom-plan', {

@@ -30,22 +30,27 @@ export default async function handler(req, res) {
             await mongoose.connect(process.env.MONGODB_URI);
         }
         
-        const { name, email, phone, websiteType, features, totalPrice } = req.body;
+        const { name, email, phone, companyName, websiteType, features, totalPrice, additionalNotes, status } = req.body;
         
         // Log the received data
         console.log('Received custom plan data:', {
-            name, email, phone, websiteType,
+            name, email, phone, companyName, websiteType,
             featuresCount: features?.length,
-            totalPrice
+            totalPrice,
+            additionalNotes,
+            status
         });
 
         const customPlan = new CustomPlan({
             name,
             email,
             phone,
+            companyName,
             websiteType,
             features,
             totalPrice,
+            additionalNotes,
+            status: status || 'pending',
             date: new Date()
         });
 
@@ -78,18 +83,22 @@ export default async function handler(req, res) {
 Name: ${name}
 Email: ${email}
 Phone: ${phone}
+${companyName ? `Company: ${companyName}\\n` : ''}
 Website Type: ${websiteType}
 
 Selected Features:
 ${formattedFeatures}
 
 Total Price: R${totalPrice}
+
+${additionalNotes ? `Additional Notes:\\n${additionalNotes}` : ''}
             `,
             html: `
 <h2>New Custom Plan Submission</h2>
 <p><strong>Name:</strong> ${name}</p>
 <p><strong>Email:</strong> ${email}</p>
 <p><strong>Phone:</strong> ${phone}</p>
+${companyName ? `<p><strong>Company:</strong> ${companyName}</p>` : ''}
 <p><strong>Website Type:</strong> ${websiteType}</p>
 
 <h3>Selected Features:</h3>
@@ -98,6 +107,8 @@ ${formattedFeaturesHtml}
 </ul>
 
 <p><strong>Total Price:</strong> R${totalPrice}</p>
+
+${additionalNotes ? `<h3>Additional Notes:</h3><p>${additionalNotes}</p>` : ''}
             `
         };
 
