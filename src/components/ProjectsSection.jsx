@@ -14,11 +14,11 @@ const ProjectsSection = () => {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="list" aria-label="Projects list">
+            <div className="flex overflow-x-auto gap-4 pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8" role="list" aria-label="Projects list">
                 {projects.map((project) => (
                     <motion.div
                         key={project.id}
-                        className="bg-white/20 backdrop-blur-lg rounded-xl shadow-sm ring-1 ring-gray-300 overflow-hidden hover:shadow-lg hover:ring-gray-400 transition-all duration-300"
+                        className="flex-none w-[300px] md:w-auto bg-white/20 backdrop-blur-lg rounded-xl shadow-sm ring-1 ring-gray-300 overflow-hidden hover:shadow-lg hover:ring-gray-400 transition-all duration-300"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
