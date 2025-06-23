@@ -18,6 +18,7 @@ import ScrollToTop from './components/ScrollToTop';
 import Terms from './pages/terms';
 import Refund from './pages/refund';
 import Privacy from './pages/privacy';
+import Landing from './pages/landing';
 
 // Home page component
 const Home = () => {
@@ -71,6 +72,7 @@ function App() {
           <Route path="/terms" element={<Terms />} />
           <Route path="/refund" element={<Refund />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/landing" element={<Landing />} />
         </Routes>
         <Footer />
       </div>
