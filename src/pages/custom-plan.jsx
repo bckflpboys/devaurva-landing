@@ -470,7 +470,7 @@ const CustomPlanBuilder = () => {
                                 summaryElement.classList.toggle('h-[80vh]');
                             }
                         }}
-                        className="flex items-center justify-between py-3 cursor-pointer hover:bg-gray-50 transition-colors rounded-t-xl group"
+                        className="flex items-center justify-between py-3 cursor-pointer transition-colors rounded-t-xl group bg-emerald-200 border border-emerald-400 hover:bg-emerald-300"
                     >
                         <div className="flex items-center gap-3">
                             <h2 className="text-xl font-semibold text-gray-900">
@@ -481,11 +481,13 @@ const CustomPlanBuilder = () => {
                             </span>
                         </div>
                         <div className="flex items-center gap-2 text-indigo-600">
-                            <span className="text-sm font-medium group-hover:underline">View Breakdown</span>
+                            <span className="text-sm font-bold group-hover:underline bg-gray-300 px-3 py-1.5 rounded">
+                                View Breakdown
+                            </span>
                             <ChevronRight className="w-5 h-5 transform -rotate-90 group-hover:translate-y-0.5 transition-transform" />
                         </div>
                     </div>
-                    <div id="mobile-summary" className="h-0 overflow-hidden transition-all duration-300">
+                    <div id="mobile-summary" className="h-0 overflow-hidden transition-all duration-300 bg-emerald-50">
                         <div id="mobile-summary-content" className="py-4 space-y-4 max-h-[calc(80vh-4rem)] overflow-y-auto">
                             {/* Subtle scroll indicator that only shows when content is scrollable */}
                             {isScrollable && (
