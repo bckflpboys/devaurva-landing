@@ -21,7 +21,7 @@ const NavBar = () => {
         : `${defaultClasses} bg-transparent`;
 
     return (
-        <div className="sticky inset-x-0 top-0 w-full z-30 h-16">
+        <div className="fixed top-0 left-0 w-full z-50 h-16">
             <div className={navBarClasses}></div>
             <div className="mx-auto w-full max-w-screen-xl px-2.5 lg:px-20 absolute inset-0">
                 <div className="flex items-center justify-between h-full">
@@ -46,7 +46,7 @@ const NavBar = () => {
                             <li>
                                 <Link 
                                     to="/custom-plan" 
-                                    className="text-grey-600 whitespace-nowrap font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient"
+                                    className="text-grey-600 whitespace-nowrap font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient px-4 py-2 rounded-md bg-white border border-indigo-200 shadow hover:bg-indigo-50 transition"
                                 >
                                     Customized Pricing
                                 </Link>

@@ -47,7 +47,7 @@ const MobileMenu = () => {
                                     {item.isCustomLink ? (
                                         <Link
                                             to={item.url}
-                                            className="block p-4 font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient"
+                                            className="block p-4 font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient rounded-md bg-white border border-indigo-200 shadow hover:bg-indigo-50 transition"
                                             onClick={() => setNavOpen(false)}
                                         >
                                             {item.title}
