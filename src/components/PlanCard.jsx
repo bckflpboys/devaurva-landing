@@ -159,7 +159,7 @@ const PlanCard = ({ priceRange, title, description, features, isPopular, isCusto
                 transition={{ duration: 0.5 }}
                 className={`plan-card ring-1 ${
                     isCustom 
-                        ? 'ring-purple-200 border border-purple-200 shadow-purple-100 bg-gradient-to-br from-purple-50 to-indigo-50' 
+                        ? 'ring-purple-200 border border-purple-200 shadow-purple-100 bg-gradient-to-r from-indigo-200 via-purple-100 to-pink-200 animate-gradient' 
                         : isPopular 
                             ? 'ring-indigo-200 border border-indigo-200 shadow-indigo-100' 
                             : 'ring-gray-200 border border-gray-200'
@@ -213,7 +213,7 @@ const PlanCard = ({ priceRange, title, description, features, isPopular, isCusto
                             ? 'bg-purple-600 text-white hover:bg-purple-700'
                             : isPopular 
                                 ? 'bg-indigo-600 text-white hover:bg-indigo-700' 
-                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                : 'bg-gray-400 text-white hover:bg-gray-500'
                     }`}
                 >
                     {isCustom ? 'Build Your Plan' : 'Get Started'}
