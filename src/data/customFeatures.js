@@ -7,13 +7,13 @@ export const featureCategories = [
                 id: 'responsive',
                 name: 'Responsive Design',
                 description: '• Fully adaptive layouts for all devices\n• Touch-friendly navigation\n• Cross-browser compatibility',
-                price: 500
+                price: 300
             },
             {
                 id: 'seo',
                 name: 'Basic SEO Setup',
                 description: '• Meta tags optimization\n• XML sitemap setup\n• Search engine indexing',
-                price: 1500
+                price: 800
             }
         ]
     },
@@ -25,19 +25,19 @@ export const featureCategories = [
                 id: 'custom-design',
                 name: 'Custom Design',
                 description: '• Brand-aligned visual design\n• Custom color schemes\n• Unique UI elements',
-                price: 2000
+                price: 500
             },
             {
                 id: 'animations',
                 name: 'Advanced Animations',
                 description: '• Smooth transitions\n• Interactive effects\n• Performance optimized',
-                price: 1000
+                price: 300
             },
             {
                 id: 'dark-mode',
                 name: 'Dark Mode',
                 description: '• System preference detection\n• Custom dark theme\n• Smooth transitions',
-                price: 700
+                price: 500
             }
         ]
     },
@@ -49,25 +49,25 @@ export const featureCategories = [
                 id: 'auth',
                 name: 'User Authentication',
                 description: '• Secure login system\n• Password recovery\n• Session management',
-                price: 4000
+                price: 1800
             },
             {
                 id: 'payments',
                 name: 'Payment Integration',
                 description: '• Multiple payment gateways\n• Secure transactions\n• Payment history',
-                price: 3500
+                price: 700
             },
             {
                 id: 'cms',
                 name: 'Content Management',
                 description: '• User-friendly admin panel\n• Media management\n• Content scheduling',
-                price: 3000
+                price: 1000
             },
             {
                 id: 'api',
                 name: 'Custom API Development',
                 description: '• RESTful API design\n• Authentication\n• Documentation',
-                price: 6000
+                price: 1500
             }
         ]
     },
@@ -79,7 +79,7 @@ export const featureCategories = [
                 id: 'analytics',
                 name: 'Advanced Analytics',
                 description: '• User behavior tracking\n• Custom reports\n• Performance metrics',
-                price: 2500
+                price: 1000
             },
             {
                 id: 'multilingual',
@@ -97,7 +97,7 @@ export const featureCategories = [
                 id: 'admin-dashboard',
                 name: 'Admin Dashboards',
                 description: '• Custom analytics\n• User management\n• Settings control',
-                price: 3000
+                price: 1000
             }
         ]
     },
@@ -116,7 +116,7 @@ export const featureCategories = [
             {
                 id: 'premium-hosting',
                 name: 'Premium Hosting',
-                description: '• 50GB SSD Storage\n• Unlimited Bandwidth\n• Premium SSL',
+                description: '• 50GB SSD Storage\n• Unlimited Bandwidth\n• Premium SSL\n• 10 Email Accounts',
                 price: 2400,
                 billingCycle: '(Annual)',
                 highlight: true
@@ -153,43 +153,43 @@ export const featureCategories = [
                 id: 'cart',
                 name: 'Payments and Cart',
                 description: '• Shopping cart\n• Checkout process\n• Order management',
-                price: 4000
+                price: 1500
             },
             {
                 id: 'subscriptions',
                 name: 'Subscriptions',
                 description: '• Recurring billing\n• Plan management\n• Usage tracking',
-                price: 3500
+                price: 700
             },
             {
                 id: 'contact-forms',
                 name: 'Contact Forms',
                 description: '• Custom forms\n• Spam protection\n• Email notifications',
-                price: 800
+                price: 300
             },
             {
                 id: 'blog',
                 name: 'Blog Integration',
                 description: '• Article management\n• Categories\n• Comments',
-                price: 2000
+                price: 1300
             },
             {
                 id: 'social',
                 name: 'Social Media Integration',
                 description: '• Social feeds\n• Share buttons\n• Auto-posting',
-                price: 1500
+                price: 500
             },
             {
                 id: 'calendar',
                 name: 'Event Calendar',
                 description: '• Event management\n• Booking system\n• Reminders',
-                price: 2000
+                price: 1000
             },
             {
                 id: 'chat',
                 name: 'Live Chat Support',
                 description: '• Real-time chat\n• Agent dashboard\n• Chat history',
-                price: 2500
+                price: 1500
             }
         ]
     },
@@ -199,45 +199,45 @@ export const featureCategories = [
         features: [
             {
                 id: 'home',
-                name: 'Home Page',
+                name: 'Home Page/Landing Page',
                 description: 'Custom homepage design with key sections',
-                price: 1500
+                price: 500
             },
             {
                 id: 'about',
                 name: 'About Us Page',
                 description: 'Company story and vision page',
-                price: 800
+                price: 200
             },
             {
                 id: 'services',
                 name: 'Services Page',
                 description: 'Detailed services showcase',
-                price: 1000
+                price: 200
             },
             {
                 id: 'portfolio',
                 name: 'Portfolio Page',
                 description: 'Work showcase with filters',
-                price: 1200
+                price: 100
             },
             {
                 id: 'blog-page',
                 name: 'Blog Page',
                 description: 'Blog listing with categories',
-                price: 1000
+                price: 100
             },
             {
                 id: 'shop',
                 name: 'Shop Page',
                 description: 'Product catalog with filters',
-                price: 1500
+                price: 200
             },
             {
                 id: 'contact',
                 name: 'Contact Page',
                 description: 'Contact information and form',
-                price: 800
+                price: 100
             }
         ]
     }
