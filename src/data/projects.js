@@ -15,7 +15,7 @@ export const projects = [
         description: "A modern e-commerce admin dashboard with real-time analytics, inventory management, and order processing capabilities.",
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
         technologies: ["React", "Node.js", "MongoDB", "Chart.js"],
-        liveUrl: "https://www.soilsolutionsptyltd.com/",
+        liveUrl: "https://soil-livid.vercel.app/",
         githubUrl: "https://github.com/bckflpboys",
     },
     {
@@ -24,7 +24,7 @@ export const projects = [
         description: "A sample and beat marketplace for music producers. Producers and sell sample packs and individual samples from the sample packs. ",
         image: "https://images.unsplash.com/photo-1481772306665-d14161f65314?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bXVzaWMlMjBtYXJrZXRwbGFjZXxlbnwwfHwwfHx8MA%3D%3D",
         technologies: ["Next.js", "ClerkAuth", "Tailwind CSS", "Socket.io"],
-        liveUrl: "https://producer-page.vercel.app/",
+        liveUrl: "https://producer.page/",
         githubUrl: "https://github.com/bckflpboys",
     },
     {
