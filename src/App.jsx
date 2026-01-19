@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+
 import './App.css';
 import NavBar from './components/NavBar';
 import HeroSection from "./components/HeroSection";
-import { techStack } from "./data/partners";
+
 import Slider from './components/slider';
 import RoadMapSection from './components/RoadMapSection';
 import FeaturesSection from './components/FeaturesSection';
@@ -19,24 +18,11 @@ import Terms from './pages/terms';
 import Refund from './pages/refund';
 import Privacy from './pages/privacy';
 import Landing from './pages/landing';
+import PartnersSection from './components/PartnersSection';
 
 // Home page component
 const Home = () => {
-  useEffect(() => {
-    // fetch("http://localhost:3001/api")
-    //   .then((res) => {
-    //     if (!res.ok) {
-    //       throw new Error('Network response was not ok');
-    //     }
-    //     return res.json();
-    //   })
-    //   .then((data) => { 
-    //     console.log(data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error fetching data:", error);
-    //   });
-  }, []);
+
 
   return (
     <>
@@ -53,6 +39,7 @@ const Home = () => {
           <FeaturesSection />
           <ProjectsSection />
           <PricingSection />
+          <PartnersSection />
           <Contact />
         </div>
       </div>

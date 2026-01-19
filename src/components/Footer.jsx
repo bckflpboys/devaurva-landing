@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+
 import { Facebook, Twitter, Instagram, Linkedin, Github, Mail, MapPin, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -89,15 +89,15 @@ const Footer = () => {
                             <h3 className="text-lg font-semibold text-gray-900">Contact Us</h3>
                             <ul className="space-y-3">
                                 <li>
-                                    <a href="mailto:info@devaura.com" className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors text-sm">
+                                    <a href="mailto:support@devaura.co.za" className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors text-sm">
                                         <Mail size={16} className="mr-2" />
-                                        info@devaura.com
+                                        support@devaura.co.za
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="tel:+1234567890" className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors text-sm">
+                                    <a href="tel:+27734919207" className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors text-sm">
                                         <Phone size={16} className="mr-2" />
-                                        +123 456 7890
+                                        073 491 9207
                                     </a>
                                 </li>
                                 <li>

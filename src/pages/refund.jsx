@@ -129,7 +129,7 @@ const Refund = () => {
                     <section className="mb-12">
                         <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. Refund Process</h2>
                         <ul className="list-disc pl-6 text-gray-600 space-y-2 mb-4">
-                            <li>Submit your refund request to support@devaura.com within 30 days of payment</li>
+                            <li>Submit your refund request to support@devaura.co.za within 30 days of payment</li>
                             <li>Our team will review and respond to your request within 2 business days</li>
                             <li>If approved, refunds will be processed within 5-7 business days</li>
                             <li>Refunds will be issued using the original payment method</li>

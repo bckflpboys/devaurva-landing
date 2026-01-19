@@ -82,8 +82,8 @@ const Contact = () => {
                                         <Mail className="w-6 h-6 text-white" />
                                     </div>
                                     <h3 className="font-semibold text-gray-900 mb-2">Email</h3>
-                                    <a href="mailto:info@devaurva.com" className="text-gray-600 hover:text-indigo-600 transition-colors">
-                                        info@devaurva.com
+                                    <a href="mailto:support@devaura.co.za" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                                        support@devaura.co.za
                                     </a>
                                 </div>
 
@@ -92,8 +92,8 @@ const Contact = () => {
                                         <Phone className="w-6 h-6 text-white" />
                                     </div>
                                     <h3 className="font-semibold text-gray-900 mb-2">Phone</h3>
-                                    <a href="tel:+1234567890" className="text-gray-600 hover:text-indigo-600 transition-colors">
-                                        +123 456 7890
+                                    <a href="tel:+27734919207" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                                        073 491 9207
                                     </a>
                                 </div>
 
