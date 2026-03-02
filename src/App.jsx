@@ -10,6 +10,7 @@ import RoadMapSection from './components/RoadMapSection';
 import FeaturesSection from './components/FeaturesSection';
 import ProjectsSection from './components/ProjectsSection';
 import PricingSection from './components/PricingSection';
+import QuickServicesSection from './components/QuickServicesSection';
 import Footer from "./components/Footer";
 import Contact from './components/Contact';
 import CustomPlanBuilder from './pages/custom-plan';
@@ -39,6 +40,7 @@ const Home = () => {
           <FeaturesSection />
           <ProjectsSection />
           <PricingSection />
+          <QuickServicesSection />
           <PartnersSection />
           <Contact />
         </div>
