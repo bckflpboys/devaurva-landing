@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { quickServices } from "../data/quickServices";
 import TagLine from "./TagLine";
-import { Mail, Server, TrendingUp, Share2, Check } from "lucide-react";
+import { Mail, Server, TrendingUp, Share2, Check, ChevronRight } from "lucide-react";
 
 const iconMap = {
     Mail: <Mail className="w-8 h-8 text-indigo-600" />,
@@ -37,58 +37,77 @@ const QuickServicesSection = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {quickServices.map((service, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-white rounded-2xl p-8 border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col relative group overflow-hidden"
-                        >
-                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                            {service.tag && (
-                                <div className="absolute top-4 right-4 bg-indigo-50 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full">
-                                    {service.tag}
-                                </div>
-                            )}
-
-                            <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                                {iconMap[service.icon]}
-                            </div>
-
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">
-                                {service.title}
-                            </h3>
-
-                            <p className="text-gray-600 text-sm mb-4 min-h-[40px]">
-                                {service.description}
-                            </p>
-
-                            <div className="mb-6 pb-6 border-b border-gray-100">
-                                <span className="text-2xl font-extrabold text-indigo-600">
-                                    {service.priceRange}
-                                </span>
-                            </div>
-
-                            <ul className="space-y-3 flex-grow mb-8">
-                                {service.features.map((feature, idx) => (
-                                    <li key={idx} className="flex items-start gap-3">
-                                        <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                                        <span className="text-sm text-gray-700">{feature}</span>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <button
-                                onClick={() => {/* Will usually redirect to contact or open form */ window.location.href = '#contact' }}
-                                className="w-full py-3 px-4 bg-gray-50 hover:bg-indigo-600 text-gray-900 hover:text-white font-semibold rounded-xl transition-colors duration-300 border border-gray-200 hover:border-transparent mt-auto"
+                    {quickServices.map((service, index) => {
+                        const isMain = index === 1 || index === 2; // Making Hosting & SEO highlighted as examples, or just check tag
+                        const isPrimary = service.tag === 'Essential' || service.tag === 'Growth';
+                        return (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                className={`bg-white rounded-2xl p-8 ring-1 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col relative group text-left h-full ${isPrimary
+                                        ? 'ring-indigo-200 border border-indigo-200 shadow-indigo-100'
+                                        : 'ring-gray-200 border border-gray-200'
+                                    }`}
                             >
-                                Request Service
-                            </button>
-                        </motion.div>
-                    ))}
+                                {/* We no longer need the gradient line if we mirror the pricing cards, or we can keep it inside for flavor */}
+
+                                {service.tag && (
+                                    <div className={`tag absolute -top-4 left-1/2 -translate-x-1/2 ${isPrimary
+                                            ? 'bg-indigo-600'
+                                            : 'bg-gray-700'
+                                        } text-white px-4 py-1 rounded-full text-sm font-medium whitespace-nowrap`}>
+                                        {service.tag}
+                                    </div>
+                                )}
+
+                                <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    {iconMap[service.icon]}
+                                </div>
+
+                                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                                    {service.title}
+                                </h3>
+
+                                <p className="text-gray-600 text-sm mb-4 min-h-[40px]">
+                                    {service.description}
+                                </p>
+
+                                <div className="mb-6 pb-6 border-b border-gray-200 mt-2">
+                                    <span className="text-4xl font-extrabold text-gray-900">
+                                        {service.priceRange}
+                                    </span>
+                                </div>
+
+                                <ul className="space-y-4 flex-grow mb-8">
+                                    {service.features.map((feature, idx) => (
+                                        <li key={idx} className="flex items-start gap-3 text-gray-700">
+                                            <div className="mt-1">
+                                                <div className={`w-4 h-4 ${isPrimary ? 'bg-indigo-600' : 'bg-gray-700'
+                                                    } rounded-full flex items-center justify-center flex-shrink-0`}>
+                                                    <Check className="text-white w-3 h-3" />
+                                                </div>
+                                            </div>
+                                            <span className="text-sm">{feature}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <button
+                                    onClick={() => {/* Will usually redirect to contact or open form */ window.location.href = '#contact' }}
+                                    className={`group flex items-center justify-center gap-2 w-full mt-8 px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ${isPrimary
+                                            ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                                            : 'bg-gray-400 text-white hover:bg-gray-500'
+                                        }`}
+                                >
+                                    Request Service
+                                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                                </button>
+                            </motion.div>
+                        )
+                    })}
                 </div>
             </div>
         </section>
