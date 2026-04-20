@@ -301,14 +301,14 @@ const AppDevelopmentBento = () => {
                             </p>
                         </div>
 
-                        <div className="overflow-x-auto -mx-8 md:mx-0">
-                            <table className="w-full text-left border-separate border-spacing-y-2">
+                        <div className="overflow-x-auto -mx-6 md:mx-0">
+                            <table className="w-full text-left border-collapse">
                                 <thead>
-                                    <tr>
-                                        <th className="py-4 px-8 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600">Core Services</th>
-                                        <th className="py-4 px-8 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 hidden lg:table-cell">Platform Architecture</th>
-                                        <th className="py-4 px-8 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600">Performance Index</th>
-                                        <th className="py-4 px-8 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 text-right">Est. Cycle</th>
+                                    <tr className="border-b border-white/10">
+                                        <th className="py-6 px-4 md:px-8 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 border-r border-white/5">Core Services</th>
+                                        <th className="py-6 px-8 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 hidden lg:table-cell border-r border-white/5">Platform Architecture</th>
+                                        <th className="py-6 px-8 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 hidden sm:table-cell border-r border-white/5">Performance Index</th>
+                                        <th className="py-6 px-4 md:px-8 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 text-center">Est. Cycle</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -317,35 +317,35 @@ const AppDevelopmentBento = () => {
                                         { name: "Android Applications", category: "Kotlin / Jetpack Compose", time: "4-6w", icon: Smartphone, color: "from-emerald-500 to-teal-600", metric: "Global Scale" },
                                         { name: "Chrome Extensions", category: "V3 Manifest / JS", time: "1-2w", icon: Globe, color: "from-orange-500 to-amber-600", metric: "Lightweight" },
                                         { name: "Desktop Software", category: "Electron / C++ / Rust", time: "5-8w", icon: Monitor, color: "from-purple-500 to-fuchsia-600", metric: "Enterprise Ready" },
-                                        { name: "Mobile Games", category: "Unity / Unreal Engine", time: "6-10w", icon: Gamepad2, color: "from-rose-500 to-red-600", metric: "Hyper-Immersive" },
+                                        { name: "Mobile Games", category: "Unity / Unreal Engine", time: "6-25w", icon: Gamepad2, color: "from-rose-500 to-red-600", metric: "Hyper-Immersive" },
                                         { name: "Enterprise Systems", category: "Full-Stack Automation", time: "6-12w", icon: Layers, color: "from-indigo-500 to-blue-600", metric: "Zero Latency" },
                                     ].map((service, index) => (
                                         <tr 
                                             key={index} 
-                                            className="group hover:bg-white/[0.03] transition-all duration-500"
+                                            className="group border-b border-white/5 last:border-b-0 hover:bg-white/[0.03] transition-all duration-500"
                                         >
-                                            <td className="py-4 px-6 rounded-l-xl border-y border-l border-white/0 group-hover:border-white/10 group-hover:bg-white/[0.02]">
-                                                <div className="flex items-center gap-4">
-                                                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center p-2 shadow-lg shadow-black/20 group-hover:scale-110 transition-transform duration-500`}>
+                                            <td className="py-6 px-4 md:px-8 border-r border-white/5">
+                                                <div className="flex items-center gap-3 md:gap-5">
+                                                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${service.color} flex-shrink-0 flex items-center justify-center p-2 shadow-lg shadow-black/20 group-hover:scale-110 transition-transform duration-500`}>
                                                         <service.icon className="w-full h-full text-white" />
                                                     </div>
                                                     <div>
-                                                        <div className="text-white font-bold text-base leading-tight group-hover:text-white transition-colors">{service.name}</div>
-                                                        <div className="text-zinc-500 text-[9px] font-bold uppercase tracking-widest mt-1 lg:hidden">{service.category}</div>
+                                                        <div className="text-white font-bold text-sm md:text-lg leading-tight group-hover:text-white transition-colors">{service.name}</div>
+                                                        <div className="text-zinc-500 text-[9px] font-bold uppercase tracking-widest mt-1.5 lg:hidden">{service.category}</div>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td className="py-4 px-6 border-y border-white/0 group-hover:border-white/10 group-hover:bg-white/[0.02] hidden lg:table-cell">
-                                                <span className="text-zinc-400 text-xs font-medium">{service.category}</span>
+                                            <td className="py-6 px-8 border-r border-white/5 hidden lg:table-cell">
+                                                <span className="text-zinc-400 text-sm font-medium">{service.category}</span>
                                             </td>
-                                            <td className="py-4 px-6 border-y border-white/0 group-hover:border-white/10 group-hover:bg-white/[0.02]">
+                                            <td className="py-6 px-8 border-r border-white/5 hidden sm:table-cell">
                                                 <div className="flex items-center gap-2">
                                                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                                                    <span className="text-zinc-300 text-[10px] font-bold tracking-tight">{service.metric}</span>
+                                                    <span className="text-zinc-300 text-xs font-bold tracking-tight">{service.metric}</span>
                                                 </div>
                                             </td>
-                                            <td className="py-4 px-6 rounded-r-xl border-y border-r border-white/0 group-hover:border-white/10 group-hover:bg-white/[0.02] text-right">
-                                                <span className="text-white font-black text-base tracking-tighter">{service.time}</span>
+                                            <td className="py-6 px-4 md:px-8 text-center">
+                                                <span className="text-white font-black text-sm md:text-xl tracking-tighter">{service.time}</span>
                                             </td>
                                         </tr>
                                     ))}
