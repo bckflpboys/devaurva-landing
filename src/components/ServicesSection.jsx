@@ -349,14 +349,14 @@ const WebsiteDevelopmentBento = () => {
 
                             {/* Features Side-by-Side - Adjusted height to align with Generate card */}
                             <div className="grid grid-cols-2 gap-6 z-20">
-                                <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 pt-32 flex flex-col justify-end group hover:border-white/10 h-[422px]">
+                                <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 pt-32 flex flex-col justify-end group hover:border-white/10 h-[414px]">
                                     <div className="w-12 h-12 rounded-xl bg-orange-600/20 flex items-center justify-center text-orange-500 mb-6 border border-orange-500/10">
                                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
                                     </div>
                                     <h3 className="text-xl font-bold text-white mb-2">Branching paths</h3>
                                     <p className="text-zinc-500 text-xs leading-relaxed">Explore multiple prompt directions with branching.</p>
                                 </div>
-                                <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 pt-32 flex flex-col justify-end group hover:border-white/10 h-[422px]">
+                                <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 pt-32 flex flex-col justify-end group hover:border-white/10 h-[414px]">
                                     <div className="w-12 h-12 rounded-xl bg-purple-600/20 flex items-center justify-center text-purple-500 mb-6 border border-purple-500/10">
                                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
                                     </div>
@@ -379,7 +379,7 @@ const WebsiteDevelopmentBento = () => {
                             </div>
                         </div>
 
-                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 flex flex-col justify-center h-[280px]">
+                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 flex flex-col justify-center h-[336px]">
                             <div className="text-7xl font-black text-white text-center tracking-tighter mb-2">25M</div>
                             <div className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-2">
                                 <div className="w-px h-4 bg-purple-500/50" />
@@ -388,7 +388,7 @@ const WebsiteDevelopmentBento = () => {
                             </div>
                         </div>
 
-                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 flex flex-col group overflow-hidden relative h-[470px]">
+                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 flex flex-col group overflow-hidden relative h-[414px]">
                             <div className="z-10">
                                 <h3 className="text-2xl font-bold text-white mb-4">Prompt templates</h3>
                                 <p className="text-zinc-500 text-xs leading-relaxed mb-12">Use pre-made structures to jumpstart your launch.</p>
