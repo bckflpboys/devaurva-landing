@@ -201,19 +201,25 @@ const AppDevelopmentBento = () => {
                     </BentoCard>
 
                     {/* Additional Creative Cells - Row 3 */}
-                    <BentoCard colSpan="6" rowSpan="1" className="bg-gradient-to-br from-orange-800/40 to-black p-8 flex items-center gap-6 group hover:border-orange-500/40 transition-all">
-                        <img src="/devaura/vox%202.png" className="w-20 h-20 object-contain drop-shadow-2xl group-hover:rotate-12 transition-transform" alt="vox 2" />
-                        <div>
-                            <h4 className="text-white font-bold text-lg">Scalable Architecture</h4>
-                            <p className="text-zinc-500 text-sm">Built to handle millions of active users.</p>
+                    <BentoCard colSpan="6" rowSpan="1" className="bg-white/10 backdrop-blur-2xl p-8 flex flex-col md:flex-row items-center gap-8 group transition-all border border-white/20 shadow-2xl overflow-hidden">
+                        <div className="w-40 h-40 relative flex-shrink-0">
+                            <img src="/devaura/vox%202.png" className="w-full h-full object-contain drop-shadow-2xl group-hover:scale-110 transition-transform duration-700" alt="vox 2" />
+                            <div className="absolute inset-0 bg-indigo-500/20 blur-[50px] -z-10" />
+                        </div>
+                        <div className="text-center md:text-left">
+                            <h4 className="text-white font-extrabold text-2xl tracking-tight mb-2">Scalable Architecture</h4>
+                            <p className="text-zinc-400 font-medium text-base leading-relaxed">Engineered to seamlessly handle millions of active users with zero latency.</p>
                         </div>
                     </BentoCard>
 
-                    <BentoCard colSpan="6" rowSpan="1" className="bg-gradient-to-br from-emerald-800/40 to-black p-8 flex items-center gap-6 group hover:border-emerald-500/40 transition-all">
-                        <img src="/devaura/vox%203.png" className="w-20 h-20 object-contain drop-shadow-2xl group-hover:-rotate-12 transition-transform" alt="vox 3" />
-                        <div>
-                            <h4 className="text-white font-bold text-lg">Cross-Platform Sync</h4>
-                            <p className="text-zinc-500 text-sm">Real-time data parity across all devices.</p>
+                    <BentoCard colSpan="6" rowSpan="1" className="bg-white/10 backdrop-blur-2xl p-8 flex flex-col md:flex-row items-center gap-8 group transition-all border border-white/20 shadow-2xl overflow-hidden">
+                        <div className="w-40 h-40 relative flex-shrink-0">
+                            <img src="/devaura/vox%203.png" className="w-full h-full object-contain drop-shadow-2xl group-hover:scale-110 transition-transform duration-700" alt="vox 3" />
+                            <div className="absolute inset-0 bg-emerald-500/20 blur-[50px] -z-10" />
+                        </div>
+                        <div className="text-center md:text-left">
+                            <h4 className="text-white font-extrabold text-2xl tracking-tight mb-2">Cross-Platform Sync</h4>
+                            <p className="text-zinc-400 font-medium text-base leading-relaxed">Real-time data parity ensured across all iOS and Android devices.</p>
                         </div>
                     </BentoCard>
 
