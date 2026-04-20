@@ -834,6 +834,126 @@ const EcommerceShowcase = () => {
     );
 };
 
+const SystemsShowcase = () => {
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+    const rotate = useTransform(scrollYProgress, [0, 1], [0, 10]);
+
+    return (
+        <section ref={containerRef} className="py-40 relative overflow-hidden bg-[#05050a]">
+            {/* Command Center Visual: Grid and Core */}
+            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#05050a] via-transparent to-[#05050a]" />
+
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    {/* Visual Column: Command Center Stack */}
+                    <div className="relative order-2 lg:order-1 h-[600px] flex items-center justify-center">
+                        {/* Central Neural Hub: Web 3.webm */}
+                        <motion.div 
+                            style={{ rotate }}
+                            className="absolute z-10 w-full aspect-square max-w-lg opacity-80 mix-blend-screen pointer-events-none blur-[2px] group-hover:blur-0 transition-all duration-1000"
+                        >
+                            <video autoPlay loop muted playsInline className="w-full h-full object-contain">
+                                <source src="/web-sec/Web 3.webm" type="video/webm" />
+                            </video>
+                        </motion.div>
+
+                        {/* Staggered Dashboard Modules */}
+                        
+                        {/* System Overview: ta 1 */}
+                        <motion.div 
+                            style={{ y }}
+                            className="absolute z-20 -top-10 -right-5 w-4/5 aspect-[16/10] bg-zinc-900/40 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] overflow-hidden shadow-2xl group"
+                        >
+                            <img src="/web-sec/ta 1.png" className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700" alt="Core Dashboard" />
+                            <div className="absolute top-8 left-8 flex items-center gap-3">
+                                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                                <span className="text-emerald-500 text-[10px] font-black uppercase tracking-widest">Master Auth</span>
+                            </div>
+                        </motion.div>
+
+                        {/* Secondary Module: stu 1 */}
+                        <motion.div 
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            className="absolute z-30 bottom-20 left-0 w-[55%] aspect-video bg-zinc-900 border border-white/10 rounded-[1.5rem] overflow-hidden shadow-2xl group"
+                        >
+                            <img src="/web-sec/stu 1.png" className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Sub-System" />
+                        </motion.div>
+
+                        {/* Small Module/Mobile: vox 2 (Phone Shaped) - MASSIVE VERSION */}
+                        <motion.div 
+                            animate={{ y: [0, -20, 0] }}
+                            transition={{ duration: 4, repeat: Infinity }}
+                            className="absolute z-40 -bottom-[350px] -right-16 w-80 md:w-[28rem] aspect-[9/19] overflow-hidden drop-shadow-[0_0_150px_rgba(16,185,129,0.3)]"
+                        >
+                            <img src="/devaura/vox 2.png" className="w-full h-full object-contain" alt="Mobile Controller" />
+                        </motion.div>
+
+                        {/* Floating Admin Overlay: vc 2 */}
+                        <motion.div 
+                            style={{ y: useTransform(scrollYProgress, [0, 1], [50, -50]) }}
+                            className="absolute z-50 top-1/2 -left-12 w-40 h-40 bg-zinc-900/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-1 shadow-2xl hidden md:block group"
+                        >
+                            <div className="w-full h-full rounded-2xl overflow-hidden border border-emerald-500/10">
+                                <img src="/web-sec/vc 2.png" className="w-full h-full object-contain p-2" alt="Admin UI" />
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Content Column */}
+                    <div className="order-1 lg:order-2">
+                        <motion.span 
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            className="text-xs font-black uppercase tracking-[0.5em] text-emerald-500 mb-6 block"
+                        >
+                            Infrastructure
+                        </motion.span>
+                        <motion.h2 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.85] mb-8"
+                        >
+                            INTERNAL <br /> <span className="text-zinc-600">SYSTEMS</span>
+                        </motion.h2>
+                        <motion.p 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                            className="text-zinc-400 text-lg md:text-xl font-medium leading-relaxed mb-12"
+                        >
+                            Automate your enterprise with bespoke internal architectures. We build everything from custom CRMs and inventory engines to high-scale API infrastructures.
+                        </motion.p>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                            {['Workflow Automation', 'Scalable Architecture', 'Custom Dashboards', 'Real-time Metrics'].map((feat, i) => (
+                                <div key={i} className="flex items-center gap-3 p-4 bg-white/[0.03] border border-white/5 rounded-2xl group hover:border-emerald-500/30 transition-colors">
+                                    <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                                    <span className="text-zinc-400 text-[10px] font-black uppercase tracking-widest group-hover:text-white transition-colors">{feat}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <motion.button className="group flex items-center gap-4 text-white">
+                            <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-emerald-500 group-hover:border-emerald-500 transition-all duration-500">
+                                <ArrowRight className="w-6 h-6 group-hover:rotate-[-45deg] transition-transform" />
+                            </div>
+                            <span className="font-black uppercase tracking-widest text-sm text-white">Build Your System</span>
+                        </motion.button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
 const ServicesSection = ({ onInView, onOutView }) => {
     const sectionRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -865,13 +985,7 @@ const ServicesSection = ({ onInView, onOutView }) => {
 
                 <EcommerceShowcase />
 
-                <ServiceFeature
-                    title="SYSTEMS"
-                    subtitle="Enterprise Solutions"
-                    description="Custom internal tools, ERPs, and dashboards designed to automate workflows and streamline your business operations."
-                    image="/devaura/trans tick app 4.png"
-                    color="from-sky-400 via-blue-300 to-indigo-100"
-                />
+                <SystemsShowcase />
 
                 <ExtensionsShowcase />
 
