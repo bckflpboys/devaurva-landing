@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar';
 import HeroSection from "./components/HeroSection";
-
+import ServicesSection from './components/ServicesSection';
 import Slider from './components/slider';
 import RoadMapSection from './components/RoadMapSection';
 import FeaturesSection from './components/FeaturesSection';
@@ -35,6 +35,7 @@ const Home = () => {
       <div className="relative z-20">
         <div className='container mx-auto'>
           <HeroSection />
+          <ServicesSection />
           <Slider />
           <RoadMapSection />
           <FeaturesSection />
