@@ -5,9 +5,9 @@ import { projects } from '../data/projects';
 
 const ProjectsSection = () => {
     return (
-        <section id="projects" className="py-20" role="region" aria-labelledby="projects-heading">
+        <section id="clientprojects" className="py-20" role="region" aria-labelledby="projects-heading">
             <div className="text-center mb-12">
-                <h2 id="projects-heading" className="text-4xl font-bold mb-4">My Projects</h2>
+                <h2 id="projects-heading" className="text-4xl font-bold mb-4">Client Projects</h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">
                     Here are some of the projects I've worked on. Each project demonstrates
                     different skills and technologies in web development.

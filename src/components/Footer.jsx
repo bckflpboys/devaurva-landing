@@ -14,7 +14,7 @@ const Footer = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                         {/* Company Info */}
                         <div className="space-y-4">
-                            <h3 className="text-xl font-bold text-gray-900">DevAura</h3>
+                            <h3 className="text-xl font-bold text-gray-900">DevAurva</h3>
                             <p className="text-gray-600 text-sm leading-relaxed">
                                 Transforming ideas into exceptional web experiences. Your vision, our expertise.
                             </p>
@@ -41,9 +41,9 @@ const Footer = () => {
                         <div className="space-y-4">
                             <h3 className="text-lg font-semibold text-gray-900">Quick Links</h3>
                             <ul className="space-y-2">
-                                {['Features', 'Projects', 'Pricing'].map((item) => (
+                                {['Features', 'Client Projects', 'Pricing'].map((item) => (
                                     <li key={item}>
-                                        <a href={`/#${item.toLowerCase()}`} className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
+                                        <a href={`/#${item.toLowerCase().replace(" ", "")}`} className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
                                             {item}
                                         </a>
                                     </li>
@@ -114,7 +114,7 @@ const Footer = () => {
                     <div className="mt-12 pt-8 border-t border-gray-200">
                         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                             <p className="text-gray-600 text-sm">
-                                &copy; {new Date().getFullYear()} DevAura. All rights reserved.
+                                &copy; {new Date().getFullYear()} DevAurva. All rights reserved.
                             </p>
                             <div className="flex space-x-6">
                                 <Link to="/privacy" className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">

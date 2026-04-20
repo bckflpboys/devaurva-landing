@@ -83,7 +83,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-4xl font-extrabold leading-[1.15] text-black sm:text-6xl"
             >
-                With DevAura
+                With DevAurva
                 <br />
                 <span className="bg-gradient-to-r from-indigo-500 via-orange-600 to-indigo-500 bg-clip-text text-transparent">
                     Launch in Weeks
