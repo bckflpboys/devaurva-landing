@@ -15,25 +15,33 @@ const roadmap = [
         id: 1,
         name: "Project KickOff",
         description: "Initial consultation, requirement gathering, and project planning to ensure alignment with your goals. We establish clear objectives and timelines.",
-        icon: <Rocket className="w-6 h-6 text-indigo-600" />
+        icon: <Rocket className="w-6 h-6 text-indigo-600" />,
+        gif: "/gif/consultation.gif",
+        side: "right"
     },
     {
         id: 2,
         name: "Design Phase",
         description: "Creating wireframes, prototypes, and visual designs that reflect your brand identity. Iterative feedback ensures your vision comes to life.",
-        icon: <Palette className="w-6 h-6 text-purple-600" />
+        icon: <Palette className="w-6 h-6 text-purple-600" />,
+        gif: "/gif/digital-art.gif",
+        side: "left"
     },
     {
         id: 3,
         name: "Development",
         description: "Building your website with clean, efficient code and regular progress updates. We follow best practices for optimal performance.",
-        icon: <Code2 className="w-6 h-6 text-blue-600" />
+        icon: <Code2 className="w-6 h-6 text-blue-600" />,
+        gif: "/gif/web-settings.gif",
+        side: "right"
     },
     {
         id: 4,
         name: "Testing & Launch",
         description: "Thorough testing, optimization, and successful deployment of your website. We ensure everything works flawlessly before going live.",
-        icon: <Sparkles className="w-6 h-6 text-pink-600" />
+        icon: <Sparkles className="w-6 h-6 text-pink-600" />,
+        gif: "/gif/startup.gif",
+        side: "left"
     }
 ];
 
@@ -79,15 +87,17 @@ const RoadMapSection = () => {
                 </div>
 
                 {/* Timeline Container */}
-                <div className="relative max-w-5xl mx-auto">
+                <div className="relative max-w-6xl mx-auto">
                     {/* Main Road */}
-                    <div className="relative z-10 space-y-12">
+                    <div className="relative z-10 space-y-24">
                         {roadmap.map((milestone, index) => (
                             <MileStone
                                 key={index}
                                 title={milestone.name}
                                 description={milestone.description}
                                 icon={milestone.icon}
+                                gif={milestone.gif}
+                                side={milestone.side}
                                 lastItem={index === roadmap.length - 1}
                                 index={index + 1}
                             />
