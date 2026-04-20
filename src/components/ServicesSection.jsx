@@ -144,24 +144,49 @@ const AppDevelopmentBento = () => {
 
     return (
         <section ref={containerRef} className="relative min-h-screen py-20 md:py-40 mb-20 scroll-mt-20">
-            <motion.div style={{ y, opacity }} className="max-w-7xl mx-auto px-4 md:px-6">
+            <motion.div
+                style={{ opacity, y }}
+                className="text-center z-10 px-6 max-w-4xl mx-auto mb-20"
+            >
+                <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="text-sm font-black uppercase tracking-[0.4em] text-zinc-500 mb-6 block"
+                >
+                    iOS and Android
+                </motion.span>
+                <motion.h2
+                    className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.8] mb-8 text-transparent bg-clip-text bg-gradient-to-b from-indigo-400 via-purple-500 to-indigo-600"
+                >
+                    APP <br className="hidden md:block" /> DEVELOPMENT
+                </motion.h2>
+                <motion.p
+                    className="text-zinc-400 text-xl md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto mb-12"
+                >
+                    Native-quality mobile applications engineered for peak performance and unparalleled user experience on every device.
+                </motion.p>
+                <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 group font-bold text-lg border-b-2 pb-2 transition-all duration-300 mx-auto text-white border-white/20"
+                >
+                    Explore Solutions <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+            </motion.div>
+
+            <motion.div style={{ opacity }} className="max-w-7xl mx-auto px-4 md:px-6">
                 <div className="grid grid-cols-2 md:grid-cols-12 gap-4 md:gap-6 h-full auto-rows-[minmax(160px,auto)] md:auto-rows-[minmax(200px,auto)]">
 
-                    {/* Main Title & Description - Hero Cell */}
-                    <BentoCard colSpan="2" className="md:col-span-8 bg-gradient-to-br from-indigo-800/40 via-zinc-800/40 to-black/80 backdrop-blur-3xl p-8 md:p-12 flex flex-col justify-between group hover:border-white/40 duration-700">
-                        <div className="relative z-10">
-                            <span className="text-xs md:text-sm font-black uppercase tracking-[0.4em] text-indigo-400 mb-6 block">iOS and Android</span>
-                            <h2 className="text-4xl md:text-8xl font-black text-white tracking-tighter leading-none mb-6 md:mb-8">
-                                APP <br /> DEVELOPMENT
-                            </h2>
-                            <p className="text-zinc-400 text-sm md:text-xl font-medium leading-relaxed max-w-xl">
-                                Native-quality mobile applications engineered for peak performance and unparalleled user experience on every device.
-                            </p>
-                        </div>
-                        <button className="relative z-10 w-fit mt-10 md:mt-12 px-6 py-3 md:px-8 md:py-4 bg-white text-black rounded-full font-bold text-sm md:text-base hover:scale-105 transition-transform flex items-center gap-2">
-                            Explore Solutions <ArrowRight className="w-5 h-5" />
-                        </button>
-
+                    {/* Main Hero Cell - Visual Showcase */}
+                    <BentoCard colSpan="2" className="md:col-span-8 bg-gradient-to-br from-indigo-800/40 via-zinc-800/40 to-black/80 backdrop-blur-3xl group hover:border-white/40 duration-700 relative overflow-hidden">
+                        <img
+                            src="/devaura/trans tick app.png"
+                            alt="App Showcase"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
+                        
                         {/* Animated background element */}
                         <div className="absolute -bottom-20 -right-20 w-64 h-64 md:w-96 md:h-96 bg-indigo-500/10 blur-[80px] md:blur-[100px] group-hover:bg-indigo-500/20 transition-all duration-700 rounded-full" />
                     </BentoCard>
@@ -212,14 +237,21 @@ const AppDevelopmentBento = () => {
                         <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent" />
                     </BentoCard>
 
-                    {/* App Showcase Cell */}
-                    <BentoCard colSpan="1" className="md:col-span-4 bg-gradient-to-br from-slate-800/40 to-black relative group p-0">
-                        <img
-                            src="/devaura/trans tick app.png"
-                            alt="Mockup"
+                    {/* App Showcase Cell - Secondary Video */}
+                    <BentoCard colSpan="1" className="md:col-span-4 bg-gradient-to-br from-slate-800/40 to-black relative group p-0 overflow-hidden">
+                        <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        />
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
+                        >
+                            <source src="/devaura/vox.webm" type="video/webm" />
+                        </video>
+                        <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-700" />
+                        <div className="absolute top-4 left-4 z-20">
+                            <span className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-[10px] text-white font-bold uppercase tracking-widest">Showcase</span>
+                        </div>
                     </BentoCard>
 
                     {/* Additional Creative Cells - Row 3 */}
@@ -297,7 +329,38 @@ const WebsiteDevelopmentBento = () => {
 
     return (
         <section ref={containerRef} id="websites-bento" className="relative min-h-screen py-20 bg-[#06060c]">
-            <motion.div style={{ y, opacity }} className="max-w-7xl mx-auto px-4 md:px-6 relative">
+            <motion.div
+                style={{ opacity, y }}
+                className="text-center z-10 px-6 max-w-4xl mx-auto mb-20"
+            >
+                <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="text-sm font-black uppercase tracking-[0.4em] text-zinc-500 mb-6 block"
+                >
+                    Presence & Scale
+                </motion.span>
+                <motion.h2
+                    className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.8] mb-8 text-transparent bg-clip-text bg-gradient-to-b from-emerald-400 via-emerald-300 to-teal-100"
+                >
+                    WEBSITE <br className="hidden md:block" /> DEVELOPMENT
+                </motion.h2>
+                <motion.p
+                    className="text-zinc-400 text-xl md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto mb-12"
+                >
+                    High-performance websites and digital experiences built for global impact and seamless user conversion.
+                </motion.p>
+                <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 group font-bold text-lg border-b-2 pb-2 transition-all duration-300 mx-auto text-white border-white/20"
+                >
+                    Get a Quote <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+            </motion.div>
+
+            <motion.div style={{ opacity }} className="max-w-7xl mx-auto px-4 md:px-6 relative">
 
                 {/* 3-Column Layout Grouping for Strict Lane Alignment */}
                 <div className="flex flex-col md:grid md:grid-cols-12 gap-6">
@@ -306,7 +369,7 @@ const WebsiteDevelopmentBento = () => {
                     <div className="md:col-span-3 flex flex-col gap-6">
                         <WebBentoCard className="bg-[#11121d] p-10 flex flex-col justify-between group h-[480px] overflow-hidden">
                             <div>
-                                <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-12 shadow-2xl shadow-indigo-500/20">
+                                <div className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mb-12 shadow-2xl shadow-emerald-500/20">
                                     <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />
                                     </svg>
@@ -334,7 +397,7 @@ const WebsiteDevelopmentBento = () => {
                         </WebBentoCard>
 
                         <WebBentoCard className="bg-[#11121d] p-6 flex items-center justify-center h-[110px]">
-                            <button className="w-full h-full bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full text-white font-black uppercase tracking-widest text-xs shadow-2xl shadow-purple-500/20 hover:scale-[1.02] transition-transform">
+                            <button className="w-full h-full bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full text-white font-black uppercase tracking-widest text-xs shadow-2xl shadow-emerald-500/20 hover:scale-[1.02] transition-transform">
                                 Contact Us
                             </button>
                         </WebBentoCard>
@@ -342,17 +405,18 @@ const WebsiteDevelopmentBento = () => {
 
                     {/* CENTER COLUMN (6/12) - Contains Hero, Sphere, Features */}
                     <div className="md:col-span-6 flex flex-col relative">
-                        {/* Hero Purple Scoop - Matched to Effortless card height */}
-                        <WebBentoCard className="bg-[#6b46f7] relative overflow-hidden flex flex-col items-center pt-24 group shadow-lg h-[480px] z-10">
+                        {/* Hero Purple Scoop - Visual Only Now */}
+                        <WebBentoCard className="bg-[#059669] relative overflow-hidden flex flex-col items-center pt-24 group shadow-lg h-[480px] z-10">
                             <div className="flex items-center gap-2 mb-8 z-10">
                                 <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center">
-                                    <div className="w-1.5 h-1.5 bg-[#6b46f7] rounded-full" />
+                                    <div className="w-1.5 h-1.5 bg-[#059669] rounded-full" />
                                 </div>
-                                <span className="text-xs font-black uppercase tracking-[0.4em] text-white/80">PromptPal</span>
+                                <span className="text-xs font-black uppercase tracking-[0.4em] text-white/80">Premium Quality</span>
                             </div>
-                            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white text-center tracking-tighter leading-none mb-6 md:mb-10 z-10 uppercase px-6">
-                                WEBSITE <br /> DEVELOPMENT
-                            </h2>
+                            <div className="relative z-10 text-center px-6">
+                                <div className="text-white font-black text-xl mb-2 italic">Crafting Excellence</div>
+                                <div className="w-12 h-1 bg-white/30 mx-auto rounded-full" />
+                            </div>
 
                             {/* The BOTTOM Scoop (Hole in Purple) */}
                             <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-[280px] h-36 bg-[#06060c] rounded-t-full shadow-[inset_0_4px_25px_rgba(0,0,0,0.5)] z-20" />
@@ -368,7 +432,7 @@ const WebsiteDevelopmentBento = () => {
                             <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-[280px] h-36 bg-[#06060c] rounded-b-full shadow-[inset_0_-4px_25px_rgba(0,0,0,0.5)] z-30" />
 
                             {/* The Floating Sphere - Centered on the seam */}
-                            <div className="w-72 h-72 rounded-full bg-black border-[12px] border-[#06060c] absolute -top-40 left-1/2 -translate-x-1/2 z-40 shadow-[0_0_100px_rgba(107,70,247,0.4),inset_0_0_40px_rgba(107,70,247,0.2)] overflow-hidden">
+                            <div className="w-72 h-72 rounded-full bg-black border-[12px] border-[#06060c] absolute -top-40 left-1/2 -translate-x-1/2 z-40 shadow-[0_0_100px_rgba(16,185,129,0.4),inset_0_0_40px_rgba(16,185,129,0.2)] overflow-hidden">
                                 <video
                                     autoPlay
                                     loop
@@ -378,7 +442,7 @@ const WebsiteDevelopmentBento = () => {
                                 >
                                     <source src="/web-sec/Wed 2.webm" type="video/webm" />
                                 </video>
-                                <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 to-transparent pointer-events-none" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-emerald-600/20 to-transparent pointer-events-none" />
                             </div>
 
                             {/* Features Side-by-Side - Adjusted height to align with Generate card */}
@@ -391,7 +455,7 @@ const WebsiteDevelopmentBento = () => {
                                     <p className="text-zinc-500 text-xs leading-relaxed">Faster Load Times, Better SEO, and Enhanced Security.</p>
                                 </WebBentoCard>
                                 <WebBentoCard className="bg-[#11121d] p-10 pt-32 flex flex-col justify-end group h-[414px] overflow-hidden">
-                                    <div className="w-12 h-12 rounded-xl bg-purple-600/20 flex items-center justify-center text-purple-500 mb-6 border border-purple-500/10">
+                                    <div className="w-12 h-12 rounded-xl bg-emerald-600/20 flex items-center justify-center text-emerald-500 mb-6 border border-emerald-500/10">
                                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
                                     </div>
                                     <h3 className="text-xl font-bold text-white mb-2">SEO, AEO & GEO Optimized</h3>
@@ -416,9 +480,9 @@ const WebsiteDevelopmentBento = () => {
                         <WebBentoCard className="bg-[#11121d] p-10 flex flex-col justify-center h-[336px]">
                             <div className="text-7xl font-black text-white text-center tracking-tighter mb-2">2M+</div>
                             <div className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-2">
-                                <div className="w-px h-4 bg-purple-500/50" />
+                                <div className="w-px h-4 bg-emerald-500/50" />
                                 Monthly Visitors across all platforms
-                                <div className="w-px h-4 bg-purple-500/50" />
+                                <div className="w-px h-4 bg-emerald-500/50" />
                             </div>
                         </WebBentoCard>
 
@@ -430,13 +494,13 @@ const WebsiteDevelopmentBento = () => {
                             <div className="flex-grow relative h-64">
                                 <div className="absolute right-0 top-0 px-6 py-2 bg-zinc-900 border border-white/10 rounded-full text-[10px] text-white font-black uppercase rotate-6">14 days trial</div>
                                 <div className="absolute left-0 bottom-16 px-4 py-2 bg-zinc-900 border border-white/10 rounded-full text-[10px] text-white/50 rotate-[-12deg] flex items-center gap-2">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500" /> Rewrite
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Rewrite
                                 </div>
                                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center shadow-2xl shadow-orange-500/50">
                                     <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
                                 </div>
                                 <div className="absolute right-0 bottom-0 py-4 px-2 bg-black rounded-full flex flex-col gap-4 border border-white/5">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                                     <div className="w-1.5 h-1.5 rounded-full bg-orange-400" />
                                     <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                                 </div>
