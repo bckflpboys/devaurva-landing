@@ -82,6 +82,21 @@ const BentoCard = ({ children, className, colSpan = "4", rowSpan = "2" }) => {
         offset: ["start end", "end start"]
     });
 
+    const colSpans = {
+        "1": "col-span-1",
+        "2": "col-span-2",
+        "4": "col-span-4",
+        "6": "col-span-6",
+        "8": "col-span-8",
+        "12": "col-span-12"
+    };
+
+    const rowSpans = {
+        "1": "row-span-1",
+        "2": "row-span-2",
+        "3": "row-span-3"
+    };
+
     // Border shine effect that peaks when card is centered
     const borderColor = useTransform(
         scrollYProgress,
@@ -99,7 +114,7 @@ const BentoCard = ({ children, className, colSpan = "4", rowSpan = "2" }) => {
         <motion.div
             ref={cardRef}
             style={{ borderColor }}
-            className={`md:col-span-${colSpan} md:row-span-${rowSpan} rounded-[3rem] border transition-colors duration-300 relative overflow-hidden ${className}`}
+            className={`${colSpans[colSpan] || "col-span-4"} ${rowSpans[rowSpan] || "row-span-2"} rounded-[2rem] md:rounded-[3rem] border transition-colors duration-300 relative overflow-hidden ${className}`}
         >
             <motion.div
                 style={{ opacity: glowOpacity }}
@@ -121,31 +136,31 @@ const AppDevelopmentBento = () => {
     const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
     return (
-        <section ref={containerRef} className="relative min-h-screen py-40 mb-20 scroll-mt-20">
-            <motion.div style={{ y, opacity }} className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-full auto-rows-[minmax(200px,auto)]">
+        <section ref={containerRef} className="relative min-h-screen py-20 md:py-40 mb-20 scroll-mt-20">
+            <motion.div style={{ y, opacity }} className="max-w-7xl mx-auto px-4 md:px-6">
+                <div className="grid grid-cols-2 md:grid-cols-12 gap-4 md:gap-6 h-full auto-rows-[minmax(160px,auto)] md:auto-rows-[minmax(200px,auto)]">
 
                     {/* Main Title & Description - Hero Cell */}
-                    <BentoCard colSpan="8" className="bg-gradient-to-br from-indigo-800/40 via-zinc-800/40 to-black/80 backdrop-blur-3xl p-12 flex flex-col justify-between group hover:border-white/40 duration-700">
+                    <BentoCard colSpan="2" className="md:col-span-8 bg-gradient-to-br from-indigo-800/40 via-zinc-800/40 to-black/80 backdrop-blur-3xl p-8 md:p-12 flex flex-col justify-between group hover:border-white/40 duration-700">
                         <div className="relative z-10">
-                            <span className="text-sm font-black uppercase tracking-[0.4em] text-indigo-400 mb-6 block">iOS and Android</span>
-                            <h2 className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-none mb-8">
+                            <span className="text-xs md:text-sm font-black uppercase tracking-[0.4em] text-indigo-400 mb-6 block">iOS and Android</span>
+                            <h2 className="text-4xl md:text-8xl font-black text-white tracking-tighter leading-none mb-6 md:mb-8">
                                 APP <br /> DEVELOPMENT
                             </h2>
-                            <p className="text-zinc-400 text-base md:text-xl font-medium leading-relaxed max-w-xl">
+                            <p className="text-zinc-400 text-sm md:text-xl font-medium leading-relaxed max-w-xl">
                                 Native-quality mobile applications engineered for peak performance and unparalleled user experience on every device.
                             </p>
                         </div>
-                        <button className="relative z-10 w-fit mt-12 px-8 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform flex items-center gap-2">
+                        <button className="relative z-10 w-fit mt-10 md:mt-12 px-6 py-3 md:px-8 md:py-4 bg-white text-black rounded-full font-bold text-sm md:text-base hover:scale-105 transition-transform flex items-center gap-2">
                             Explore Solutions <ArrowRight className="w-5 h-5" />
                         </button>
 
                         {/* Animated background element */}
-                        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-indigo-500/10 blur-[100px] group-hover:bg-indigo-500/20 transition-all duration-700 rounded-full" />
+                        <div className="absolute -bottom-20 -right-20 w-64 h-64 md:w-96 md:h-96 bg-indigo-500/10 blur-[80px] md:blur-[100px] group-hover:bg-indigo-500/20 transition-all duration-700 rounded-full" />
                     </BentoCard>
 
                     {/* Quality Assurance - Video Cell */}
-                    <BentoCard colSpan="4" className="bg-gradient-to-br from-purple-800/30 to-black relative group">
+                    <BentoCard colSpan="1" className="md:col-span-4 bg-gradient-to-br from-purple-800/30 to-black relative group">
                         <video
                             autoPlay
                             loop
@@ -155,45 +170,45 @@ const AppDevelopmentBento = () => {
                         >
                             <source src="/devaura/tick.webm" type="video/webm" />
                         </video>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-10 flex flex-col justify-end">
-                            <h3 className="text-2xl font-black text-white tracking-tight">Uncompromising <br /> Quality</h3>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-6 md:p-10 flex flex-col justify-end">
+                            <h3 className="text-base md:text-2xl font-black text-white tracking-tight">Uncompromising <br /> Quality</h3>
                         </div>
                     </BentoCard>
 
                     {/* VOX Integration Cell */}
-                    <BentoCard colSpan="4" className="bg-gradient-to-br from-blue-700/40 to-black flex items-center justify-center p-8 relative group">
+                    <BentoCard colSpan="1" className="md:col-span-4 bg-gradient-to-br from-blue-700/40 to-black flex items-center justify-center p-6 md:p-8 relative group">
                         <img
                             src="/devaura/vox.png"
                             alt="Vox"
                             className="w-full h-auto drop-shadow-[0_0_30px_rgba(255,255,255,0.1)] group-hover:scale-110 transition-transform duration-700"
                         />
-                        <div className="absolute top-8 left-8">
-                            <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-white tracking-widest uppercase">Integration</span>
+                        <div className="absolute top-4 left-4 md:top-8 md:left-8">
+                            <span className="px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-xs font-bold text-white tracking-widest uppercase">Integration</span>
                         </div>
                     </BentoCard>
 
                     {/* Immersive Experience - Video Cell */}
-                    <BentoCard colSpan="4" className="bg-black relative group flex flex-col items-center justify-center">
+                    <BentoCard colSpan="1" className="md:col-span-4 bg-black relative group flex flex-col items-center justify-center overflow-hidden">
                         <video
                             autoPlay
                             loop
                             muted
                             playsInline
-                            className="w-full h-full object-contain relative z-10 scale-125"
+                            className="w-full h-full object-contain relative z-10 scale-110 md:scale-125"
                         >
                             <source src="/devaura/vox.webm" type="video/webm" />
                         </video>
-                        <div className="absolute inset-x-0 bottom-8 text-center px-6">
-                            <h3 className="text-xl font-bold text-zinc-500 tracking-tight">Immersive 3D Interfaces</h3>
+                        <div className="absolute inset-x-0 bottom-4 md:bottom-8 text-center px-4 md:px-6 z-20 font-bold text-zinc-500 text-[10px] md:text-xl tracking-tight">
+                            Immersive 3D Interfaces
                         </div>
                         {/* Background light */}
                         <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent" />
                     </BentoCard>
 
                     {/* App Showcase Cell */}
-                    <BentoCard colSpan="4" className="bg-gradient-to-br from-slate-800/40 to-black relative group p-0">
+                    <BentoCard colSpan="1" className="md:col-span-4 bg-gradient-to-br from-slate-800/40 to-black relative group p-0">
                         <img
-                            src="/devaura/trans%20tick%20app.png"
+                            src="/devaura/trans tick app.png"
                             alt="Mockup"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
@@ -201,25 +216,25 @@ const AppDevelopmentBento = () => {
                     </BentoCard>
 
                     {/* Additional Creative Cells - Row 3 */}
-                    <BentoCard colSpan="6" rowSpan="1" className="bg-white/10 backdrop-blur-2xl p-8 flex flex-col md:flex-row items-center gap-8 group transition-all border border-white/20 shadow-2xl overflow-hidden">
-                        <div className="w-40 h-40 relative flex-shrink-0">
-                            <img src="/devaura/vox%202.png" className="w-full h-full object-contain drop-shadow-2xl group-hover:scale-110 transition-transform duration-700" alt="vox 2" />
+                    <BentoCard colSpan="2" className="md:col-span-6 md:row-span-1 bg-white/10 backdrop-blur-2xl p-8 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-8 group transition-all border border-white/20 shadow-2xl overflow-hidden">
+                        <div className="w-32 h-32 md:w-40 md:h-40 relative flex-shrink-0">
+                            <img src="/devaura/vox 2.png" className="w-full h-full object-contain drop-shadow-2xl group-hover:scale-110 transition-transform duration-700" alt="vox 2" />
                             <div className="absolute inset-0 bg-indigo-500/20 blur-[50px] -z-10" />
                         </div>
                         <div className="text-center md:text-left">
-                            <h4 className="text-white font-extrabold text-2xl tracking-tight mb-2">Scalable Architecture</h4>
-                            <p className="text-zinc-400 font-medium text-base leading-relaxed">Engineered to seamlessly handle millions of active users with zero latency.</p>
+                            <h4 className="text-white font-extrabold text-xl md:text-2xl tracking-tight mb-2">Scalable Architecture</h4>
+                            <p className="text-zinc-400 font-medium text-sm md:text-base leading-relaxed">Engineered to seamlessly handle millions of active users with zero latency.</p>
                         </div>
                     </BentoCard>
 
-                    <BentoCard colSpan="6" rowSpan="1" className="bg-white/10 backdrop-blur-2xl p-8 flex flex-col md:flex-row items-center gap-8 group transition-all border border-white/20 shadow-2xl overflow-hidden">
-                        <div className="w-40 h-40 relative flex-shrink-0">
-                            <img src="/devaura/vox%203.png" className="w-full h-full object-contain drop-shadow-2xl group-hover:scale-110 transition-transform duration-700" alt="vox 3" />
+                    <BentoCard colSpan="2" className="md:col-span-6 md:row-span-1 bg-white/10 backdrop-blur-2xl p-8 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-8 group transition-all border border-white/20 shadow-2xl overflow-hidden">
+                        <div className="w-32 h-32 md:w-40 md:h-40 relative flex-shrink-0">
+                            <img src="/devaura/vox 3.png" className="w-full h-full object-contain drop-shadow-2xl group-hover:scale-110 transition-transform duration-700" alt="vox 3" />
                             <div className="absolute inset-0 bg-emerald-500/20 blur-[50px] -z-10" />
                         </div>
                         <div className="text-center md:text-left">
-                            <h4 className="text-white font-extrabold text-2xl tracking-tight mb-2">Cross-Platform Sync</h4>
-                            <p className="text-zinc-400 font-medium text-base leading-relaxed">Real-time data parity ensured across all iOS and Android devices.</p>
+                            <h4 className="text-white font-extrabold text-xl md:text-2xl tracking-tight mb-2">Cross-Platform Sync</h4>
+                            <p className="text-zinc-400 font-medium text-sm md:text-base leading-relaxed">Real-time data parity ensured across all iOS and Android devices.</p>
                         </div>
                     </BentoCard>
 
