@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useMotionValueEvent, useScroll } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import MobileMenu from "./MobileMenu";
 
 const NavBar = () => {
-    const { scrollY } = useScroll();
+    const { scrollY, scrollYProgress } = useScroll();
     const [scrolled, setScrolled] = useState(false);
 
     useMotionValueEvent(scrollY, "change", (latest) => {
@@ -19,15 +19,21 @@ const NavBar = () => {
         <div className="fixed top-0 left-0 w-full z-50 flex justify-center items-center transition-all duration-500 py-4 h-auto pointer-events-none">
             <nav 
                 className={`
-                    flex items-center justify-between px-6 lg:px-12 py-3 transition-all duration-500 pointer-events-auto
+                    relative flex items-center justify-between px-6 lg:px-12 py-3 transition-all duration-500 pointer-events-auto overflow-hidden
                     ${scrolled 
-                        ? "w-[95%] max-w-screen-xl bg-white/95 backdrop-blur-2xl border-2 border-indigo-600/40 shadow-[0_0_20px_rgba(79,70,229,0.1)] rounded-full" 
+                        ? "w-[95%] max-w-screen-xl bg-white/95 backdrop-blur-2xl border-2 border-indigo-600/40 shadow-2xl rounded-full" 
                         : "w-[98%] max-w-screen-xl bg-white/30 backdrop-blur-lg border-2 border-indigo-500/30 rounded-full shadow-xl"
                     }
                 `}
                 aria-label="Main Navigation"
             >
-                <div className="flex items-center gap-2">
+                {/* Scroll Progress Fill */}
+                <motion.div 
+                    className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 -z-10 origin-left"
+                    style={{ scaleX: scrollYProgress }}
+                />
+
+                <div className="flex items-center gap-2 relative z-10">
                     <Link to="/" className="relative group flex items-center transition-transform hover:scale-105 active:scale-95">
                         <span className="text-2xl font-black bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient tracking-tight">
                             DevAurva
