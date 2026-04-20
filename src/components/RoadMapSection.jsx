@@ -105,22 +105,32 @@ const RoadMapSection = () => {
                     </div>
                 </div>
 
-                {/* Bottom CTA */}
+                {/* Bottom CTAs */}
                 <motion.div 
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mt-32"
+                    className="flex flex-col md:flex-row items-center justify-center gap-6 mt-32"
                 >
-                    <div className="inline-block p-1 rounded-[2rem] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-2xl">
+                    {/* Start Your Roadmap Button with Blue-Orange Gradient Border */}
+                    <div className="inline-block p-[2px] rounded-[2rem] bg-gradient-to-r from-blue-600 to-orange-500 shadow-xl shadow-blue-500/10 hover:shadow-blue-500/20 transition-shadow duration-500">
                         <button 
                             onClick={scrollToPricing}
-                            className="bg-white text-black px-12 py-6 rounded-[1.8rem] font-bold text-lg hover:bg-transparent hover:text-white transition-all duration-500 flex items-center gap-3"
+                            className="bg-white text-black px-10 py-5 rounded-[1.85rem] font-bold text-lg hover:bg-transparent hover:text-white transition-all duration-500 flex items-center gap-3"
                         >
                             Start Your Roadmap
                             <ChevronRight className="w-6 h-6" />
                         </button>
                     </div>
+
+                    {/* Contact Us Button (Orange) */}
+                    <a 
+                        href="#contact"
+                        className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 shadow-xl shadow-orange-500/20 hover:scale-105 flex items-center gap-3 border-2 border-orange-400/20"
+                    >
+                        Contact Us
+                        <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                    </a>
                 </motion.div>
             </div>
         </section>
