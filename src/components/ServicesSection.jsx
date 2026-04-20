@@ -251,6 +251,40 @@ const AppDevelopmentBento = () => {
     );
 };
 
+const WebBentoCard = ({ children, className }) => {
+    const cardRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: cardRef,
+        offset: ["start end", "end start"]
+    });
+
+    const borderColor = useTransform(
+        scrollYProgress,
+        [0, 0.4, 0.5, 0.6, 1],
+        ["rgba(255,255,255,0.05)", "rgba(255,255,255,0.1)", "rgba(255,255,255,0.6)", "rgba(255,255,255,0.1)", "rgba(255,255,255,0.05)"]
+    );
+
+    const glossOpacity = useTransform(
+        scrollYProgress,
+        [0, 0.4, 0.5, 0.6, 1],
+        [0, 0, 0.15, 0, 0]
+    );
+
+    return (
+        <motion.div
+            ref={cardRef}
+            style={{ borderColor }}
+            className={`rounded-[2.5rem] border relative ${className}`}
+        >
+            <motion.div
+                style={{ opacity: glossOpacity }}
+                className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none rounded-[2.5rem]"
+            />
+            {children}
+        </motion.div>
+    );
+};
+
 const WebsiteDevelopmentBento = () => {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -270,7 +304,7 @@ const WebsiteDevelopmentBento = () => {
 
                     {/* LEFT COLUMN (3/12) - Contains Effortless, 12K, Generate */}
                     <div className="md:col-span-3 flex flex-col gap-6">
-                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 flex flex-col justify-between group transition-all duration-700 hover:border-white/10 h-[480px]">
+                        <WebBentoCard className="bg-[#11121d] p-10 flex flex-col justify-between group h-[480px] overflow-hidden">
                             <div>
                                 <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-12 shadow-2xl shadow-indigo-500/20">
                                     <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
@@ -278,18 +312,18 @@ const WebsiteDevelopmentBento = () => {
                                     </svg>
                                 </div>
                                 <h2 className="text-4xl md:text-5xl font-black text-white/90 tracking-tighter leading-[0.9] mb-8">
-                                    Effortless <br /> Prompt <br /> Perfection
+                                    Website & <br /> Email <br /> Hosting Services
                                 </h2>
                             </div>
                             <div className="space-y-1">
-                                <span className="text-white/80 text-sm font-black uppercase tracking-widest block">14 days trial</span>
-                                <span className="text-zinc-500 text-xs font-medium italic">after - $5/month</span>
+                                <span className="text-white/80 text-sm font-black uppercase tracking-widest block">Starting at</span>
+                                <span className="text-zinc-500 text-xs font-medium italic">R300 /month</span>
                             </div>
-                        </div>
+                        </WebBentoCard>
 
-                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 flex flex-col justify-center group hover:border-white/10 transition-duration-700 h-[280px]">
-                            <div className="text-6xl font-black text-white text-center md:text-left leading-none tracking-tighter mb-4">12K</div>
-                            <div className="text-zinc-500 text-xs font-black uppercase tracking-widest mb-8 text-center md:text-left">happy users</div>
+                        <WebBentoCard className="bg-[#11121d] p-10 flex flex-col justify-center h-[280px]">
+                            <div className="text-6xl font-black text-white text-center md:text-left leading-none tracking-tighter mb-4">Over 50+</div>
+                            <div className="text-zinc-500 text-xs font-black uppercase tracking-widest mb-8 text-center md:text-left">Projects Completed</div>
                             <div className="flex justify-center md:justify-start -space-x-4">
                                 {[1, 2, 3].map(i => (
                                     <div key={i} className="w-12 h-12 rounded-full border-[4px] border-[#11121d] bg-zinc-800 overflow-hidden shadow-2xl">
@@ -297,33 +331,33 @@ const WebsiteDevelopmentBento = () => {
                                     </div>
                                 ))}
                             </div>
-                        </div>
+                        </WebBentoCard>
 
-                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-6 flex items-center justify-center group hover:border-white/10 h-[110px]">
+                        <WebBentoCard className="bg-[#11121d] p-6 flex items-center justify-center h-[110px]">
                             <button className="w-full h-full bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full text-white font-black uppercase tracking-widest text-xs shadow-2xl shadow-purple-500/20 hover:scale-[1.02] transition-transform">
-                                Generate
+                                Contact Us
                             </button>
-                        </div>
+                        </WebBentoCard>
                     </div>
 
                     {/* CENTER COLUMN (6/12) - Contains Hero, Sphere, Features */}
                     <div className="md:col-span-6 flex flex-col relative">
                         {/* Hero Purple Scoop - Matched to Effortless card height */}
-                        <div className="bg-[#6b46f7] rounded-[2.5rem] relative overflow-hidden flex flex-col items-center pt-24 group shadow-lg h-[480px] z-10">
+                        <WebBentoCard className="bg-[#6b46f7] relative overflow-hidden flex flex-col items-center pt-24 group shadow-lg h-[480px] z-10">
                             <div className="flex items-center gap-2 mb-8 z-10">
                                 <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center">
                                     <div className="w-1.5 h-1.5 bg-[#6b46f7] rounded-full" />
                                 </div>
                                 <span className="text-xs font-black uppercase tracking-[0.4em] text-white/80">PromptPal</span>
                             </div>
-                            <h2 className="text-5xl md:text-[5.5rem] font-black text-white text-center tracking-tighter leading-[0.8] mb-12 z-10">
-                                Your AI Prompt <br /> Companion
+                            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white text-center tracking-tighter leading-none mb-6 md:mb-10 z-10 uppercase px-6">
+                                WEBSITE <br /> DEVELOPMENT
                             </h2>
 
                             {/* The BOTTOM Scoop (Hole in Purple) */}
                             <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-[280px] h-36 bg-[#06060c] rounded-t-full shadow-[inset_0_4px_25px_rgba(0,0,0,0.5)] z-20" />
                             <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
-                        </div>
+                        </WebBentoCard>
 
                         {/* Features Container - Aligned with 12K card top */}
                         <div className="flex flex-col relative z-20 mt-6">
@@ -349,27 +383,27 @@ const WebsiteDevelopmentBento = () => {
 
                             {/* Features Side-by-Side - Adjusted height to align with Generate card */}
                             <div className="grid grid-cols-2 gap-6 z-20">
-                                <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 pt-32 flex flex-col justify-end group hover:border-white/10 h-[414px]">
+                                <WebBentoCard className="bg-[#11121d] p-10 pt-32 flex flex-col justify-end group h-[414px] overflow-hidden">
                                     <div className="w-12 h-12 rounded-xl bg-orange-600/20 flex items-center justify-center text-orange-500 mb-6 border border-orange-500/10">
                                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-2">Branching paths</h3>
-                                    <p className="text-zinc-500 text-xs leading-relaxed">Explore multiple prompt directions with branching.</p>
-                                </div>
-                                <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 pt-32 flex flex-col justify-end group hover:border-white/10 h-[414px]">
+                                    <h3 className="text-xl font-bold text-white mb-2">Security & Performance</h3>
+                                    <p className="text-zinc-500 text-xs leading-relaxed">Faster Load Times, Better SEO, and Enhanced Security.</p>
+                                </WebBentoCard>
+                                <WebBentoCard className="bg-[#11121d] p-10 pt-32 flex flex-col justify-end group h-[414px] overflow-hidden">
                                     <div className="w-12 h-12 rounded-xl bg-purple-600/20 flex items-center justify-center text-purple-500 mb-6 border border-purple-500/10">
                                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-2">Keyword enhancer</h3>
-                                    <p className="text-zinc-500 text-xs leading-relaxed">Boost your prompt precision with keywords.</p>
-                                </div>
+                                    <h3 className="text-xl font-bold text-white mb-2">SEO, AEO & GEO Optimized</h3>
+                                    <p className="text-zinc-500 text-xs leading-relaxed">Rank Higher on search engines and be recommended by AI Chat bots.</p>
+                                </WebBentoCard>
                             </div>
                         </div>
                     </div>
 
                     {/* RIGHT COLUMN (3/12) - Contains Toggle, 25M, Templates */}
                     <div className="md:col-span-3 flex flex-col gap-6">
-                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-8 flex items-center justify-center group h-[120px]">
+                        <WebBentoCard className="bg-[#11121d] p-8 flex items-center justify-center h-[120px]">
                             <div className="h-14 w-28 bg-zinc-900 rounded-full relative p-2 shadow-inner border border-white/5">
                                 <div className="h-10 w-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center shadow-2xl shadow-orange-500/50">
                                     <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
@@ -377,21 +411,21 @@ const WebsiteDevelopmentBento = () => {
                                     </svg>
                                 </div>
                             </div>
-                        </div>
+                        </WebBentoCard>
 
-                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 flex flex-col justify-center h-[336px]">
-                            <div className="text-7xl font-black text-white text-center tracking-tighter mb-2">25M</div>
+                        <WebBentoCard className="bg-[#11121d] p-10 flex flex-col justify-center h-[336px]">
+                            <div className="text-7xl font-black text-white text-center tracking-tighter mb-2">2M+</div>
                             <div className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-2">
                                 <div className="w-px h-4 bg-purple-500/50" />
-                                created prompts
+                                Monthly Visitors across all platforms
                                 <div className="w-px h-4 bg-purple-500/50" />
                             </div>
-                        </div>
+                        </WebBentoCard>
 
-                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 flex flex-col group overflow-hidden relative h-[414px]">
+                        <WebBentoCard className="bg-[#11121d] p-10 flex flex-col group overflow-hidden relative h-[414px]">
                             <div className="z-10">
-                                <h3 className="text-2xl font-bold text-white mb-4">Prompt templates</h3>
-                                <p className="text-zinc-500 text-xs leading-relaxed mb-12">Use pre-made structures to jumpstart your launch.</p>
+                                <h3 className="text-2xl font-bold text-white mb-4">We Build for Presence & Scale</h3>
+                                <p className="text-zinc-500 text-xs leading-relaxed mb-12">We Scalable Services that are well optimized and Reach Wider Audiences</p>
                             </div>
                             <div className="flex-grow relative h-64">
                                 <div className="absolute right-0 top-0 px-6 py-2 bg-zinc-900 border border-white/10 rounded-full text-[10px] text-white font-black uppercase rotate-6">14 days trial</div>
@@ -407,7 +441,7 @@ const WebsiteDevelopmentBento = () => {
                                     <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                                 </div>
                             </div>
-                        </div>
+                        </WebBentoCard>
                     </div>
 
                 </div>
