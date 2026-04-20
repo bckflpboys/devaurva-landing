@@ -94,7 +94,14 @@ const BentoCard = ({ children, className, colSpan = "4", rowSpan = "2" }) => {
     const rowSpans = {
         "1": "row-span-1",
         "2": "row-span-2",
-        "3": "row-span-3"
+        "3": "row-span-3",
+        "4": "row-span-4",
+        "5": "row-span-5",
+        "6": "row-span-6",
+        "7": "row-span-7",
+        "8": "row-span-8",
+        "9": "row-span-9",
+        "10": "row-span-10"
     };
 
     // Border shine effect that peaks when card is centered
@@ -244,6 +251,167 @@ const AppDevelopmentBento = () => {
     );
 };
 
+const WebsiteDevelopmentBento = () => {
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const y = useTransform(scrollYProgress, [0, 0.3], [100, 0]);
+    const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+
+    return (
+        <section ref={containerRef} id="websites-bento" className="relative min-h-screen py-20 bg-[#06060c]">
+            <motion.div style={{ y, opacity }} className="max-w-7xl mx-auto px-4 md:px-6 relative">
+                
+                {/* 3-Column Layout Grouping for Strict Lane Alignment */}
+                <div className="flex flex-col md:grid md:grid-cols-12 gap-6">
+                    
+                    {/* LEFT COLUMN (3/12) - Contains Effortless, 12K, Generate */}
+                    <div className="md:col-span-3 flex flex-col gap-6">
+                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 flex flex-col justify-between group transition-all duration-700 hover:border-white/10 h-[480px]">
+                            <div>
+                                <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-12 shadow-2xl shadow-indigo-500/20">
+                                    <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />
+                                    </svg>
+                                </div>
+                                <h2 className="text-4xl md:text-5xl font-black text-white/90 tracking-tighter leading-[0.9] mb-8">
+                                    Effortless <br /> Prompt <br /> Perfection
+                                </h2>
+                            </div>
+                            <div className="space-y-1">
+                                <span className="text-white/80 text-sm font-black uppercase tracking-widest block">14 days trial</span>
+                                <span className="text-zinc-500 text-xs font-medium italic">after - $5/month</span>
+                            </div>
+                        </div>
+
+                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 flex flex-col justify-center group hover:border-white/10 transition-duration-700 h-[280px]">
+                            <div className="text-6xl font-black text-white text-center md:text-left leading-none tracking-tighter mb-4">12K</div>
+                            <div className="text-zinc-500 text-xs font-black uppercase tracking-widest mb-8 text-center md:text-left">happy users</div>
+                            <div className="flex justify-center md:justify-start -space-x-4">
+                                {[1, 2, 3].map(i => (
+                                    <div key={i} className="w-12 h-12 rounded-full border-[4px] border-[#11121d] bg-zinc-800 overflow-hidden shadow-2xl">
+                                        <img src={`https://i.pravatar.cc/100?img=${i + 30}`} alt="user" />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-6 flex items-center justify-center group hover:border-white/10 h-[110px]">
+                            <button className="w-full h-full bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full text-white font-black uppercase tracking-widest text-xs shadow-2xl shadow-purple-500/20 hover:scale-[1.02] transition-transform">
+                                 Generate
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* CENTER COLUMN (6/12) - Contains Hero, Sphere, Features */}
+                    <div className="md:col-span-6 flex flex-col gap-6 relative">
+                        {/* Hero Purple Scoop */}
+                        <div className="bg-[#6b46f7] rounded-[2.5rem] relative overflow-hidden flex flex-col items-center pt-16 group shadow-lg h-[400px]">
+                            <div className="flex items-center gap-2 mb-6 z-10">
+                                 <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center">
+                                     <div className="w-1.5 h-1.5 bg-[#6b46f7] rounded-full" />
+                                 </div>
+                                 <span className="text-xs font-black uppercase tracking-[0.4em] text-white/80">PromptPal</span>
+                            </div>
+                            <h2 className="text-5xl md:text-[5.5rem] font-black text-white text-center tracking-tighter leading-[0.8] mb-12 z-10">
+                                Your AI Prompt <br /> Companion
+                            </h2>
+                            
+                            {/* The Scoop Cutout */}
+                            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-80 h-40 bg-[#06060c] rounded-t-full shadow-[inset_0_4px_25px_rgba(0,0,0,0.5)] z-20" />
+                            <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+                        </div>
+
+                        <div className="flex-grow flex flex-col relative pt-12">
+                            {/* The Stem */}
+                            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-8 bg-[#06060c] z-10" />
+                            
+                            {/* The Sphere */}
+                            <div className="w-72 h-72 rounded-full bg-black border-[12px] border-[#06060c] absolute -top-40 left-1/2 -translate-x-1/2 z-40 shadow-[0_0_100px_rgba(107,70,247,0.4),inset_0_0_40px_rgba(107,70,247,0.2)] overflow-hidden">
+                                 <video 
+                                    autoPlay 
+                                    loop 
+                                    muted 
+                                    playsInline 
+                                    className="w-full h-full object-cover scale-110 opacity-90 transition-transform duration-1000"
+                                 >
+                                    <source src="/web-sec/Wed 2.webm" type="video/webm" />
+                                 </video>
+                                 <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 to-transparent pointer-events-none" />
+                            </div>
+
+                            {/* Features Side-by-Side */}
+                            <div className="grid grid-cols-2 gap-6 h-full mt-36 z-20 flex-grow">
+                                <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 flex flex-col justify-end group hover:border-white/10 h-full">
+                                    <div className="w-12 h-12 rounded-xl bg-orange-600/20 flex items-center justify-center text-orange-500 mb-6 border border-orange-500/10">
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white mb-2">Branching paths</h3>
+                                    <p className="text-zinc-500 text-xs leading-relaxed">Explore multiple prompt directions with branching.</p>
+                                </div>
+                                <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 flex flex-col justify-end group hover:border-white/10 h-full">
+                                    <div className="w-12 h-12 rounded-xl bg-purple-600/20 flex items-center justify-center text-purple-500 mb-6 border border-purple-500/10">
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white mb-2">Keyword enhancer</h3>
+                                    <p className="text-zinc-500 text-xs leading-relaxed">Boost your prompt precision with keywords.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* RIGHT COLUMN (3/12) - Contains Toggle, 25M, Templates */}
+                    <div className="md:col-span-3 flex flex-col gap-6">
+                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-8 flex items-center justify-center group h-[120px]">
+                            <div className="h-14 w-28 bg-zinc-900 rounded-full relative p-2 shadow-inner border border-white/5">
+                                <div className="h-10 w-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center shadow-2xl shadow-orange-500/50">
+                                    <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 flex flex-col justify-center h-[280px]">
+                            <div className="text-7xl font-black text-white text-center tracking-tighter mb-2">25M</div>
+                            <div className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-2">
+                                 <div className="w-px h-4 bg-purple-500/50" />
+                                 created prompts
+                                 <div className="w-px h-4 bg-purple-500/50" />
+                            </div>
+                        </div>
+
+                        <div className="bg-[#11121d] rounded-[2.5rem] border border-white/5 p-10 flex flex-grow flex-col group overflow-hidden relative min-h-[460px]">
+                            <div className="z-10">
+                                <h3 className="text-2xl font-bold text-white mb-4">Prompt templates</h3>
+                                <p className="text-zinc-500 text-xs leading-relaxed mb-12">Use pre-made structures to jumpstart your launch.</p>
+                            </div>
+                            <div className="flex-grow relative h-64">
+                                 <div className="absolute right-0 top-0 px-6 py-2 bg-zinc-900 border border-white/10 rounded-full text-[10px] text-white font-black uppercase rotate-6">14 days trial</div>
+                                 <div className="absolute left-0 bottom-16 px-4 py-2 bg-zinc-900 border border-white/10 rounded-full text-[10px] text-white/50 rotate-[-12deg] flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500" /> Rewrite
+                                 </div>
+                                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center shadow-2xl shadow-orange-500/50">
+                                    <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+                                 </div>
+                                 <div className="absolute right-0 bottom-0 py-4 px-2 bg-black rounded-full flex flex-col gap-4 border border-white/5">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-orange-400" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </motion.div>
+        </section>
+    );
+};
+
 const ServicesSection = ({ onInView, onOutView }) => {
     const sectionRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -271,13 +439,7 @@ const ServicesSection = ({ onInView, onOutView }) => {
                 {/* Bento Grid replaces the first ServiceFeature */}
                 <AppDevelopmentBento />
 
-                <ServiceFeature
-                    title="WEBSITES"
-                    subtitle="Performance & SEO"
-                    description="High-performance, SEO-optimized digital presence built with modern frameworks for maximum impact and visibility."
-                    image="/devaura/trans tick app 2.png"
-                    color="from-indigo-400 via-purple-300 to-pink-100"
-                />
+                <WebsiteDevelopmentBento />
 
                 <ServiceFeature
                     title="ECOMMERCE"
