@@ -284,7 +284,7 @@ const AppDevelopmentBento = () => {
                 </div>
 
                 {/* Technical Capability Table */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
@@ -320,8 +320,8 @@ const AppDevelopmentBento = () => {
                                         { name: "Mobile Games", category: "Unity / Unreal Engine", time: "6-25w", icon: Gamepad2, color: "from-rose-500 to-red-600", metric: "Hyper-Immersive" },
                                         { name: "Enterprise Systems", category: "Full-Stack Automation", time: "6-12w", icon: Layers, color: "from-indigo-500 to-blue-600", metric: "Zero Latency" },
                                     ].map((service, index) => (
-                                        <tr 
-                                            key={index} 
+                                        <tr
+                                            key={index}
                                             className="group border-b border-white/5 last:border-b-0 hover:bg-white/[0.03] transition-all duration-500"
                                         >
                                             <td className="py-6 px-4 md:px-8 border-r border-white/5">
@@ -625,21 +625,21 @@ const ExtensionsShowcase = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     {/* Left Side: Content */}
                     <div className="lg:col-span-5 z-20">
-                        <motion.span 
+                        <motion.span
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             className="text-xs font-black uppercase tracking-[0.5em] text-orange-500 mb-6 block"
                         >
                             Case Studies
                         </motion.span>
-                        <motion.h2 
+                        <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9] mb-8"
                         >
                             BROWSER <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-rose-500 to-amber-500">EXTENSIONS</span>
                         </motion.h2>
-                        <motion.p 
+                        <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
@@ -668,7 +668,7 @@ const ExtensionsShowcase = () => {
                     {/* Right Side: Creative Visual Stack */}
                     <div className="lg:col-span-7 relative min-h-[500px] md:min-h-[700px] flex items-center justify-center pt-20 lg:pt-0">
                         {/* Core Glass Card 1 */}
-                        <motion.div 
+                        <motion.div
                             style={{ y: y1 }}
                             className="absolute z-30 left-0 top-0 w-3/4 md:w-3/5 aspect-video rounded-2xl overflow-hidden border border-white/20 shadow-2xl rotate-[-4deg] group hover:rotate-0 transition-transform duration-700"
                         >
@@ -679,7 +679,7 @@ const ExtensionsShowcase = () => {
                         </motion.div>
 
                         {/* Core Glass Card 2 */}
-                        <motion.div 
+                        <motion.div
                             style={{ y: y2 }}
                             className="absolute z-20 right-0 top-1/4 w-3/4 md:w-3/5 aspect-video rounded-2xl overflow-hidden border border-white/20 shadow-2xl rotate-[6deg] group hover:rotate-0 transition-transform duration-700 delay-75"
                         >
@@ -690,7 +690,7 @@ const ExtensionsShowcase = () => {
                         </motion.div>
 
                         {/* Core Glass Card 3 */}
-                        <motion.div 
+                        <motion.div
                             style={{ y: y3 }}
                             className="absolute z-10 left-1/4 bottom-0 w-3/4 md:w-3/5 aspect-video rounded-2xl overflow-hidden border border-white/20 shadow-2xl rotate-[-2deg] group hover:rotate-0 transition-transform duration-700"
                         >
