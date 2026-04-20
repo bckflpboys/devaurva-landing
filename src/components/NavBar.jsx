@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 import MobileMenu from "./MobileMenu";
 
-const NavBar = () => {
+const NavBar = ({ isHidden }) => {
     const { scrollY, scrollYProgress } = useScroll();
     const [scrolled, setScrolled] = useState(false);
     const [tilt, setTilt] = useState({ x: 0, y: 0 });
@@ -35,11 +35,17 @@ const NavBar = () => {
     return (
         <div className="fixed top-0 left-0 w-full z-50 flex justify-center items-center transition-all duration-500 py-4 h-auto pointer-events-none">
             <motion.nav
-                style={{
-                    rotateY: tilt.x,
-                    rotateX: tilt.y,
-                    x: tilt.x * 2,
-                    y: tilt.y * 2
+                initial={false}
+                animate={{
+                    y: isHidden ? -120 : (tilt.y * 2),
+                    opacity: isHidden ? 0 : 1,
+                    rotateY: isHidden ? 0 : tilt.x,
+                    rotateX: isHidden ? 0 : tilt.y,
+                    x: isHidden ? 0 : (tilt.x * 2)
+                }}
+                transition={{
+                    duration: 0.8,
+                    ease: [0.16, 1, 0.3, 1] // Custom cubic-bezier for premium feel
                 }}
                 className={`
                     relative flex items-center justify-between px-6 lg:px-12 py-3 transition-shadow duration-500 pointer-events-auto overflow-hidden

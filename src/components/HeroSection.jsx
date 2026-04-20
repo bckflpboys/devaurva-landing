@@ -63,7 +63,7 @@ const HeroSection = () => {
     const subtitleWords1 = "Pay only for the features you need and scale as your business grows.".split(" ");
 
     return (
-        <section className="hero-section text-center mt-32 flex flex-col" role="banner" aria-label="Hero Section">
+        <section className="hero-section text-center mt-32 flex flex-col container mx-auto" role="banner" aria-label="Hero Section">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
