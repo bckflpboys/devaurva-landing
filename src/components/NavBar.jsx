@@ -34,7 +34,7 @@ const NavBar = () => {
 
     return (
         <div className="fixed top-0 left-0 w-full z-50 flex justify-center items-center transition-all duration-500 py-4 h-auto pointer-events-none">
-            <motion.nav 
+            <motion.nav
                 style={{
                     rotateY: tilt.x,
                     rotateX: tilt.y,
@@ -43,25 +43,25 @@ const NavBar = () => {
                 }}
                 className={`
                     relative flex items-center justify-between px-6 lg:px-12 py-3 transition-shadow duration-500 pointer-events-auto overflow-hidden
-                    ${scrolled 
-                        ? "w-[95%] max-w-screen-xl bg-white/90 backdrop-blur-2xl border-2 border-indigo-600/40 shadow-2xl rounded-full" 
+                    ${scrolled
+                        ? "w-[95%] max-w-screen-xl bg-white/90 backdrop-blur-2xl border-2 border-indigo-600/40 shadow-2xl rounded-full"
                         : "w-[98%] max-w-screen-xl bg-white/20 backdrop-blur-lg border-2 border-indigo-500/30 rounded-full shadow-xl"
                     }
                 `}
                 aria-label="Main Navigation"
             >
                 {/* Horizontal Liquid Progress Fill */}
-                <motion.div 
+                <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 via-blue-400/25 to-indigo-600/30 -z-10 origin-left"
-                    style={{ 
+                    style={{
                         scaleX: scrollYProgress,
                     }}
                 />
 
                 {/* Shimmering Surface Movement */}
-                <motion.div 
+                <motion.div
                     className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.1)_50%,transparent_100%)] -z-10 origin-left"
-                    style={{ 
+                    style={{
                         scaleX: scrollYProgress,
                         backgroundSize: "200% 100%"
                     }}
@@ -76,7 +76,7 @@ const NavBar = () => {
                 />
 
                 {/* Leading Edge "Wave" Glow */}
-                <motion.div 
+                <motion.div
                     className="absolute top-0 bottom-0 w-8 bg-gradient-to-r from-transparent via-white/40 to-transparent -z-5 blur-sm"
                     style={{ left: edgePosition }}
                 />
@@ -94,8 +94,8 @@ const NavBar = () => {
                     <ul className="flex flex-row items-center space-x-8 font-medium text-gray-700">
                         {["Features", "Client Projects", "Pricing"].map((item) => (
                             <li key={item}>
-                                <a 
-                                    href={`/#${item.toLowerCase().replace(" ", "")}`} 
+                                <a
+                                    href={`/#${item.toLowerCase().replace(" ", "")}`}
                                     className="relative transition-colors hover:text-indigo-600 group py-1"
                                 >
                                     {item}
@@ -107,14 +107,14 @@ const NavBar = () => {
                 </div>
 
                 <div className="hidden md:flex items-center gap-4">
-                    <Link 
-                        to="/custom-plan" 
+                    <Link
+                        to="/custom-plan"
                         className="text-sm font-semibold text-gray-700 hover:text-indigo-600 transition-colors px-4 py-2"
                     >
                         Customized Pricing
                     </Link>
-                    <a 
-                        href="/#contact" 
+                    <a
+                        href="/#contact"
                         className="relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-medium text-white transition duration-300 ease-out bg-black rounded-full shadow-md group border border-zinc-800"
                     >
                         <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-indigo-600 group-hover:translate-x-0 ease">

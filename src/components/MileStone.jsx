@@ -1,87 +1,91 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { CheckCircle2, ChevronRight } from "lucide-react";
 
 const MileStone = ({ title, description, lastItem, icon, index }) => {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
-        offset: ["start center", "center center"]
+        offset: ["start end", "center center"]
     });
 
     return (
-        <div ref={ref} className="flex w-full mb-16 last:mb-0 relative">
-            {/* Timeline dot and line */}
-            <div className="relative flex flex-col items-center mr-8">
-                {/* Glowing background for icon */}
-                <div className="absolute -inset-4 bg-gradient-to-br from-indigo-500/20 via-orange-500/10 to-pink-500/20 rounded-full blur-xl" />
-                
-                {/* Icon container */}
-                <motion.div 
-                    className="relative z-20 flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 shadow-xl shadow-indigo-500/20 overflow-hidden"
-                    style={{
-                        scale: useTransform(scrollYProgress, [0, 1], [0.5, 1]),
-                        opacity: useTransform(scrollYProgress, [0, 1], [0.3, 1]),
-                        rotate: useTransform(scrollYProgress, [0, 1], [-20, 0])
-                    }}
-                >
-                    {/* Animated background patterns */}
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(255,255,255,0.2)_0%,transparent_50%)]" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(255,255,255,0.2)_0%,transparent_50%)]" />
+        <div ref={ref} className="flex flex-col md:flex-row w-full mb-24 last:mb-0 relative group">
+            {/* Timeline track and node */}
+            <div className="flex md:flex-col items-center mr-0 md:mr-12 mb-4 md:mb-0">
+                <div className="relative flex flex-col items-center">
+                    {/* Node Aura */}
+                    <div className="absolute -inset-4 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition-colors duration-500" />
                     
-                    {/* Icon */}
-                    <span className="relative text-2xl text-white filter drop-shadow-lg transform -rotate-12">{icon}</span>
-                </motion.div>
-
-                {/* Connecting line */}
-                {!lastItem && (
+                    {/* Main Node */}
                     <motion.div 
-                        className="absolute top-16 w-1 bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500"
+                        className="relative z-20 flex items-center justify-center w-14 h-14 rounded-2xl bg-white border-2 border-indigo-100 shadow-xl overflow-hidden group-hover:scale-110 transition-transform duration-500"
                         style={{
-                            height: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
-                            opacity: useTransform(scrollYProgress, [0, 1], [0.3, 0.8]),
-                            filter: "drop-shadow(0 4px 6px rgb(99 102 241 / 0.3))"
-                        }}
-                    />
-                )}
-            </div>
-
-            {/* Content */}
-            <motion.div 
-                className="flex-1 pt-2"
-                style={{
-                    opacity: useTransform(scrollYProgress, [0, 1], [0.5, 1]),
-                    x: useTransform(scrollYProgress, [0, 1], [-20, 0])
-                }}
-            >
-                <div className="mb-3">
-                    {/* Step indicator */}
-                    <motion.div
-                        className="relative group"
-                        style={{
-                            scale: useTransform(scrollYProgress, [0, 1], [0.8, 1])
+                            scale: useTransform(scrollYProgress, [0, 1], [0.8, 1]),
+                            opacity: useTransform(scrollYProgress, [0, 1], [0.5, 1]),
+                            rotateZ: useTransform(scrollYProgress, [0, 1], [-15, 0])
                         }}
                     >
-                        {/* Glowing background for step number */}
-                        <div className="absolute -inset-2 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 rounded-lg blur-lg group-hover:opacity-75 transition-opacity" />
-                        
-                        {/* Step number container with title */}
-                        <div className="relative flex flex-col items-center">
-                            <div className="flex items-center px-4 py-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-lg shadow-indigo-500/20">
-                                {/* Animated background patterns */}
-                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(255,255,255,0.2)_0%,transparent_50%)] rounded-lg" />
-                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(255,255,255,0.2)_0%,transparent_50%)] rounded-lg" />
-                                
-                                {/* Step text */}
-                                <span className="relative font-bold text-white">Step {index}</span>
-                            </div>
-                            <h3 className="mt-2 text-lg font-bold text-gray-900">{title}</h3>
-                        </div>
+                        {icon}
                     </motion.div>
-                </div>
 
-                {/* Description card */}
-                <div className="bg-white/50 backdrop-blur-sm rounded-xl p-5 shadow-lg shadow-indigo-500/5 border border-indigo-200/80 ring-1 ring-indigo-200">
-                    <p className="text-gray-600 leading-relaxed">{description}</p>
+                    {/* Step Number Badge */}
+                    <div className="absolute -top-3 -right-3 z-30 bg-black text-white text-[10px] font-bold w-6 h-6 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                        {index}
+                    </div>
+
+                    {/* Vertical Connecting Line (Desktop) */}
+                    {!lastItem && (
+                        <div className="hidden md:block absolute top-14 bottom-[-100px] w-0.5 bg-gray-100">
+                            <motion.div 
+                                className="w-full bg-gradient-to-b from-indigo-500 via-purple-500 to-transparent"
+                                style={{
+                                    height: useTransform(scrollYProgress, [0, 1], ["0%", "150%"]),
+                                    opacity: useTransform(scrollYProgress, [0, 1], [0.3, 1])
+                                }}
+                            />
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            {/* Content Card */}
+            <motion.div 
+                className="flex-1"
+                style={{
+                    opacity: useTransform(scrollYProgress, [0, 1], [0, 1]),
+                    x: useTransform(scrollYProgress, [0, 1], [30, 0])
+                }}
+            >
+                <div className="relative p-8 rounded-3xl bg-white/40 backdrop-blur-md border-2 border-indigo-100/80 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.12)] transition-all duration-500 group-hover:border-indigo-500/30">
+                    {/* Corner Decoration */}
+                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                        <CheckCircle2 className="w-12 h-12 text-indigo-600" />
+                    </div>
+
+                    <div className="flex items-start justify-between mb-4">
+                        <div>
+                            <span className="text-xs font-bold tracking-widest uppercase text-indigo-600 mb-1 block">Phase 0{index}</span>
+                            <h3 className="text-2xl font-black text-gray-900 tracking-tight">{title}</h3>
+                        </div>
+                    </div>
+
+                    <p className="text-gray-600 text-lg leading-relaxed mb-6 font-medium">
+                        {description}
+                    </p>
+
+                    <div className="flex items-center gap-4">
+                        <div className="flex -space-x-2">
+                            {[1, 2].map((i) => (
+                                <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-indigo-50 flex items-center justify-center">
+                                    <div className="w-4 h-4 rounded-full bg-indigo-200 animate-pulse" />
+                                </div>
+                            ))}
+                        </div>
+                        <span className="text-sm font-semibold text-gray-400 flex items-center gap-1 group-hover:text-indigo-500 transition-colors">
+                            Quality Checks Active <ChevronRight className="w-4 h-4" />
+                        </span>
+                    </div>
                 </div>
             </motion.div>
         </div>
