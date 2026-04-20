@@ -489,16 +489,27 @@ const WebsiteDevelopmentBento = () => {
                     {/* CENTER COLUMN (6/12) - Contains Hero, Sphere, Features */}
                     <div className="md:col-span-6 flex flex-col relative">
                         {/* Hero Purple Scoop - Visual Only Now */}
-                        <WebBentoCard className="bg-[#059669] relative overflow-hidden flex flex-col items-center pt-24 group shadow-lg h-[480px] z-10">
+                        <WebBentoCard className="bg-[#10b981] relative overflow-hidden flex flex-col items-center pt-24 group shadow-lg h-[480px] z-10">
+                            {/* Background Video */}
+                            <video
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="absolute inset-0 w-full h-full object-cover scale-150 z-[1] pointer-events-none"
+                            >
+                                <source src="/web-sec/Web%203.webm" type="video/webm" />
+                            </video>
+
                             <div className="flex items-center gap-2 mb-8 z-10">
                                 <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center">
-                                    <div className="w-1.5 h-1.5 bg-[#059669] rounded-full" />
+                                    <div className="w-1.5 h-1.5 bg-[#10b981] rounded-full" />
                                 </div>
-                                <span className="text-xs font-black uppercase tracking-[0.4em] text-white/80">Premium Quality</span>
+                                <span className="text-xs font-black uppercase tracking-[0.4em] text-white/90">Premium Quality</span>
                             </div>
                             <div className="relative z-10 text-center px-6">
                                 <div className="text-white font-black text-xl mb-2 italic">Crafting Excellence</div>
-                                <div className="w-12 h-1 bg-white/30 mx-auto rounded-full" />
+                                <div className="w-12 h-1 bg-white/40 mx-auto rounded-full" />
                             </div>
 
                             {/* The BOTTOM Scoop (Hole in Purple) */}
