@@ -1,0 +1,545 @@
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Medical Journal - Future Edition</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&amp;family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+
+<style>
+/* Typography System */
+.font-masthead { font-family: 'Playfair Display', serif; }
+.font-body { font-family: 'Old Standard TT', serif; }
+.font-sans-tech { font-family: 'Inter', sans-serif; }
+.font-mono-tech { font-family: 'JetBrains Mono', monospace; }
+
+/* Clinical Grid Texture */
+.tech-bg {
+    background-color: #f8fafc;
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+/* Custom Scrollbar */
+.tech-scroll::-webkit-scrollbar { width: 6px; }
+.tech-scroll::-webkit-scrollbar-track { background: #f1f5f9; border-left: 1px solid #e2e8f0; }
+.tech-scroll::-webkit-scrollbar-thumb { background-color: #94a3b8; border-radius: 3px; }
+.tech-scroll::-webkit-scrollbar-thumb:hover { background-color: #64748b; }
+
+/* Interactive Spotlight */
+.spotlight-card { --x: 0px; --y: 0px; }
+.spotlight-bg {
+    background: radial-gradient(
+    800px circle at var(--x) var(--y),
+    rgba(56, 189, 248, 0.08),
+    transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.group:hover .spotlight-bg { opacity: 1; }
+
+/* Marquee Animation */
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+.animate-ticker { animation: ticker 40s linear infinite; }
+
+/* Utility */
+.drop-cap::first-letter {
+    font-size: 3.5em;
+    font-weight: 500;
+    float: left;
+    line-height: 0.8;
+    padding-right: 0.15em;
+    font-family: 'Playfair Display', serif;
+    color: #0f172a;
+}
+
+/* Custom Range Slider */
+input[type=range] {
+  -webkit-appearance: none;
+  background: transparent;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #000;
+  cursor: pointer;
+  margin-top: -7px; 
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  background: #e2e8f0;
+}
+</style>
+</head>
+<body class="bg-[#eef2f6] h-screen w-full flex items-center justify-center p-0 md:p-4 font-sans-tech text-slate-900 overflow-hidden">
+
+    <!-- Main Container -->
+    <main class="tech-scroll relative z-10 w-full max-w-[1400px] h-full md:h-[96vh] bg-white shadow-2xl flex flex-col border border-slate-300 overflow-y-auto rounded-sm">
+        
+        <!-- Top Bar: Data Stream -->
+        <div class="bg-slate-950 text-emerald-400 overflow-hidden whitespace-nowrap py-1.5 border-b border-slate-900 shrink-0 sticky top-0 z-50">
+            <div class="inline-block animate-ticker font-mono-tech text-[10px] uppercase tracking-wider">
+                <span class="mx-6">● SYS_STATUS: OPTIMAL</span>
+                <span class="mx-6 text-slate-500">|</span>
+                <span class="mx-6">ER_WAIT_TIME: 14m 30s</span>
+                <span class="mx-6 text-slate-500">|</span>
+                <span class="mx-6">NEW_RESEARCH: AI-ASSISTED NEUROLOGY (+12%)</span>
+                <span class="mx-6 text-slate-500">|</span>
+                <span class="mx-6">ICU_CAPACITY: 82% [WARN]</span>
+                <span class="mx-6 text-slate-500">|</span>
+                <span class="mx-6">BLOOD_BANK: A+ (LOW)</span>
+                <span class="mx-6 text-slate-500">|</span>
+                <span class="mx-6">TELEHEALTH_QUEUE: 3 ACTIVE</span>
+                <span class="mx-6 text-slate-500">|</span>
+                <span class="mx-6">● SYS_STATUS: OPTIMAL</span>
+            </div>
+        </div>
+
+        <!-- Header Area -->
+        <header class="px-8 py-10 border-b border-slate-200 flex flex-col md:flex-row justify-between items-end md:items-center bg-white relative overflow-hidden">
+            <!-- Background Decoration -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-full blur-3xl -z-10 opacity-60"></div>
+
+            <div class="text-left relative z-10">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-[10px] font-mono-tech font-medium uppercase tracking-wider text-slate-600">Digital Edition v4.2</span>
+                    <span class="w-1 h-1 bg-slate-400 rounded-full"></span>
+                    <span class="text-[10px] font-mono-tech uppercase tracking-wider text-slate-400">London / Tokyo / NY</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-masthead font-semibold tracking-tight leading-none text-slate-900">The Medical Journal.</h1>
+            </div>
+            
+            <div class="hidden md:flex flex-col items-end gap-3 z-10">
+                <div class="flex items-center gap-4 bg-slate-50 px-4 py-2 border border-slate-200 rounded-lg">
+                    <div class="text-right">
+                        <p class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold">Current Shift</p>
+                        <p class="font-mono-tech text-xs font-medium">Dr. S. Kagawa (Chief)</p>
+                    </div>
+                    <div class="h-8 w-px bg-slate-200"></div>
+                    <div class="relative">
+                        <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse absolute -top-1 -right-1"></div>
+                        <iconify-icon icon="solar:hospital-linear" width="24" class="text-slate-700"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Bento Grid -->
+        <div class="bg-slate-200 gap-px grid grid-cols-1 md:grid-cols-12 auto-rows-min md:auto-rows-auto border-b border-slate-200">
+            
+            <!-- Cell 1: Hero Article (Text) -->
+            <div class="bg-white col-span-1 md:col-span-5 p-8 flex flex-col justify-between group spotlight-card relative overflow-hidden tech-bg">
+                <div class="absolute inset-0 spotlight-bg pointer-events-none"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="inline-flex items-center justify-center w-6 h-6 border border-indigo-200 bg-indigo-50 text-indigo-600 rounded text-[10px]">01</span>
+                        <span class="text-[10px] font-sans-tech font-semibold uppercase tracking-widest text-indigo-600">Breakthrough</span>
+                    </div>
+                    
+                    <h2 class="font-masthead font-semibold text-4xl md:text-5xl leading-tight mb-6 tracking-tight text-slate-900">
+                        Synthetic <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500">Neural Pathways</span>
+                    </h2>
+                    
+                    <p class="font-body text-slate-600 text-lg leading-relaxed drop-cap text-justify">
+                        Our decade-long study on regenerative synthetic tissues has reached a critical milestone. The integration of bio-compatible silicon with human nervous systems is no longer theory—it is practice. We explore the ethical and physical implications.
+                    </p>
+                </div>
+                
+                <div class="mt-8 flex items-center gap-4 relative z-10">
+                     <button class="bg-slate-900 text-white pl-4 pr-3 py-2 text-xs font-sans-tech uppercase tracking-widest hover:bg-indigo-600 transition-colors flex items-center gap-2">
+                        Read Full Study
+                        <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon>
+                     </button>
+                     <span class="font-mono-tech text-[10px] text-slate-400">PMID: 2938471</span>
+                </div>
+            </div>
+
+            <!-- Cell 2: Hero Visual -->
+            <div class="bg-slate-100 col-span-1 md:col-span-4 relative group h-80 md:h-auto overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover grayscale mix-blend-multiply opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Lab Tech">
+                <!-- Overlay Data -->
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent"></div>
+                
+                <div class="absolute bottom-0 left-0 w-full p-6 text-white border-t border-white/10 backdrop-blur-sm">
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="font-mono-tech text-[10px] text-emerald-400 mb-1">LIVE FEED: LAB 04</p>
+                            <p class="font-sans-tech text-sm font-medium tracking-wide">Molecular structure analysis in progress.</p>
+                        </div>
+                        <div class="flex gap-1">
+                            <span class="w-1 h-3 bg-emerald-500 animate-[pulse_1s_ease-in-out_infinite]"></span>
+                            <span class="w-1 h-5 bg-emerald-500 animate-[pulse_1.5s_ease-in-out_infinite]"></span>
+                            <span class="w-1 h-2 bg-emerald-500 animate-[pulse_0.8s_ease-in-out_infinite]"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cell 3: Vital Stats (Vertical) -->
+            <div class="bg-white col-span-1 md:col-span-3 flex flex-col gap-px bg-slate-200">
+                <!-- Stat 1 -->
+                <div class="bg-white p-6 flex-1 flex flex-col justify-center hover:bg-slate-50 transition-colors relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <iconify-icon icon="solar:graph-up-linear" class="text-emerald-500"></iconify-icon>
+                    </div>
+                    <span class="text-[10px] font-mono-tech uppercase text-slate-400 mb-2">Daily Admissions</span>
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-4xl font-masthead font-medium text-slate-900">142</span>
+                        <span class="text-xs font-mono-tech text-emerald-600 bg-emerald-50 px-1 py-0.5 rounded">+12%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-1 mt-4 rounded-full overflow-hidden">
+                        <div class="bg-slate-900 h-full w-[65%]"></div>
+                    </div>
+                </div>
+                
+                <!-- Stat 2 -->
+                <div class="bg-white p-6 flex-1 flex flex-col justify-center hover:bg-slate-50 transition-colors relative group">
+                    <span class="text-[10px] font-mono-tech uppercase text-slate-400 mb-2">Avg. Recovery Time</span>
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-4xl font-masthead font-medium text-slate-900">4.2</span>
+                        <span class="text-sm font-body italic text-slate-500">days</span>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-2">Previous: 5.8 days</p>
+                </div>
+
+                <!-- Stat 3: Action -->
+                <div class="bg-indigo-600 p-6 flex-1 flex flex-col justify-center items-center text-center cursor-pointer group hover:bg-indigo-700 transition-colors">
+                    <iconify-icon icon="solar:calendar-date-linear" class="text-white mb-2 group-hover:-translate-y-1 transition-transform" width="28"></iconify-icon>
+                    <span class="text-white font-sans-tech text-xs uppercase tracking-widest font-semibold">Schedule Scan</span>
+                    <span class="text-indigo-200 text-[10px] mt-1">3 slots open today</span>
+                </div>
+            </div>
+
+            <!-- Row 2: Colored Functional Areas -->
+            
+            <!-- Cell 4: Diagnostics (Orange Theme) -->
+            <div class="bg-white col-span-1 md:col-span-3 p-6 flex flex-col justify-between border-t-4 border-orange-400 hover:shadow-lg transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="p-2 bg-orange-50 rounded-lg">
+                        <iconify-icon icon="solar:pulse-linear" width="24" class="text-orange-600"></iconify-icon>
+                    </div>
+                    <span class="text-[10px] font-mono-tech text-orange-600 px-2 py-1 bg-orange-50 rounded border border-orange-100">URGENT</span>
+                </div>
+                <div>
+                    <h3 class="font-sans-tech font-semibold text-lg text-slate-900 mb-1">Cardiology</h3>
+                    <p class="text-xs text-slate-500 mb-4 line-clamp-2">New non-invasive imaging protocols implemented for arrhythmia detection.</p>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+                        <span>Machine A</span>
+                        <span>Busy</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-1.5 rounded-full">
+                        <div class="bg-orange-400 h-full w-[80%] rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cell 5: Research (Purple Theme) -->
+            <div class="bg-white col-span-1 md:col-span-3 p-6 flex flex-col justify-between border-t-4 border-purple-500 hover:shadow-lg transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="p-2 bg-purple-50 rounded-lg">
+                        <iconify-icon icon="solar:dna-linear" width="24" class="text-purple-600"></iconify-icon>
+                    </div>
+                    <span class="text-[10px] font-mono-tech text-purple-600">GENOMICS</span>
+                </div>
+                <div>
+                    <h3 class="font-sans-tech font-semibold text-lg text-slate-900 mb-1">CRISPR Updates</h3>
+                    <p class="text-xs text-slate-500 mb-4 line-clamp-2">Phase 3 trials showing promising reduction in hereditary markers.</p>
+                </div>
+                <div class="flex -space-x-2">
+                    <img class="w-8 h-8 rounded-full border-2 border-white" src="https://i.pravatar.cc/100?img=1" alt="">
+                    <img class="w-8 h-8 rounded-full border-2 border-white" src="https://i.pravatar.cc/100?img=5" alt="">
+                    <img class="w-8 h-8 rounded-full border-2 border-white" src="https://i.pravatar.cc/100?img=8" alt="">
+                    <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">+4</div>
+                </div>
+            </div>
+
+            <!-- Cell 6: Timeline/Schedule -->
+            <div class="bg-slate-50 col-span-1 md:col-span-6 p-6 flex flex-col relative overflow-hidden">
+                <div class="flex justify-between items-center mb-6 z-10">
+                    <h3 class="font-sans-tech font-semibold text-base uppercase tracking-widest">O.R. Schedule</h3>
+                    <div class="flex gap-2">
+                         <button class="w-6 h-6 flex items-center justify-center border border-slate-300 rounded hover:bg-white"><iconify-icon icon="solar:alt-arrow-left-linear"></iconify-icon></button>
+                         <button class="w-6 h-6 flex items-center justify-center border border-slate-300 rounded hover:bg-white"><iconify-icon icon="solar:alt-arrow-right-linear"></iconify-icon></button>
+                    </div>
+                </div>
+                
+                <div class="flex-grow flex flex-col justify-between gap-3 z-10">
+                    <!-- Schedule Item -->
+                    <div class="flex items-center gap-4 group cursor-pointer">
+                        <span class="font-mono-tech text-xs text-slate-400 w-12">08:00</span>
+                        <div class="flex-grow bg-white border border-slate-200 p-3 rounded shadow-sm group-hover:border-indigo-400 transition-colors flex justify-between items-center">
+                            <div>
+                                <p class="text-xs font-bold text-slate-800">Dr. House</p>
+                                <p class="text-[10px] text-slate-500 uppercase">Neuro - Sector 4</p>
+                            </div>
+                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                        </div>
+                    </div>
+                     <!-- Schedule Item -->
+                     <div class="flex items-center gap-4 group cursor-pointer">
+                        <span class="font-mono-tech text-xs text-slate-400 w-12">10:30</span>
+                        <div class="flex-grow bg-white border border-slate-200 p-3 rounded shadow-sm group-hover:border-indigo-400 transition-colors flex justify-between items-center">
+                            <div>
+                                <p class="text-xs font-bold text-slate-800">Dr. Grey</p>
+                                <p class="text-[10px] text-slate-500 uppercase">General - Sector 1</p>
+                            </div>
+                            <span class="w-2 h-2 rounded-full bg-orange-400"></span>
+                        </div>
+                    </div>
+                     <!-- Schedule Item -->
+                     <div class="flex items-center gap-4 group cursor-pointer">
+                        <span class="font-mono-tech text-xs text-slate-400 w-12">13:00</span>
+                        <div class="flex-grow bg-white border border-slate-200 p-3 rounded shadow-sm group-hover:border-indigo-400 transition-colors flex justify-between items-center">
+                            <div>
+                                <p class="text-xs font-bold text-slate-800">Dr. Yang</p>
+                                <p class="text-[10px] text-slate-500 uppercase">Cardio - Sector 2</p>
+                            </div>
+                            <span class="w-2 h-2 rounded-full bg-slate-300"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Background decoration -->
+                <iconify-icon icon="solar:clock-circle-linear" class="absolute -bottom-6 -right-6 text-slate-200 opacity-50 z-0 rotate-12" width="160"></iconify-icon>
+            </div>
+            
+            <!-- Row 3: Expanded Content -->
+
+            <!-- Cell 7: AI Analysis (Dark Mode Card) -->
+            <div class="bg-slate-900 col-span-1 md:col-span-4 p-8 text-white flex flex-col relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4">
+                     <iconify-icon icon="solar:cpu-linear" class="text-slate-700" width="32"></iconify-icon>
+                </div>
+                <div class="mb-8 z-10">
+                    <span class="text-[10px] font-mono-tech text-emerald-400 border border-emerald-900 bg-emerald-900/20 px-2 py-1 rounded">AI DIAGNOSTICS BETA</span>
+                    <h3 class="font-masthead text-3xl mt-4">Predictive<br>Modeling</h3>
+                </div>
+                
+                <div class="space-y-4 font-mono-tech text-[10px] z-10">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                        <span class="text-slate-400">Dataset</span>
+                        <span>x86_global_patient_db</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                        <span class="text-slate-400">Confidence</span>
+                        <span class="text-emerald-400">99.4%</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                        <span class="text-slate-400">Processing</span>
+                        <span class="animate-pulse">Active...</span>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-4 bg-slate-800/50 rounded border border-slate-700 z-10">
+                    <p class="font-sans-tech text-xs text-slate-300 leading-relaxed">
+                        <span class="text-indigo-400">&gt;&gt;</span> Analysis indicates a 40% reduction in false positives when using the new V2 algorithm for radiology scans.
+                    </p>
+                </div>
+
+                <!-- Grid decoration -->
+                <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+            </div>
+
+            <!-- Cell 8: Patient Records / List -->
+            <div class="bg-white col-span-1 md:col-span-4 flex flex-col">
+                <div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+                    <h4 class="font-sans-tech text-xs uppercase font-bold text-slate-600 tracking-wider">Recent Admissions</h4>
+                    <iconify-icon icon="solar:menu-dots-linear" class="text-slate-400"></iconify-icon>
+                </div>
+                <div class="flex-grow overflow-auto">
+                    <!-- List Item -->
+                    <div class="flex items-center gap-4 p-4 border-b border-slate-100 hover:bg-slate-50 transition-colors cursor-pointer group">
+                        <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold border border-blue-100">JD</div>
+                        <div class="flex-grow">
+                            <p class="text-sm font-semibold text-slate-800 group-hover:text-blue-600">John Doe</p>
+                            <p class="text-[10px] text-slate-400 font-mono-tech">ID: #88291 • Ward 3B</p>
+                        </div>
+                        <span class="px-2 py-1 bg-green-50 text-green-600 text-[10px] font-bold rounded uppercase">Stable</span>
+                    </div>
+                    <!-- List Item -->
+                    <div class="flex items-center gap-4 p-4 border-b border-slate-100 hover:bg-slate-50 transition-colors cursor-pointer group">
+                        <div class="w-10 h-10 rounded-full bg-red-50 text-red-600 flex items-center justify-center text-xs font-bold border border-red-100">AS</div>
+                        <div class="flex-grow">
+                            <p class="text-sm font-semibold text-slate-800 group-hover:text-blue-600">Alice Smith</p>
+                            <p class="text-[10px] text-slate-400 font-mono-tech">ID: #88292 • ICU</p>
+                        </div>
+                        <span class="px-2 py-1 bg-red-50 text-red-600 text-[10px] font-bold rounded uppercase">Critical</span>
+                    </div>
+                     <!-- List Item -->
+                     <div class="flex items-center gap-4 p-4 border-b border-slate-100 hover:bg-slate-50 transition-colors cursor-pointer group">
+                        <div class="w-10 h-10 rounded-full bg-slate-50 text-slate-600 flex items-center justify-center text-xs font-bold border border-slate-100">MR</div>
+                        <div class="flex-grow">
+                            <p class="text-sm font-semibold text-slate-800 group-hover:text-blue-600">Mark Roe</p>
+                            <p class="text-[10px] text-slate-400 font-mono-tech">ID: #88293 • Outpatient</p>
+                        </div>
+                        <span class="px-2 py-1 bg-slate-100 text-slate-500 text-[10px] font-bold rounded uppercase">Discharged</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cell 9: Interactive Tools -->
+            <div class="bg-white col-span-1 md:col-span-4 p-8 flex flex-col justify-between relative tech-bg">
+                <h4 class="font-sans-tech text-xs uppercase font-bold text-slate-600 tracking-wider mb-6">Dosage Calculator</h4>
+                
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <label class="text-[10px] font-bold uppercase text-slate-500">Body Weight (kg)</label>
+                            <span class="text-[10px] font-mono-tech font-bold text-indigo-600">75kg</span>
+                        </div>
+                        <input type="range" min="0" max="150" value="75" class="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <div>
+                         <div class="flex justify-between mb-2">
+                            <label class="text-[10px] font-bold uppercase text-slate-500">Dosage Strength</label>
+                            <span class="text-[10px] font-mono-tech font-bold text-indigo-600">500mg</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="flex-1 py-2 border border-slate-200 text-[10px] font-bold rounded hover:bg-indigo-50 hover:border-indigo-200 hover:text-indigo-600 transition-all">250</button>
+                            <button class="flex-1 py-2 border border-indigo-600 bg-indigo-50 text-indigo-700 text-[10px] font-bold rounded">500</button>
+                            <button class="flex-1 py-2 border border-slate-200 text-[10px] font-bold rounded hover:bg-indigo-50 hover:border-indigo-200 hover:text-indigo-600 transition-all">1000</button>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 p-4 bg-slate-900 text-white rounded-lg flex justify-between items-center shadow-lg">
+                        <span class="text-[10px] uppercase tracking-widest text-slate-400">Result</span>
+                        <span class="text-xl font-mono-tech font-bold text-emerald-400">1.5 ml</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer / Extended Analytics -->
+        <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x border-b border-slate-200 divide-slate-200">
+            
+            <!-- Graph Area -->
+            <div class="bg-white p-8">
+                <div class="flex justify-between items-end mb-8">
+                    <div>
+                        <h3 class="font-sans-tech font-semibold text-lg text-slate-900">Quarterly Analytics</h3>
+                        <p class="font-body text-sm text-slate-500 italic mt-1">Comparitive study of sector efficiency.</p>
+                    </div>
+                    <div class="flex gap-3">
+                         <div class="flex items-center gap-1.5">
+                             <span class="w-2 h-2 rounded-full bg-slate-900"></span>
+                             <span class="text-[10px] uppercase font-bold text-slate-500">Target</span>
+                         </div>
+                         <div class="flex items-center gap-1.5">
+                             <span class="w-2 h-2 rounded-full border border-slate-300 bg-slate-100"></span>
+                             <span class="text-[10px] uppercase font-bold text-slate-500">Actual</span>
+                         </div>
+                    </div>
+                </div>
+                
+                <!-- Stylized Bar Chart -->
+                <div class="h-40 flex items-end justify-between gap-4 border-b border-slate-200 pb-2">
+                    <div class="w-full flex flex-col gap-1 items-center group">
+                        <div class="w-full max-w-[40px] h-[60%] bg-slate-100 rounded-t-sm relative overflow-hidden">
+                            <div class="absolute bottom-0 w-full bg-slate-900 h-[80%] transition-all duration-700 group-hover:bg-indigo-600"></div>
+                        </div>
+                        <span class="text-[10px] font-mono-tech text-slate-400">Q1</span>
+                    </div>
+                    <div class="w-full flex flex-col gap-1 items-center group">
+                        <div class="w-full max-w-[40px] h-[45%] bg-slate-100 rounded-t-sm relative overflow-hidden">
+                            <div class="absolute bottom-0 w-full bg-slate-900 h-[90%] transition-all duration-700 group-hover:bg-indigo-600"></div>
+                        </div>
+                        <span class="text-[10px] font-mono-tech text-slate-400">Q2</span>
+                    </div>
+                     <div class="w-full flex flex-col gap-1 items-center group">
+                        <div class="w-full max-w-[40px] h-[75%] bg-slate-100 rounded-t-sm relative overflow-hidden">
+                            <div class="absolute bottom-0 w-full bg-slate-900 h-[60%] transition-all duration-700 group-hover:bg-indigo-600"></div>
+                        </div>
+                        <span class="text-[10px] font-mono-tech text-slate-400">Q3</span>
+                    </div>
+                     <div class="w-full flex flex-col gap-1 items-center group">
+                        <div class="w-full max-w-[40px] h-[90%] bg-slate-100 rounded-t-sm relative overflow-hidden">
+                            <div class="absolute bottom-0 w-full bg-slate-900 h-[75%] transition-all duration-700 group-hover:bg-indigo-600"></div>
+                        </div>
+                        <span class="text-[10px] font-mono-tech text-slate-400">Q4</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modern Newsletter -->
+            <div class="bg-indigo-50/50 p-8 flex flex-col justify-center relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 text-indigo-100 z-0">
+                    <iconify-icon icon="solar:letter-linear" width="200" rotate="15"></iconify-icon>
+                </div>
+                
+                <div class="z-10 relative">
+                    <h3 class="font-sans-tech font-bold text-2xl text-slate-900 mb-2">MedTech Weekly</h3>
+                    <p class="font-sans-tech text-sm text-slate-600 mb-6 max-w-sm">
+                        Get the latest FDA approvals, biotech IPOs, and clinical trial results delivered to your inbox.
+                    </p>
+                    
+                    <form class="flex gap-2 w-full max-w-md">
+                        <input type="email" placeholder="dr.email@hospital.com" class="flex-grow bg-white border border-slate-300 px-4 py-3 font-sans-tech text-sm outline-none rounded focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-slate-900 placeholder:text-slate-400">
+                        <button type="button" class="bg-slate-900 text-white px-6 py-3 font-sans-tech text-[10px] uppercase tracking-widest font-bold rounded hover:bg-indigo-600 transition-colors shadow-lg hover:shadow-indigo-200">
+                            Join
+                        </button>
+                    </form>
+                    <div class="mt-4 flex gap-6 text-slate-400 font-mono-tech text-[10px]">
+                        <span>• No Spam</span>
+                        <span>• Secure Data</span>
+                        <span>• Weekly</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Footer -->
+        <footer class="bg-slate-50 p-6 md:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-[10px] font-mono-tech uppercase tracking-wide text-slate-500 shrink-0 border-t border-slate-200">
+            <div class="flex flex-col gap-1">
+                <span class="font-bold text-slate-700">The Medical Journal Group</span>
+                <span>Est. 1992 • Digital Transformation 2024</span>
+            </div>
+            
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-indigo-600 transition-colors">Access Portal</a>
+                <a href="#" class="hover:text-indigo-600 transition-colors">API Docs</a>
+                <a href="#" class="hover:text-indigo-600 transition-colors">Research Grants</a>
+            </div>
+
+            <div class="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200 rounded-full shadow-sm">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span class="font-bold text-emerald-600">System Operational</span>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Spotlight Effect Logic
+        const container = document.querySelector('main');
+        const cards = document.querySelectorAll('.spotlight-card');
+
+        container.addEventListener('mousemove', (e) => {
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            });
+        });
+    </script>
+
+</body></html>

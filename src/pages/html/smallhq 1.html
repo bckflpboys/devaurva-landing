@@ -1,0 +1,401 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmallHq.co | The Business Journal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        /* Typography System */
+        .font-masthead { font-family: 'Playfair Display', serif; }
+        .font-headline { font-family: 'Playfair Display', serif; }
+        .font-body { font-family: 'Old Standard TT', serif; }
+        .font-sans-tech { font-family: 'Inter', sans-serif; }
+
+        /* Paper Texture */
+        .newsprint-bg {
+            background-color: #fcfbf8;
+            background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        }
+
+        /* Custom Scrollbar */
+        .paper-scroll::-webkit-scrollbar { width: 4px; }
+        .paper-scroll::-webkit-scrollbar-track { background: transparent; }
+        .paper-scroll::-webkit-scrollbar-thumb { background-color: #1a1a1a; }
+
+        /* Interactive Spotlight */
+        .spotlight-card { --x: 0px; --y: 0px; }
+        .spotlight-bg {
+            background: radial-gradient(
+                800px circle at var(--x) var(--y),
+                rgba(0, 0, 0, 0.03),
+                transparent 40%
+            );
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .group:hover .spotlight-bg { opacity: 1; }
+
+        /* Marquee Animation */
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-ticker { animation: ticker 40s linear infinite; }
+
+        /* Utility */
+        .drop-cap::first-letter {
+            font-size: 3.8em;
+            font-weight: 400;
+            float: left;
+            line-height: 0.8;
+            padding-right: 0.1em;
+            padding-top: 0.1em;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Image Filters */
+        .editorial-img { 
+            filter: grayscale(100%) contrast(1.1) brightness(1.05); 
+            transition: filter 0.6s ease, transform 0.6s ease; 
+        }
+        .group:hover .editorial-img { 
+            filter: grayscale(0%) contrast(1) brightness(1); 
+            transform: scale(1.02);
+        }
+        
+        .selection-invert::selection {
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center md:p-6 overflow-hidden selection-invert font-body bg-[#dcdcdc] w-full h-screen pt-0 pr-0 pb-0 pl-0">
+
+    <!-- Desk Background Texture -->
+    <div class="fixed inset-0 z-0 opacity-10 pointer-events-none mix-blend-multiply" style="background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');"></div>
+
+    <!-- Main Container -->
+    <main class="paper-scroll relative z-10 w-full max-w-[1600px] h-full md:h-[94vh] newsprint-bg shadow-2xl flex flex-col border border-stone-800 overflow-y-auto">
+        
+        <!-- Top Bar: Ticker -->
+        <div class="bg-black text-[#fcfbf8] overflow-hidden whitespace-nowrap py-1.5 border-b border-black shrink-0 z-40 sticky top-0">
+            <div class="inline-block animate-ticker">
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-6">API V2.0 RELEASED: NOW 5X FASTER</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-6">+++</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-6">SYSTEM STATUS: 99.99% UPTIME</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-6">+++</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-6">NEW INTEGRATIONS: SLACK, NOTION, AIRTABLE</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-6">+++</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-6">ENTERPRISE SECURITY AUDIT COMPLETE</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-6">+++</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-6">JOIN THE BETA PROGRAM FOR AI TOOLS</span>
+            </div>
+        </div>
+
+        <!-- Header Area -->
+        <header class="flex flex-col md:flex-row md:items-center bg-[#fcfbf8] border-black border-b pt-10 pr-8 pb-10 pl-8 items-end justify-between">
+            <div class="text-left">
+                <div class="flex items-center gap-3 mb-2">
+                    <p class="font-sans-tech text-[10px] font-semibold uppercase tracking-[0.3em] text-stone-500">Vol. 12 — Issue 04</p>
+                    <span class="w-12 h-px bg-stone-300"></span>
+                    <p class="font-sans-tech text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-500">Daily Edition</p>
+                </div>
+                <h1 class="md:text-8xl leading-none text-6xl font-medium text-black tracking-tighter font-masthead">SmallHq<span class="text-stone-400">.co</span></h1>
+            </div>
+            <div class="hidden md:flex flex-col items-end gap-3">
+                <div class="flex items-center gap-2 px-3 py-1 border border-stone-200 rounded-full">
+                    <div class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></div>
+                    <span class="font-sans-tech text-[10px] font-semibold uppercase tracking-widest text-stone-800">All Systems Operational</span>
+                </div>
+                <div class="flex gap-4 font-sans-tech text-[10px] uppercase tracking-widest font-medium text-black">
+                    <a href="#" class="hover:underline underline-offset-4">Platform</a>
+                    <a href="#" class="hover:underline underline-offset-4">Solutions</a>
+                    <a href="#" class="hover:underline underline-offset-4">Pricing</a>
+                    <a href="#" class="hover:underline underline-offset-4">Login</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Bento Row 1: The "Hero" -->
+        <div class="grid grid-cols-1 md:grid-cols-12 border-b border-black">
+            <!-- Hero Article -->
+            <div class="newsprint-bg col-span-1 md:col-span-8 flex flex-col group spotlight-card overflow-hidden p-10 relative justify-between border-r border-black" style="--x: 215px; --y: -234.09375px;">
+                <div class="absolute inset-0 spotlight-bg pointer-events-none"></div>
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="inline-block px-2 py-0.5 border border-black text-[10px] font-sans-tech font-semibold uppercase tracking-widest">SaaS Intelligence</span>
+                    </div>
+                    <h2 class="font-headline font-medium text-4xl md:text-6xl leading-[1.05] mb-6 tracking-tight">The Operating System for Modern Business</h2>
+                    <p class="font-body text-stone-800 text-xl leading-relaxed max-w-2xl">
+                        Stop juggling twenty distinct software applications. SmallHq unifies your client data, financial workflows, and team collaboration into one rigorous, editorial-grade interface.
+                    </p>
+                </div>
+                <div class="mt-8 flex items-center gap-6 relative z-10">
+                    <button class="bg-black text-white px-6 py-3 font-sans-tech text-[10px] uppercase tracking-widest font-semibold hover:bg-stone-800 transition-colors">
+                        Start Free Trial
+                    </button>
+                    <div class="flex items-center gap-2 cursor-pointer group/link">
+                        <span class="font-sans-tech text-[10px] font-semibold uppercase tracking-widest border-b border-black group-hover/link:border-stone-400 transition-colors">View Demo</span>
+                        <iconify-icon icon="solar:play-circle-linear" width="16"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="bg-stone-100 col-span-1 md:col-span-4 relative overflow-hidden group h-96 md:h-auto">
+                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover editorial-img" alt="Office Space">
+                <div class="absolute top-0 left-0 right-0 p-6 flex justify-between items-start">
+                    <div class="bg-white/90 backdrop-blur-sm px-3 py-2 border border-stone-200">
+                        <p class="text-black font-sans-tech text-[10px] uppercase tracking-widest font-semibold">Fig 1.1 — Workspace</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: Full Width SaaS Value Proposition Section -->
+        <section class="newsprint-bg border-b border-black py-20 px-8 flex flex-col items-center justify-center text-center relative overflow-hidden">
+             <!-- Background Grid -->
+             <div class="absolute inset-0 z-0" style="background-image: linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px); background-size: 40px 40px;"></div>
+             
+             <div class="relative z-10 max-w-4xl mx-auto">
+                <span class="font-sans-tech text-[10px] uppercase tracking-[0.3em] text-stone-500 mb-6 block">Why Companies Choose SmallHq</span>
+                <h2 class="font-headline text-4xl md:text-5xl leading-tight mb-8 font-medium">
+                    "We've replaced Trello, Slack, and QuickBooks with a single, elegant tab."
+                </h2>
+                <div class="flex flex-col md:flex-row gap-12 justify-center items-center mt-12 border-t border-stone-200 pt-10 w-full">
+                    <div class="text-center">
+                        <h3 class="font-sans-tech text-4xl font-semibold tracking-tighter mb-2">30%</h3>
+                        <p class="font-body text-stone-500 italic">Increase in efficiency</p>
+                    </div>
+                    <div class="hidden md:block w-px h-12 bg-stone-200"></div>
+                    <div class="text-center">
+                        <h3 class="font-sans-tech text-4xl font-semibold tracking-tighter mb-2">2x</h3>
+                        <p class="font-body text-stone-500 italic">Faster deployment</p>
+                    </div>
+                    <div class="hidden md:block w-px h-12 bg-stone-200"></div>
+                     <div class="text-center">
+                        <h3 class="font-sans-tech text-4xl font-semibold tracking-tighter mb-2">4.9/5</h3>
+                        <p class="font-body text-stone-500 italic">User satisfaction</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- NEW: Standard 3-Column SaaS Feature Section -->
+        <section class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-black border-b border-black bg-[#fcfbf8]">
+            <!-- Feature 1 -->
+            <div class="p-10 flex flex-col items-start gap-4 group hover:bg-stone-50 transition-colors">
+                <div class="w-12 h-12 border border-black flex items-center justify-center mb-2 bg-white group-hover:bg-black transition-colors duration-300">
+                    <iconify-icon icon="solar:graph-up-linear" class="text-2xl text-black group-hover:text-white transition-colors"></iconify-icon>
+                </div>
+                <h3 class="font-headline text-2xl font-medium">Real-time Analytics</h3>
+                <p class="font-body text-stone-600 text-lg leading-relaxed">
+                    Visualize your revenue streams and churn rates instantly. Our dashboard updates in real-time, giving you the pulse of your business without the spreadsheet fatigue.
+                </p>
+                <a href="#" class="mt-4 font-sans-tech text-[10px] uppercase tracking-widest font-semibold border-b border-stone-300 hover:border-black pb-0.5 transition-colors">Learn about Metrics</a>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="p-10 flex flex-col items-start gap-4 group hover:bg-stone-50 transition-colors">
+                <div class="w-12 h-12 border border-black flex items-center justify-center mb-2 bg-white group-hover:bg-black transition-colors duration-300">
+                    <iconify-icon icon="solar:users-group-two-rounded-linear" class="text-2xl text-black group-hover:text-white transition-colors"></iconify-icon>
+                </div>
+                <h3 class="font-headline text-2xl font-medium">Team Synergy</h3>
+                <p class="font-body text-stone-600 text-lg leading-relaxed">
+                    Built-in collaboration tools mean you never have to leave the app. Comment on invoices, tag colleagues in reports, and manage permissions with granular control.
+                </p>
+                <a href="#" class="mt-4 font-sans-tech text-[10px] uppercase tracking-widest font-semibold border-b border-stone-300 hover:border-black pb-0.5 transition-colors">Explore Collaboration</a>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="p-10 flex flex-col items-start gap-4 group hover:bg-stone-50 transition-colors">
+                <div class="w-12 h-12 border border-black flex items-center justify-center mb-2 bg-white group-hover:bg-black transition-colors duration-300">
+                    <iconify-icon icon="solar:shield-check-linear" class="text-2xl text-black group-hover:text-white transition-colors"></iconify-icon>
+                </div>
+                <h3 class="font-headline text-2xl font-medium">Enterprise Security</h3>
+                <p class="font-body text-stone-600 text-lg leading-relaxed">
+                    SOC2 compliant data centers and end-to-end encryption ensure your proprietary data remains yours. Trusted by regulated industries worldwide.
+                </p>
+                <a href="#" class="mt-4 font-sans-tech text-[10px] uppercase tracking-widest font-semibold border-b border-stone-300 hover:border-black pb-0.5 transition-colors">View Security Docs</a>
+            </div>
+        </section>
+
+        <!-- Bento Row 2: Interactive Modules & Visuals -->
+        <div class="flex-grow bg-black gap-px grid grid-cols-1 md:grid-cols-12 border-b border-black">
+            
+            <!-- Cell: Integration List -->
+            <div class="newsprint-bg col-span-1 md:col-span-5 p-0 flex flex-col h-full">
+                <div class="border-b border-stone-200 p-4 bg-stone-50 flex justify-between items-center">
+                    <h4 class="font-sans-tech text-[10px] uppercase tracking-[0.2em] font-semibold text-stone-500">Platform Modules</h4>
+                    <span class="font-sans-tech text-[10px] text-stone-400">v2.4.0</span>
+                </div>
+                <div class="flex-grow grid grid-cols-2 divide-x divide-stone-200 h-full">
+                    <!-- Module Item -->
+                    <label class="p-6 hover:bg-stone-100 transition-colors cursor-pointer group flex flex-col justify-center border-b border-stone-200">
+                        <div class="flex items-center gap-3 mb-2">
+                             <iconify-icon icon="solar:wallet-linear" class="text-xl text-stone-400 group-hover:text-black transition-colors"></iconify-icon>
+                             <span class="font-headline font-medium text-lg group-hover:underline decoration-1 underline-offset-4">Billing</span>
+                        </div>
+                        <p class="text-xs font-body text-stone-500 leading-snug">Recurring revenue &amp; tax.</p>
+                    </label>
+                    <!-- Module Item -->
+                    <label class="p-6 hover:bg-stone-100 transition-colors cursor-pointer group flex flex-col justify-center border-b border-stone-200">
+                        <div class="flex items-center gap-3 mb-2">
+                             <iconify-icon icon="solar:chart-2-linear" class="text-xl text-stone-400 group-hover:text-black transition-colors"></iconify-icon>
+                             <span class="font-headline font-medium text-lg group-hover:underline decoration-1 underline-offset-4">Analytics</span>
+                        </div>
+                        <p class="text-xs font-body text-stone-500 leading-snug">Business intelligence.</p>
+                    </label>
+                    <!-- Module Item -->
+                    <label class="p-6 hover:bg-stone-100 transition-colors cursor-pointer group flex flex-col justify-center">
+                        <div class="flex items-center gap-3 mb-2">
+                             <iconify-icon icon="solar:cloud-storage-linear" class="text-xl text-stone-400 group-hover:text-black transition-colors"></iconify-icon>
+                             <span class="font-headline font-medium text-lg group-hover:underline decoration-1 underline-offset-4">Drive</span>
+                        </div>
+                        <p class="text-xs font-body text-stone-500 leading-snug">Secure cloud storage.</p>
+                    </label>
+                    <!-- Module Item -->
+                    <label class="p-6 hover:bg-stone-100 transition-colors cursor-pointer group flex flex-col justify-center">
+                         <div class="flex items-center gap-3 mb-2">
+                             <iconify-icon icon="solar:settings-linear" class="text-xl text-stone-400 group-hover:text-black transition-colors"></iconify-icon>
+                             <span class="font-headline font-medium text-lg group-hover:underline decoration-1 underline-offset-4">API</span>
+                        </div>
+                        <p class="text-xs font-body text-stone-500 leading-snug">Developer access.</p>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Cell: Visual Profile -->
+            <div class="col-span-1 md:col-span-7 h-80 md:h-auto relative group overflow-hidden bg-stone-200">
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&amp;w=1932&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover editorial-img" alt="Collaboration">
+                <div class="absolute inset-0 bg-stone-900/10 group-hover:bg-stone-900/0 transition-colors duration-300"></div>
+                <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                    <div class="bg-[#fcfbf8] border border-black px-5 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] max-w-sm">
+                        <p class="font-headline font-medium text-xl leading-none mb-2">Collaborate Live</p>
+                        <p class="font-body text-sm text-stone-600 leading-snug">Experience multiplayer editing on all documents. See cursors in real-time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: Logo Cloud / Social Proof -->
+        <div class="newsprint-bg border-b border-black py-12 px-8 flex flex-col items-center">
+             <p class="font-sans-tech text-[10px] uppercase tracking-[0.2em] text-stone-400 mb-8">Trusted by forward-thinking teams</p>
+             <div class="flex flex-wrap justify-center gap-12 md:gap-20 opacity-60 grayscale">
+                 <!-- Logos (Text Based for accuracy) -->
+                 <span class="font-sans-tech font-bold text-xl tracking-tighter uppercase">Acme Corp</span>
+                 <span class="font-sans-tech font-bold text-xl tracking-tighter uppercase">Vertex</span>
+                 <span class="font-sans-tech font-bold text-xl tracking-tighter uppercase">Feather</span>
+                 <span class="font-sans-tech font-bold text-xl tracking-tighter uppercase">Biosynth</span>
+                 <span class="font-sans-tech font-bold text-xl tracking-tighter uppercase">GlobalBank</span>
+             </div>
+        </div>
+
+        <!-- Lower Section: Chart & Info -->
+        <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x border-b border-black divide-black">
+            
+            <!-- Custom Graph Area -->
+            <div class="newsprint-bg p-8 md:p-12">
+                <div class="flex justify-between items-end mb-8">
+                    <div>
+                        <h3 class="font-headline font-medium text-2xl">Efficiency Index</h3>
+                        <p class="font-body text-sm text-stone-500 italic mt-1">Time saved per user (Hours/Week)</p>
+                    </div>
+                </div>
+                
+                <!-- CSS Grid Bar Chart -->
+                <div class="h-40 flex items-end gap-6 border-b border-black pb-2 px-2">
+                    <!-- Bar 1 -->
+                    <div class="flex-1 flex flex-col gap-2 h-full justify-end group cursor-pointer">
+                        <div class="w-full bg-stone-200 border border-stone-300 h-[40%] relative transition-all duration-300 group-hover:bg-stone-300">
+                            <div class="absolute bottom-0 w-full bg-black h-[60%] transition-all duration-500 group-hover:h-[70%]"></div>
+                        </div>
+                        <span class="text-[10px] text-center font-sans-tech uppercase tracking-widest text-stone-500">Q1</span>
+                    </div>
+                    <!-- Bar 2 -->
+                    <div class="flex-1 flex flex-col gap-2 h-full justify-end group cursor-pointer">
+                        <div class="w-full bg-stone-200 border border-stone-300 h-[60%] relative transition-all duration-300 group-hover:bg-stone-300">
+                            <div class="absolute bottom-0 w-full bg-black h-[50%] transition-all duration-500 group-hover:h-[65%]"></div>
+                        </div>
+                        <span class="text-[10px] text-center font-sans-tech uppercase tracking-widest text-stone-500">Q2</span>
+                    </div>
+                    <!-- Bar 3 -->
+                    <div class="flex-1 flex flex-col gap-2 h-full justify-end group cursor-pointer">
+                        <div class="w-full bg-stone-200 border border-stone-300 h-[75%] relative transition-all duration-300 group-hover:bg-stone-300">
+                            <div class="absolute bottom-0 w-full bg-black h-[40%] transition-all duration-500 group-hover:h-[55%]"></div>
+                        </div>
+                        <span class="text-[10px] text-center font-sans-tech uppercase tracking-widest text-stone-500">Q3</span>
+                    </div>
+                    <!-- Bar 4 -->
+                    <div class="flex-1 flex flex-col gap-2 h-full justify-end group cursor-pointer">
+                         <div class="w-full bg-stone-200 border border-stone-300 h-[30%] relative transition-all duration-300 group-hover:bg-stone-300">
+                            <div class="absolute bottom-0 w-full bg-black h-[80%] transition-all duration-500 group-hover:h-[95%]"></div>
+                        </div>
+                        <span class="text-[10px] text-center font-sans-tech uppercase tracking-widest text-stone-500">Q4</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Signup / CTA -->
+            <div class="bg-stone-900 p-8 md:p-12 flex flex-col justify-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
+                <div class="max-w-md mx-auto w-full relative z-10">
+                    <span class="font-sans-tech text-[10px] uppercase tracking-[0.2em] text-white/60 mb-2 block">Early Access</span>
+                    <h3 class="font-headline font-medium text-3xl mb-3 text-white">Join the Future of Work</h3>
+                    <p class="font-body text-base text-stone-400 mb-8 leading-relaxed">Sign up now to get a 14-day free trial of SmallHq. No credit card required.</p>
+                    
+                    <form class="flex gap-0 shadow-lg">
+                        <input type="email" placeholder="work@company.com" class="bg-white px-5 py-4 font-body text-base outline-none w-full placeholder:text-stone-400 text-black">
+                        <button type="button" class="bg-stone-200 text-black px-8 py-4 font-sans-tech text-[10px] uppercase tracking-widest font-semibold hover:bg-white transition-colors whitespace-nowrap">
+                            Get Started
+                        </button>
+                    </form>
+                    <div class="mt-6 flex items-center gap-2 text-stone-500 text-xs font-body italic">
+                        <iconify-icon icon="solar:check-circle-linear"></iconify-icon>
+                        <span>Includes full access to API &amp; Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-[#fcfbf8] px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-sans-tech uppercase tracking-widest text-stone-500 shrink-0">
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-black transition-colors hover:underline underline-offset-4">Privacy Policy</a>
+                <a href="#" class="hover:text-black transition-colors hover:underline underline-offset-4">Legal</a>
+                <a href="#" class="hover:text-black transition-colors hover:underline underline-offset-4">API Docs</a>
+            </div>
+            <div class="flex items-center gap-2">
+                <iconify-icon icon="solar:global-linear" class="text-stone-400"></iconify-icon>
+                <span>San Francisco, CA</span>
+            </div>
+            <div>
+                © 2024 SmallHq Inc. All rights reserved.
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Spotlight Effect Logic
+        const container = document.querySelector('main');
+        const cards = document.querySelectorAll('.spotlight-card');
+
+        container.addEventListener('mousemove', (e) => {
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            });
+        });
+    </script>
+
+
+</body></html>

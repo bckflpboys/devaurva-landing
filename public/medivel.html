@@ -1,0 +1,543 @@
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pharmacy Store | Medivell</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, h5, h6, .display-font { font-family: 'Space Grotesk', sans-serif; }
+    /* Custom scrollbar */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    /* Custom controls */
+    input[type="checkbox"] { appearance: none; -webkit-appearance: none; }
+    input[type="radio"] { appearance: none; -webkit-appearance: none; }
+    input[type="range"] { -webkit-appearance: none; background: transparent; }
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        background: #D4F02E;
+        border: 2px solid #0A2218;
+        cursor: pointer;
+        margin-top: -6px;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 4px;
+        background: #0A2218;
+        border-radius: 2px;
+    }
+    /* Toggle Switch */
+    .toggle-checkbox:checked {
+        right: 0;
+        border-color: #0A2218;
+    }
+    .toggle-checkbox:checked + .toggle-label {
+        background-color: #D4F02E;
+    }
+</style>
+</head>
+<body class="bg-[#F3F0E6] text-[#0A2218] antialiased selection:bg-[#D4F02E] selection:text-[#0A2218]">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 w-full border-b-2 border-[#0A2218] bg-[#F3F0E6] px-4 py-3 md:px-6">
+        <div class="mx-auto flex max-w-7xl items-center justify-between">
+            <button class="md:hidden"><iconify-icon icon="solar:hamburger-menu-linear" width="24" height="24"></iconify-icon></button>
+            <div class="flex items-center gap-1">
+                <span class="display-font text-2xl font-bold tracking-tighter italic">MEDI<span class="text-[#8FB339]">VELL</span></span>
+            </div>
+            <div class="hidden items-center gap-8 md:flex">
+                <a href="#" class="text-xs font-semibold tracking-tight uppercase hover:underline underline-offset-4">Prescriptions</a>
+                <a href="#" class="text-xs font-semibold tracking-tight uppercase underline underline-offset-4 decoration-2 decoration-[#D4F02E]">Pharmacy Shop</a>
+                <a href="#" class="text-xs font-semibold tracking-tight uppercase hover:underline underline-offset-4">Virtual Care</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="hidden md:block"><iconify-icon icon="solar:magnifer-linear" width="20" height="20"></iconify-icon></button>
+                <button class="group flex items-center gap-2 rounded-full border border-[#0A2218] bg-[#0A2218] px-4 py-1.5 text-white transition-transform hover:scale-105">
+                    <span class="text-xs font-semibold tracking-tight">RX CART (3)</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Promotion) -->
+    <div class="border-b-2 border-[#0A2218] bg-[#D4F02E]">
+        <div class="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-2">
+            <div class="flex flex-col justify-center px-4 py-12 md:px-6 md:py-16">
+                <div class="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-[#0A2218] bg-white px-3 py-1">
+                    <iconify-icon icon="solar:shield-warning-linear" width="16" height="16"></iconify-icon>
+                    <span class="text-[10px] font-bold uppercase tracking-wide">Flu Season Alert</span>
+                </div>
+                <h1 class="display-font text-4xl font-bold uppercase tracking-tighter md:text-6xl">Protect Yourself &amp; Family.</h1>
+                <p class="mt-4 max-w-md text-sm font-medium leading-relaxed">Schedule your annual flu shot today or order home-test kits. Available for same-day store pickup at all locations.</p>
+                <div class="mt-8 flex gap-4">
+                    <button class="rounded-lg border-2 border-[#0A2218] bg-[#0A2218] px-6 py-3 text-sm font-bold uppercase text-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-transform hover:-translate-y-0.5">
+                        Book Appointment
+                    </button>
+                    <button class="rounded-lg border-2 border-[#0A2218] bg-white px-6 py-3 text-sm font-bold uppercase shadow-[4px_4px_0px_0px_rgba(10,34,24,1)] transition-transform hover:-translate-y-0.5">
+                        Shop Vitamins
+                    </button>
+                </div>
+            </div>
+            <div class="relative flex items-center justify-center border-t-2 border-[#0A2218] md:border-l-2 md:border-t-0 bg-white">
+                <div class="absolute inset-0 bg-[radial-gradient(#0A2218_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+                <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" class="relative z-10 max-h-[300px] object-contain mix-blend-multiply" alt="Medical Kit">
+            </div>
+        </div>
+    </div>
+
+    <div class="mx-auto max-w-7xl px-4 py-8 md:px-6">
+        
+        <!-- Page Header -->
+        <header class="mb-8 flex flex-col justify-between gap-4 border-b-2 border-[#0A2218] pb-8 md:flex-row md:items-end">
+            <div>
+                <div class="mb-2 flex items-center gap-2 text-xs font-medium text-[#0A2218]/60">
+                    <a href="#" class="hover:text-[#0A2218]">Home</a>
+                    <span>/</span>
+                    <span class="text-[#0A2218]">Catalog</span>
+                </div>
+                <h2 class="display-font text-4xl font-bold uppercase tracking-tighter md:text-5xl">Medicines &amp; Care</h2>
+                <p class="mt-2 max-w-xl text-sm font-medium text-[#0A2218]/70">Browse prescription medications, OTC relief, and first aid supplies. Verified by board-certified pharmacists.</p>
+            </div>
+            <div class="flex gap-3">
+                 <!-- Mobile Filter Toggle -->
+                <button class="flex items-center gap-2 rounded-lg border-2 border-[#0A2218] bg-white px-4 py-2 text-sm font-bold uppercase shadow-[4px_4px_0px_0px_rgba(10,34,24,1)] transition-transform hover:-translate-y-0.5 md:hidden">
+                    <iconify-icon icon="solar:slider-minimalistic-horizontal-linear" width="16" height="16"></iconify-icon> Filters
+                </button>
+                
+                <!-- Store Pickup Toggle -->
+                <div class="flex items-center gap-3 rounded-lg border-2 border-[#0A2218] bg-[#E8E6D9] px-4 py-2">
+                    <label class="relative inline-flex cursor-pointer items-center">
+                        <input type="checkbox" value="" class="peer sr-only">
+                        <div class="peer h-5 w-9 rounded-full bg-gray-300 after:absolute after:left-[2px] after:top-[2px] after:h-4 after:w-4 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-[#0A2218] peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none"></div>
+                        <span class="ml-3 text-xs font-bold uppercase">Pickup Only</span>
+                    </label>
+                </div>
+
+                <div class="relative group">
+                    <button class="flex w-[180px] items-center justify-between rounded-lg border-2 border-[#0A2218] bg-white px-4 py-2 text-sm font-bold uppercase transition-colors hover:bg-[#F3F0E6]">
+                        <span>Sort: Relevance</span>
+                        <iconify-icon icon="solar:alt-arrow-down-linear" width="16" height="16"></iconify-icon>
+                    </button>
+                    <!-- Custom Dropdown -->
+                    <div class="absolute right-0 top-full z-10 hidden w-full pt-2 group-hover:block">
+                        <div class="rounded-lg border-2 border-[#0A2218] bg-white p-1 shadow-[4px_4px_0px_0px_rgba(10,34,24,1)]">
+                            <a href="#" class="block rounded px-3 py-2 text-xs font-bold uppercase hover:bg-[#D4F02E]">Price: Low to High</a>
+                            <a href="#" class="block rounded px-3 py-2 text-xs font-bold uppercase hover:bg-[#D4F02E]">Price: High to Low</a>
+                            <a href="#" class="block rounded px-3 py-2 text-xs font-bold uppercase hover:bg-[#D4F02E]">Generic First</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex gap-8">
+            
+            <!-- Sidebar Filters (Desktop) -->
+            <aside class="hidden w-64 flex-shrink-0 space-y-8 md:block">
+                
+                <!-- Active Filters -->
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-[#0A2218]/50">Active Filters</h3>
+                        <button class="text-[10px] font-bold underline decoration-dotted hover:text-red-600">Clear All</button>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="flex items-center gap-1 rounded border border-[#0A2218] bg-[#D4F02E] px-2 py-1 text-[10px] font-bold uppercase transition-colors hover:bg-red-100 hover:line-through">
+                            Pain Relief <iconify-icon icon="solar:close-circle-linear" width="12" height="12"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Category Filter -->
+                <div class="border-t-2 border-[#0A2218] pt-6">
+                    <h3 class="mb-4 text-sm font-bold uppercase tracking-wide">Department</h3>
+                    <div class="space-y-3">
+                        <label class="group flex cursor-pointer items-center gap-3">
+                            <div class="relative flex h-5 w-5 items-center justify-center border-2 border-[#0A2218] bg-white transition-all group-hover:shadow-[2px_2px_0px_0px_rgba(10,34,24,1)]">
+                                <input type="checkbox" checked="" class="peer absolute inset-0 opacity-0">
+                                <iconify-icon icon="solar:check-read-linear" class="text-[#0A2218] opacity-0 transition-opacity peer-checked:opacity-100" width="12" height="12"></iconify-icon>
+                            </div>
+                            <span class="text-sm font-medium">Over The Counter</span>
+                            <span class="ml-auto text-xs text-gray-500">84</span>
+                        </label>
+                        <label class="group flex cursor-pointer items-center gap-3">
+                            <div class="relative flex h-5 w-5 items-center justify-center border-2 border-[#0A2218] bg-white transition-all group-hover:shadow-[2px_2px_0px_0px_rgba(10,34,24,1)]">
+                                <input type="checkbox" class="peer absolute inset-0 opacity-0">
+                                <iconify-icon icon="solar:check-read-linear" class="text-[#0A2218] opacity-0 transition-opacity peer-checked:opacity-100" width="12" height="12"></iconify-icon>
+                            </div>
+                            <span class="text-sm font-medium">Prescription (Rx)</span>
+                            <span class="ml-auto text-xs text-gray-500">205</span>
+                        </label>
+                        <label class="group flex cursor-pointer items-center gap-3">
+                            <div class="relative flex h-5 w-5 items-center justify-center border-2 border-[#0A2218] bg-white transition-all group-hover:shadow-[2px_2px_0px_0px_rgba(10,34,24,1)]">
+                                <input type="checkbox" class="peer absolute inset-0 opacity-0">
+                                <iconify-icon icon="solar:check-read-linear" class="text-[#0A2218] opacity-0 transition-opacity peer-checked:opacity-100" width="12" height="12"></iconify-icon>
+                            </div>
+                            <span class="text-sm font-medium">First Aid &amp; Devices</span>
+                            <span class="ml-auto text-xs text-gray-500">32</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Dosage Form -->
+                <div class="border-t-2 border-[#0A2218] pt-6">
+                    <h3 class="mb-4 text-sm font-bold uppercase tracking-wide">Form</h3>
+                    <div class="space-y-3">
+                        <label class="group flex cursor-pointer items-center gap-3">
+                            <div class="relative flex h-5 w-5 items-center justify-center border-2 border-[#0A2218] bg-white transition-all group-hover:shadow-[2px_2px_0px_0px_rgba(10,34,24,1)]">
+                                <input type="checkbox" checked="" class="peer absolute inset-0 opacity-0">
+                                <iconify-icon icon="solar:check-read-linear" class="text-[#0A2218] opacity-0 transition-opacity peer-checked:opacity-100" width="12" height="12"></iconify-icon>
+                            </div>
+                            <span class="text-sm font-medium">Tablet / Capsule</span>
+                        </label>
+                        <label class="group flex cursor-pointer items-center gap-3">
+                            <div class="relative flex h-5 w-5 items-center justify-center border-2 border-[#0A2218] bg-white transition-all group-hover:shadow-[2px_2px_0px_0px_rgba(10,34,24,1)]">
+                                <input type="checkbox" class="peer absolute inset-0 opacity-0">
+                                <iconify-icon icon="solar:check-read-linear" class="text-[#0A2218] opacity-0 transition-opacity peer-checked:opacity-100" width="12" height="12"></iconify-icon>
+                            </div>
+                            <span class="text-sm font-medium">Liquid / Syrup</span>
+                        </label>
+                        <label class="group flex cursor-pointer items-center gap-3">
+                            <div class="relative flex h-5 w-5 items-center justify-center border-2 border-[#0A2218] bg-white transition-all group-hover:shadow-[2px_2px_0px_0px_rgba(10,34,24,1)]">
+                                <input type="checkbox" class="peer absolute inset-0 opacity-0">
+                                <iconify-icon icon="solar:check-read-linear" class="text-[#0A2218] opacity-0 transition-opacity peer-checked:opacity-100" width="12" height="12"></iconify-icon>
+                            </div>
+                            <span class="text-sm font-medium">Topical / Cream</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Range -->
+                <div class="border-t-2 border-[#0A2218] pt-6">
+                     <h3 class="mb-4 text-sm font-bold uppercase tracking-wide">Price Range</h3>
+                     <div class="px-2">
+                        <input type="range" min="0" max="100" value="40" class="w-full">
+                        <div class="mt-4 flex items-center justify-between text-xs font-bold">
+                            <div class="rounded border border-[#0A2218] bg-white px-2 py-1">$0</div>
+                            <div class="h-[2px] w-4 bg-[#0A2218]"></div>
+                            <div class="rounded border border-[#0A2218] bg-white px-2 py-1">$200+</div>
+                        </div>
+                     </div>
+                </div>
+
+                <!-- Brands Search -->
+                 <div class="border-t-2 border-[#0A2218] pt-6">
+                    <h3 class="mb-4 text-sm font-bold uppercase tracking-wide">Manufacturers</h3>
+                    <div class="relative mb-4">
+                        <input type="text" placeholder="Search brands..." class="w-full rounded border-2 border-[#0A2218] bg-white py-1.5 pl-2 pr-8 text-xs font-medium placeholder:text-[#0A2218]/40 focus:outline-none focus:ring-2 focus:ring-[#D4F02E]">
+                        <div class="absolute right-2 top-2 text-[#0A2218]/50">
+                            <iconify-icon icon="solar:magnifer-linear" width="14" height="14"></iconify-icon>
+                        </div>
+                    </div>
+                    <div class="max-h-40 space-y-2 overflow-y-auto pr-2">
+                         <label class="group flex cursor-pointer items-center gap-3">
+                            <div class="relative flex h-4 w-4 items-center justify-center border-2 border-[#0A2218] bg-white">
+                                <input type="checkbox" class="peer absolute inset-0 opacity-0">
+                                <iconify-icon icon="solar:check-read-linear" class="text-[#0A2218] opacity-0 transition-opacity peer-checked:opacity-100" width="12" height="12"></iconify-icon>
+                            </div>
+                            <span class="text-xs font-medium">Pfizer</span>
+                        </label>
+                        <label class="group flex cursor-pointer items-center gap-3">
+                            <div class="relative flex h-4 w-4 items-center justify-center border-2 border-[#0A2218] bg-white">
+                                <input type="checkbox" class="peer absolute inset-0 opacity-0">
+                                <iconify-icon icon="solar:check-read-linear" class="text-[#0A2218] opacity-0 transition-opacity peer-checked:opacity-100" width="12" height="12"></iconify-icon>
+                            </div>
+                            <span class="text-xs font-medium">Johnson &amp; Johnson</span>
+                        </label>
+                        <label class="group flex cursor-pointer items-center gap-3">
+                            <div class="relative flex h-4 w-4 items-center justify-center border-2 border-[#0A2218] bg-white">
+                                <input type="checkbox" class="peer absolute inset-0 opacity-0">
+                                <iconify-icon icon="solar:check-read-linear" class="text-[#0A2218] opacity-0 transition-opacity peer-checked:opacity-100" width="12" height="12"></iconify-icon>
+                            </div>
+                            <span class="text-xs font-medium">Bayer</span>
+                        </label>
+                        <label class="group flex cursor-pointer items-center gap-3">
+                            <div class="relative flex h-4 w-4 items-center justify-center border-2 border-[#0A2218] bg-white">
+                                <input type="checkbox" class="peer absolute inset-0 opacity-0">
+                                <iconify-icon icon="solar:check-read-linear" class="text-[#0A2218] opacity-0 transition-opacity peer-checked:opacity-100" width="12" height="12"></iconify-icon>
+                            </div>
+                            <span class="text-xs font-medium">Generic (Store Brand)</span>
+                        </label>
+                    </div>
+                </div>
+
+            </aside>
+
+            <!-- Product Grid Area -->
+            <div class="flex-1">
+                
+                <!-- Results Bar -->
+                <div class="mb-6 flex items-center justify-between rounded-lg bg-[#0A2218]/5 p-3 md:hidden">
+                    <span class="text-xs font-bold uppercase text-[#0A2218]">321 Results</span>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+                    <!-- Product Card 1 -->
+                    <div class="group relative flex flex-col justify-between rounded-xl border-2 border-[#0A2218] bg-white transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(10,34,24,1)]">
+                        <!-- Selection Checkbox -->
+                        <div class="absolute left-3 top-3 z-10 opacity-0 transition-opacity group-hover:opacity-100">
+                             <label class="cursor-pointer">
+                                <div class="relative flex h-6 w-6 items-center justify-center rounded border-2 border-[#0A2218] bg-white shadow-sm">
+                                    <input type="checkbox" class="peer absolute inset-0 opacity-0">
+                                    <iconify-icon icon="solar:check-read-linear" class="text-[#0A2218] opacity-0 transition-opacity peer-checked:opacity-100" width="16" height="16"></iconify-icon>
+                                </div>
+                             </label>
+                        </div>
+                        <div class="absolute right-3 top-3 z-10">
+                            <span class="rounded bg-[#D4F02E] px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-[#0A2218] border border-[#0A2218]">OTC</span>
+                        </div>
+                        <div class="relative aspect-square overflow-hidden border-b-2 border-[#0A2218] bg-gray-50 p-8">
+                            <img src="https://images.unsplash.com/photo-1550572017-edd951aa8f72?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="h-full w-full object-contain mix-blend-multiply" alt="Pain Reliever">
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <div class="mb-1 text-[10px] font-bold uppercase tracking-wider text-[#0A2218]/50">Advil</div>
+                            <h3 class="display-font text-lg font-bold leading-tight">Ibuprofen 200mg</h3>
+                            <div class="mt-2 flex items-center gap-2 text-xs font-medium text-[#0A2218]/70">
+                                <span>Pain Relief</span>•<span>50 Tablets</span>
+                            </div>
+                            
+                            <!-- Pickup Indicator -->
+                            <div class="mt-3 flex items-center gap-1.5 text-[10px] font-bold uppercase text-[#0A2218]">
+                                <div class="h-2 w-2 rounded-full bg-green-500"></div>
+                                In Stock at Downtown
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-between border-t-2 border-[#0A2218]/10 pt-3">
+                                <span class="text-sm font-bold">$12.99</span>
+                                <div class="flex gap-1">
+                                    <button class="rounded-full border border-[#0A2218] bg-white p-1.5 text-[#0A2218] hover:bg-gray-100" title="Store Pickup">
+                                        <iconify-icon icon="solar:shop-linear" width="16" height="16"></iconify-icon>
+                                    </button>
+                                    <button class="rounded-full bg-[#0A2218] p-1.5 text-white hover:bg-[#D4F02E] hover:text-[#0A2218]" title="Delivery">
+                                        <iconify-icon icon="solar:cart-plus-linear" width="16" height="16"></iconify-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 (Rx) -->
+                    <div class="group relative flex flex-col justify-between rounded-xl border-2 border-[#0A2218] bg-white transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(10,34,24,1)]">
+                         <div class="absolute left-3 top-3 z-10 opacity-0 transition-opacity group-hover:opacity-100">
+                             <label class="cursor-pointer">
+                                <div class="relative flex h-6 w-6 items-center justify-center rounded border-2 border-[#0A2218] bg-white shadow-sm">
+                                    <input type="checkbox" class="peer absolute inset-0 opacity-0">
+                                    <iconify-icon icon="solar:check-read-linear" class="text-[#0A2218] opacity-0 transition-opacity peer-checked:opacity-100" width="16" height="16"></iconify-icon>
+                                </div>
+                             </label>
+                        </div>
+                        <div class="absolute right-3 top-3 z-10">
+                            <span class="rounded bg-[#F3F0E6] px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-[#0A2218] border border-[#0A2218]">Rx Only</span>
+                        </div>
+                        <div class="relative aspect-square overflow-hidden border-b-2 border-[#0A2218] bg-gray-50 p-8">
+                            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="h-full w-full object-contain mix-blend-multiply" alt="Antibiotic">
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <div class="mb-1 text-[10px] font-bold uppercase tracking-wider text-[#0A2218]/50">Generic</div>
+                            <h3 class="display-font text-lg font-bold leading-tight">Amoxicillin 500mg</h3>
+                            <div class="mt-2 flex items-center gap-2 text-xs font-medium text-[#0A2218]/70">
+                                <span>Antibiotic</span>•<span>30 Caps</span>
+                            </div>
+                            
+                            <div class="mt-3 flex items-center gap-1.5 text-[10px] font-bold uppercase text-[#0A2218]">
+                                <div class="h-2 w-2 rounded-full bg-green-500"></div>
+                                In Stock at Downtown
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-between border-t-2 border-[#0A2218]/10 pt-3">
+                                <span class="text-sm font-bold">$8.50 <span class="text-[10px] font-medium text-gray-500">/ copay</span></span>
+                                <button class="flex items-center gap-1 rounded-full bg-[#0A2218] px-3 py-1.5 text-[10px] font-bold text-white hover:bg-[#D4F02E] hover:text-[#0A2218]">
+                                    Upload Script
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="group relative flex flex-col justify-between rounded-xl border-2 border-[#0A2218] bg-white transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(10,34,24,1)]">
+                        <div class="absolute right-3 top-3 z-10">
+                            <span class="rounded bg-[#D4F02E] px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-[#0A2218] border border-[#0A2218]">Bundle</span>
+                        </div>
+                        <div class="relative aspect-square overflow-hidden border-b-2 border-[#0A2218] bg-gray-50 p-8">
+                            <img src="https://images.unsplash.com/photo-1603398938378-e54eab446dde?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="h-full w-full object-contain mix-blend-multiply" alt="First Aid">
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <div class="mb-1 text-[10px] font-bold uppercase tracking-wider text-[#0A2218]/50">MediVell Essentials</div>
+                            <h3 class="display-font text-lg font-bold leading-tight">Family First Aid Kit</h3>
+                            <div class="mt-2 flex items-center gap-2 text-xs font-medium text-[#0A2218]/70">
+                                <span>120 Pieces</span>•<span>Emergency</span>
+                            </div>
+                            
+                            <div class="mt-3 flex items-center gap-1.5 text-[10px] font-bold uppercase text-[#0A2218]">
+                                <div class="h-2 w-2 rounded-full bg-green-500"></div>
+                                Available Today
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-between border-t-2 border-[#0A2218]/10 pt-3">
+                                <span class="text-sm font-bold">$24.00</span>
+                                <div class="flex gap-1">
+                                    <button class="rounded-full border border-[#0A2218] bg-white p-1.5 text-[#0A2218] hover:bg-gray-100">
+                                        <iconify-icon icon="solar:shop-linear" width="16" height="16"></iconify-icon>
+                                    </button>
+                                    <button class="rounded-full bg-[#0A2218] p-1.5 text-white hover:bg-[#D4F02E] hover:text-[#0A2218]">
+                                        <iconify-icon icon="solar:cart-plus-linear" width="16" height="16"></iconify-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4 -->
+                    <div class="group relative flex flex-col justify-between rounded-xl border-2 border-[#0A2218] bg-white transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(10,34,24,1)]">
+                         <div class="absolute right-3 top-3 z-10">
+                            <span class="rounded bg-[#D4F02E] px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-[#0A2218] border border-[#0A2218]">OTC</span>
+                        </div>
+                        <div class="relative aspect-square overflow-hidden border-b-2 border-[#0A2218] bg-gray-50 p-8">
+                            <img src="https://images.unsplash.com/photo-1626074961596-931481f13e55?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="h-full w-full object-contain mix-blend-multiply" alt="Allergy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <div class="mb-1 text-[10px] font-bold uppercase tracking-wider text-[#0A2218]/50">Zyrtec</div>
+                            <h3 class="display-font text-lg font-bold leading-tight">Cetirizine Allergy</h3>
+                            <div class="mt-2 flex items-center gap-2 text-xs font-medium text-[#0A2218]/70">
+                                <span>24hr Relief</span>•<span>Tablets</span>
+                            </div>
+
+                            <div class="mt-3 flex items-center gap-1.5 text-[10px] font-bold uppercase text-orange-600">
+                                <div class="h-2 w-2 rounded-full bg-orange-500"></div>
+                                Low Stock
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-between border-t-2 border-[#0A2218]/10 pt-3">
+                                <span class="text-sm font-bold">$19.99</span>
+                                <div class="flex gap-1">
+                                    <button class="rounded-full border border-[#0A2218] bg-white p-1.5 text-[#0A2218] hover:bg-gray-100">
+                                        <iconify-icon icon="solar:shop-linear" width="16" height="16"></iconify-icon>
+                                    </button>
+                                    <button class="rounded-full bg-[#0A2218] p-1.5 text-white hover:bg-[#D4F02E] hover:text-[#0A2218]">
+                                        <iconify-icon icon="solar:cart-plus-linear" width="16" height="16"></iconify-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 5 -->
+                    <div class="group relative flex flex-col justify-between rounded-xl border-2 border-[#0A2218] bg-white transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(10,34,24,1)]">
+                         <div class="absolute right-3 top-3 z-10">
+                            <span class="rounded bg-[#F3F0E6] px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-[#0A2218] border border-[#0A2218]">Rx Only</span>
+                        </div>
+                        <div class="relative aspect-square overflow-hidden border-b-2 border-[#0A2218] bg-gray-50 p-8">
+                            <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="h-full w-full object-contain mix-blend-multiply" alt="Inhaler">
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <div class="mb-1 text-[10px] font-bold uppercase tracking-wider text-[#0A2218]/50">GlaxoSmithKline</div>
+                            <h3 class="display-font text-lg font-bold leading-tight">Ventolin HFA</h3>
+                            <div class="mt-2 flex items-center gap-2 text-xs font-medium text-[#0A2218]/70">
+                                <span>Asthma</span>•<span>Inhaler</span>
+                            </div>
+                             
+                            <div class="mt-3 flex items-center gap-1.5 text-[10px] font-bold uppercase text-[#0A2218]">
+                                <div class="h-2 w-2 rounded-full bg-green-500"></div>
+                                In Stock at Downtown
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-between border-t-2 border-[#0A2218]/10 pt-3">
+                                <span class="text-sm font-bold">$45.00 <span class="text-[10px] font-medium text-gray-500">/ copay</span></span>
+                                <button class="flex items-center gap-1 rounded-full bg-[#0A2218] px-3 py-1.5 text-[10px] font-bold text-white hover:bg-[#D4F02E] hover:text-[#0A2218]">
+                                    Upload Script
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 6 -->
+                    <div class="group relative flex flex-col justify-between rounded-xl border-2 border-[#0A2218] bg-white transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(10,34,24,1)]">
+                        <div class="absolute right-3 top-3 z-10">
+                            <span class="rounded border border-[#0A2218] bg-[#F3F0E6] px-2 py-0.5 text-[10px] font-bold uppercase">Out of Stock</span>
+                        </div>
+                        <div class="relative aspect-square overflow-hidden border-b-2 border-[#0A2218] bg-gray-50 p-8 opacity-60">
+                            <img src="https://images.unsplash.com/photo-1576602976047-174e57a47881?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="h-full w-full object-contain mix-blend-multiply grayscale" alt="Supplement">
+                        </div>
+                        <div class="flex flex-1 flex-col p-4 opacity-70">
+                            <div class="mb-1 text-[10px] font-bold uppercase tracking-wider text-[#0A2218]/50">Nature Made</div>
+                            <h3 class="display-font text-lg font-bold leading-tight">Vitamin D3</h3>
+                            <div class="mt-2 flex items-center gap-2 text-xs font-medium text-[#0A2218]/70">
+                                <span>Immunity</span>•<span>Softgels</span>
+                            </div>
+
+                             <div class="mt-3 flex items-center gap-1.5 text-[10px] font-bold uppercase text-red-500">
+                                <div class="h-2 w-2 rounded-full bg-red-500"></div>
+                                Unavailable
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-between border-t-2 border-[#0A2218]/10 pt-3">
+                                <span class="text-sm font-bold">$11.00</span>
+                                <button disabled="" class="cursor-not-allowed rounded-full bg-gray-300 p-1.5 text-white">
+                                    <iconify-icon icon="solar:cart-plus-linear" width="16" height="16"></iconify-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Pagination / Load More -->
+                <div class="mt-12 flex flex-col items-center justify-center gap-4 border-t-2 border-[#0A2218] pt-8">
+                    <span class="text-xs font-medium text-[#0A2218]/60">Showing 6 of 321 medications</span>
+                    <div class="h-1 w-48 overflow-hidden rounded-full bg-gray-200">
+                        <div class="h-full w-12 bg-[#0A2218]"></div>
+                    </div>
+                    <button class="rounded-lg border-2 border-[#0A2218] bg-white px-8 py-3 text-sm font-bold uppercase shadow-[4px_4px_0px_0px_rgba(10,34,24,1)] transition-transform hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(10,34,24,1)]">
+                        Load More
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-12 bg-[#0A2218] py-16 text-[#F3F0E6]">
+        <div class="mx-auto max-w-7xl px-4 md:px-6">
+            <div class="flex flex-col justify-between md:flex-row">
+                 <div class="mb-8 md:mb-0">
+                    <span class="display-font text-3xl font-bold tracking-tighter italic text-white">MEDI<span class="text-[#8FB339]">VELL</span></span>
+                    <p class="mt-4 max-w-xs text-xs text-gray-400">Trusted by doctors and patients. Providing quality pharmaceutical care, prescription management, and daily essentials.</p>
+                 </div>
+                 <div class="flex gap-12">
+                     <div>
+                         <h4 class="mb-4 text-xs font-bold uppercase text-white">Patients</h4>
+                         <ul class="space-y-2 text-xs text-gray-400">
+                             <li><a href="#" class="hover:text-[#D4F02E]">Refill Prescription</a></li>
+                             <li><a href="#" class="hover:text-[#D4F02E]">Transfer Rx</a></li>
+                             <li><a href="#" class="hover:text-[#D4F02E]">Book Vaccine</a></li>
+                         </ul>
+                     </div>
+                     <div>
+                         <h4 class="mb-4 text-xs font-bold uppercase text-white">Doctors</h4>
+                         <ul class="space-y-2 text-xs text-gray-400">
+                             <li><a href="#" class="hover:text-[#D4F02E]">Provider Portal</a></li>
+                             <li><a href="#" class="hover:text-[#D4F02E]">Formulary</a></li>
+                             <li><a href="#" class="hover:text-[#D4F02E]">Direct Prescribing</a></li>
+                         </ul>
+                     </div>
+                 </div>
+            </div>
+            <div class="mt-12 flex flex-col items-center justify-between border-t border-white/10 pt-8 md:flex-row">
+                <p class="text-[10px] text-gray-500">© 2024 Medivell Pharmacy. All rights reserved.</p>
+                <div class="mt-4 flex gap-4 md:mt-0">
+                    <iconify-icon icon="solar:camera-linear" class="text-white hover:text-[#D4F02E] cursor-pointer" width="20" height="20"></iconify-icon>
+                    <iconify-icon icon="solar:phone-linear" class="text-white hover:text-[#D4F02E] cursor-pointer" width="20" height="20"></iconify-icon>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body></html>

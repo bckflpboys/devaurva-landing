@@ -711,6 +711,129 @@ const ExtensionsShowcase = () => {
     );
 };
 
+const EcommerceShowcase = () => {
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const y1 = useTransform(scrollYProgress, [0, 1], [-100, 100]);
+    const scrollScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
+
+    return (
+        <section ref={containerRef} className="py-40 relative overflow-hidden bg-[#06060c]">
+            {/* Massive Background Moon Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full aspect-square max-w-4xl bg-emerald-500/5 blur-[180px] rounded-full pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
+                {/* Text Content: Now at the TOP */}
+                <div className="text-center max-w-4xl mx-auto mb-20">
+                    <motion.span 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="text-xs font-black uppercase tracking-[0.5em] text-emerald-500 mb-6 block"
+                    >
+                        Digital Commerce
+                    </motion.span>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="text-6xl md:text-9xl font-black text-white tracking-tighter leading-[0.8] mb-8"
+                    >
+                        STOREFORTS <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">EVOLVED</span>
+                    </motion.h2>
+                    <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="text-zinc-400 text-lg md:text-xl font-medium leading-relaxed mb-12"
+                    >
+                        We build conversion-first e-commerce ecosystems that transcend standard templates. Experience lightning-fast load times, seamless checkout architectures, and hyper-personalized customer journeys.
+                    </motion.p>
+                    
+                    <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12">
+                        {['Headless Commerce', 'Multi-Currency', 'AI Inventory', 'Real-time Analytics'].map((feat, i) => (
+                            <div key={i} className="flex items-center gap-3 group">
+                                <div className="w-4 h-px bg-emerald-500/30 group-hover:w-8 group-hover:bg-emerald-500 transition-all duration-500" />
+                                <span className="text-zinc-500 text-[10px] font-black uppercase tracking-widest group-hover:text-white transition-colors">{feat}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="flex justify-center">
+                        <motion.button className="group flex items-center gap-4 text-white">
+                            <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-emerald-500 group-hover:border-emerald-500 transition-all duration-500">
+                                <ArrowRight className="w-6 h-6 group-hover:rotate-[-45deg] transition-transform" />
+                            </div>
+                            <span className="font-black uppercase tracking-widest text-sm">Launch Store</span>
+                        </motion.button>
+                    </div>
+                </div>
+
+                {/* Visual Side: Structured Media Stack (Now BELOW Text) */}
+                <div className="flex flex-col gap-8 relative max-w-5xl mx-auto">
+                    {/* Top Section: Transparent Web Interaction Visual */}
+                    <div className="relative w-full aspect-video rounded-[3rem] bg-white/[0.02] border border-white/5 flex items-center justify-center overflow-hidden group">
+                       <video autoPlay loop muted playsInline className="w-full h-full object-contain scale-110 mix-blend-screen opacity-80 group-hover:opacity-100 transition-opacity duration-1000">
+                            <source src="/web-sec/Web.webm" type="video/webm" />
+                        </video>
+                        <div className="absolute top-10 left-10">
+                            <div className="text-emerald-500 text-[10px] font-black uppercase tracking-[0.4em] mb-1">Live Interface</div>
+                            <div className="w-12 h-0.5 bg-emerald-500" />
+                        </div>
+                    </div>
+
+                    {/* Bottom Grid for Secondary Media: Clickable Project Cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {/* kf 1 Image Showcase (KickFlip) */}
+                        <motion.a 
+                            href="https://kickflip.voxcode.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ y: -10, scale: 1.02 }}
+                            className="relative aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-zinc-900 group cursor-pointer"
+                        >
+                            <img src="/web-sec/kf 1.png" className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" alt="KickFlip" />
+                            <div className="absolute bottom-6 left-6 px-4 py-2 bg-black/60 backdrop-blur-md rounded-full border border-white/10">
+                                <span className="text-white font-black text-xs uppercase tracking-widest">KickFlip</span>
+                            </div>
+                        </motion.a>
+
+                        {/* MoonSoft Brand Showcase */}
+                        <motion.a 
+                            href="https://moonsoft.life/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ y: -10, scale: 1.02 }}
+                            className="relative aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-zinc-900 group cursor-pointer"
+                        >
+                            <video autoPlay loop muted playsInline className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
+                                <source src="/web-sec/moon.webm" type="video/webm" />
+                            </video>
+                            <div className="absolute bottom-6 left-6 px-4 py-2 bg-black/60 backdrop-blur-md rounded-full border border-white/10">
+                                <span className="text-white font-black text-xs uppercase tracking-widest">MoonSoft</span>
+                            </div>
+                        </motion.a>
+
+                        {/* pharm 1 Image Showcase (Medivel - RAW HTML) */}
+                        <motion.a 
+                            href="/medivel.html"
+                            whileHover={{ y: -10, scale: 1.02 }}
+                            className="relative aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-zinc-900 group cursor-pointer"
+                        >
+                            <img src="/web-sec/pharm 1.png" className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" alt="Medivel" />
+                            <div className="absolute bottom-6 left-6 px-4 py-2 bg-black/60 backdrop-blur-md rounded-full border border-white/10">
+                                <span className="text-white font-black text-xs uppercase tracking-widest">Medivel</span>
+                            </div>
+                        </motion.a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
 const ServicesSection = ({ onInView, onOutView }) => {
     const sectionRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -740,13 +863,7 @@ const ServicesSection = ({ onInView, onOutView }) => {
 
                 <WebsiteDevelopmentBento />
 
-                <ServiceFeature
-                    title="ECOMMERCE"
-                    subtitle="Digital Commerce Platform"
-                    description="Scalable online shopping experiences with seamless payment integrations and conversion-focused design for global brands."
-                    image="/devaura/trans tick app 3.png"
-                    color="from-emerald-400 via-emerald-300 to-teal-100"
-                />
+                <EcommerceShowcase />
 
                 <ServiceFeature
                     title="SYSTEMS"

@@ -1,0 +1,466 @@
+<html lang="en" class="scroll-smooth"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vitalis - Premium Medical Care</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+      colors: {
+        medical: {
+          50: '#f0fdfa',
+          100: '#ccfbf1',
+          200: '#99f6e4',
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#14b8a6', // Teal primary
+          600: '#0d9488',
+          700: '#0f766e',
+          800: '#115e59',
+          900: '#134e4a',
+        }
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.6s ease-out forwards',
+        'slide-up': 'slideUp 0.8s ease-out forwards',
+        'slide-right': 'slideRight 0.7s ease-out forwards'
+      },
+      keyframes: {
+        fadeIn: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+        slideUp: { '0%': { opacity: '0', transform: 'translateY(40px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+        slideRight: { '0%': { opacity: '0', transform: 'translateX(-30px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } }
+      }
+    }
+  }
+}
+</script>
+<style>
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); opacity: 0.6; cursor: pointer; }
+</style>
+</head>
+<body class="font-sans bg-slate-900 text-white antialiased selection:bg-medical-500 selection:text-white">
+
+  <!-- Background Image (Medical/Clean) -->
+  <div class="fixed top-0 w-full h-screen bg-cover bg-center -z-10" style="background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&amp;w=3500&amp;auto=format&amp;fit=crop');">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-[2px]"></div>
+  </div>
+
+  <div class="min-h-screen flex flex-col items-center justify-start pt-6 pb-12 px-4 sm:px-6 lg:px-8">
+    
+    <!-- Main Container -->
+    <div class="w-full max-w-7xl bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl overflow-hidden animate-fade-in">
+      
+      <!-- Header Navigation -->
+      <div class="flex flex-col md:flex-row p-6 md:p-8 border-b border-white/10 items-center justify-between gap-6 backdrop-blur-md bg-white/5 sticky top-0 z-50">
+        <!-- Logo and Filters -->
+        <div class="flex items-center justify-between w-full md:w-auto gap-8">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-medical-400 to-medical-600 flex items-center justify-center shadow-lg shadow-medical-500/20">
+              <iconify-icon icon="solar:heart-pulse-linear" width="24" height="24" class="text-white" stroke-width="1.5"></iconify-icon>
+            </div>
+            <span class="font-semibold text-xl tracking-tight text-white font-serif">Vitalis<span class="text-medical-400">.</span></span>
+          </div>
+          
+          <div class="hidden md:flex items-center gap-2 bg-white/5 rounded-full p-1 border border-white/10">
+            <button class="px-4 py-1.5 rounded-full bg-medical-500 text-white text-sm font-medium shadow-lg shadow-medical-500/25 transition-all">
+              General
+            </button>
+            <button class="px-4 py-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 text-sm font-medium transition-all">
+              Dental
+            </button>
+            <button class="px-4 py-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 text-sm font-medium transition-all">
+              Cardiology
+            </button>
+            <button class="px-4 py-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 text-sm font-medium transition-all">
+              Neurology
+            </button>
+          </div>
+        </div>
+
+        <!-- User Profile -->
+        <div class="flex items-center gap-4 w-full md:w-auto justify-end">
+          <button class="p-2.5 rounded-xl hover:bg-white/10 transition-colors border border-transparent hover:border-white/10 relative group">
+            <iconify-icon icon="solar:bell-linear" width="22" height="22" class="text-white/80 group-hover:text-white transition-colors" stroke-width="1.5"></iconify-icon>
+            <span class="absolute top-2.5 right-2.5 w-2 h-2 bg-medical-500 rounded-full border-2 border-[#1e293b]"></span>
+          </button>
+          <div class="flex items-center gap-3 pl-4 border-l border-white/10">
+            <div class="text-right hidden sm:block leading-tight">
+              <p class="text-sm font-medium text-white">Sarah Connor</p>
+              <p class="text-xs text-medical-300">Premium Member</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&amp;w=200&amp;auto=format&amp;fit=crop" alt="avatar" class="w-10 h-10 rounded-full object-cover ring-2 ring-medical-500/50">
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="flex flex-col gap-16 p-6 md:p-10 lg:p-12">
+        
+        <!-- Hero Section -->
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <!-- Left Column: Copy -->
+          <div class="flex flex-col justify-center animate-slide-right space-y-8">
+            <div class="space-y-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-medical-500/10 border border-medical-500/20 text-medical-300 text-xs font-medium w-fit">
+                <iconify-icon icon="solar:shield-check-linear" width="16" height="16" stroke-width="1.5"></iconify-icon>
+                <span>Certified Excellence in Healthcare</span>
+              </div>
+              <h1 class="text-5xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.1] font-serif text-white drop-shadow-lg">
+                Modern Care for <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-medical-300 to-emerald-300">Better Living</span>
+              </h1>
+              <p class="text-lg text-white/70 leading-relaxed max-w-xl font-light">
+                Experience the future of medical services with our world-class specialists, state-of-the-art diagnostics, and personalized patient care plans.
+              </p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <button class="group flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-white text-slate-900 text-sm font-semibold hover:bg-gray-100 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                <iconify-icon icon="solar:calendar-add-linear" width="20" height="20" stroke-width="1.5"></iconify-icon>
+                Book Appointment
+              </button>
+              <button class="flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-white/10 transition-colors backdrop-blur-sm">
+                <iconify-icon icon="solar:play-circle-linear" width="20" height="20" stroke-width="1.5"></iconify-icon>
+                Virtual Tour
+              </button>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-8 pt-8 border-t border-white/10">
+              <div>
+                <div class="text-3xl text-medical-300 font-serif font-medium mb-1">120+</div>
+                <div class="text-xs text-white/50 uppercase tracking-wider font-medium">Specialists</div>
+              </div>
+              <div>
+                <div class="text-3xl text-medical-300 font-serif font-medium mb-1">98%</div>
+                <div class="text-xs text-white/50 uppercase tracking-wider font-medium">Satisfaction</div>
+              </div>
+              <div>
+                <div class="text-3xl text-medical-300 font-serif font-medium mb-1">24/7</div>
+                <div class="text-xs text-white/50 uppercase tracking-wider font-medium">Emergency</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Featured Image / Visual -->
+          <div class="relative animate-slide-up hidden lg:block">
+            <div class="relative rounded-3xl overflow-hidden aspect-[4/5] border border-white/10 shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1638202993928-7267aad84c31?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" class="object-cover w-full h-full opacity-90" alt="Doctor">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent"></div>
+              
+              <!-- Floating Card -->
+              <div class="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl">
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="w-12 h-12 rounded-full bg-medical-500/20 flex items-center justify-center text-medical-300">
+                     <iconify-icon icon="solar:stethoscope-linear" width="24" height="24" stroke-width="1.5"></iconify-icon>
+                  </div>
+                  <div>
+                    <h3 class="font-medium text-white">Dr. Emily Chen</h3>
+                    <p class="text-sm text-white/60">Lead Cardiologist</p>
+                  </div>
+                  <div class="ml-auto flex gap-1">
+                     <iconify-icon icon="solar:star-linear" width="16" height="16" class="text-yellow-400" stroke-width="1.5"></iconify-icon>
+                     <span class="text-sm font-medium">4.9</span>
+                  </div>
+                </div>
+                <div class="flex gap-2">
+                  <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-white/80 border border-white/10">Harvard Med</span>
+                  <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-white/80 border border-white/10">15y Exp</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Decorative Elements -->
+            <div class="absolute -top-10 -right-10 w-64 h-64 bg-medical-500/20 rounded-full blur-3xl -z-10"></div>
+            <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl -z-10"></div>
+          </div>
+        </div>
+
+        <!-- Appointment Booking Section (New) -->
+        <div class="w-full bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-8 backdrop-blur-md relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-medical-500/10 rounded-full blur-3xl -z-10 transition-opacity duration-700 opacity-50 group-hover:opacity-80"></div>
+          
+          <div class="flex flex-col md:flex-row items-end md:items-center justify-between mb-8 gap-4">
+            <div>
+              <h3 class="text-2xl font-serif text-white mb-2">Book an Appointment</h3>
+              <p class="text-white/60 text-sm">Schedule a visit with our top specialists in just a few clicks.</p>
+            </div>
+          </div>
+
+          <form class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Department Select -->
+            <div class="relative group/input">
+              <label class="block text-xs font-medium text-white/50 mb-1.5 ml-1">Department</label>
+              <div class="relative">
+                <div class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50">
+                  <iconify-icon icon="solar:kit-linear" width="20" height="20" stroke-width="1.5"></iconify-icon>
+                </div>
+                <select class="w-full bg-black/20 border border-white/10 rounded-xl py-3.5 pl-11 pr-4 text-sm text-white focus:outline-none focus:border-medical-500/50 focus:ring-1 focus:ring-medical-500/50 appearance-none cursor-pointer hover:bg-black/30 transition-colors">
+                  <option>General Medicine</option>
+                  <option>Cardiology</option>
+                  <option>Neurology</option>
+                  <option>Pediatrics</option>
+                  <option>Dermatology</option>
+                </select>
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none">
+                  <iconify-icon icon="solar:alt-arrow-down-linear" width="16" height="16" stroke-width="1.5"></iconify-icon>
+                </div>
+              </div>
+            </div>
+
+            <!-- Doctor Select -->
+            <div class="relative group/input">
+              <label class="block text-xs font-medium text-white/50 mb-1.5 ml-1">Specialist</label>
+              <div class="relative">
+                <div class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50">
+                   <iconify-icon icon="solar:user-circle-linear" width="20" height="20" stroke-width="1.5"></iconify-icon>
+                </div>
+                <select class="w-full bg-black/20 border border-white/10 rounded-xl py-3.5 pl-11 pr-4 text-sm text-white focus:outline-none focus:border-medical-500/50 focus:ring-1 focus:ring-medical-500/50 appearance-none cursor-pointer hover:bg-black/30 transition-colors">
+                  <option>Any Available Doctor</option>
+                  <option>Dr. Emily Chen</option>
+                  <option>Dr. James Wilson</option>
+                  <option>Dr. Sarah Miller</option>
+                </select>
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none">
+                  <iconify-icon icon="solar:alt-arrow-down-linear" width="16" height="16" stroke-width="1.5"></iconify-icon>
+                </div>
+              </div>
+            </div>
+
+            <!-- Date Picker -->
+            <div class="relative group/input">
+              <label class="block text-xs font-medium text-white/50 mb-1.5 ml-1">Preferred Date</label>
+              <div class="relative">
+                <div class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none">
+                  <iconify-icon icon="solar:calendar-linear" width="20" height="20" stroke-width="1.5"></iconify-icon>
+                </div>
+                <input type="date" class="w-full bg-black/20 border border-white/10 rounded-xl py-3.5 pl-11 pr-4 text-sm text-white placeholder-white/50 focus:outline-none focus:border-medical-500/50 focus:ring-1 focus:ring-medical-500/50 hover:bg-black/30 transition-colors">
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="relative flex items-end">
+              <button type="button" class="w-full bg-medical-500 hover:bg-medical-600 text-white font-medium py-3.5 px-6 rounded-xl transition-all shadow-lg shadow-medical-500/20 flex items-center justify-center gap-2 group">
+                <span>Check Availability</span>
+                <iconify-icon icon="solar:arrow-right-linear" width="20" height="20" class="group-hover:translate-x-1 transition-transform" stroke-width="1.5"></iconify-icon>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Services Grid (New Section) -->
+        <div class="py-4">
+          <div class="flex items-center justify-between mb-8">
+            <h3 class="text-2xl font-serif text-white">Our Departments</h3>
+            <a href="#" class="text-sm text-medical-300 hover:text-medical-200 flex items-center gap-1">View All <iconify-icon icon="solar:arrow-right-linear" width="16" height="16" stroke-width="1.5"></iconify-icon></a>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Service 1 -->
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all cursor-pointer group">
+              <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <iconify-icon icon="solar:heart-pulse-linear" width="28" height="28" stroke-width="1.5"></iconify-icon>
+              </div>
+              <h4 class="font-medium text-white mb-1">Cardiology</h4>
+              <p class="text-xs text-white/50">Heart health &amp; surgery</p>
+            </div>
+            <!-- Service 2 -->
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all cursor-pointer group">
+              <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <iconify-icon icon="solar:brain-linear" width="28" height="28" stroke-width="1.5"></iconify-icon>
+              </div>
+              <h4 class="font-medium text-white mb-1">Neurology</h4>
+              <p class="text-xs text-white/50">Brain &amp; nerves care</p>
+            </div>
+            <!-- Service 3 -->
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all cursor-pointer group">
+              <div class="w-12 h-12 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <iconify-icon icon="solar:bone-linear" width="28" height="28" stroke-width="1.5"></iconify-icon>
+              </div>
+              <h4 class="font-medium text-white mb-1">Orthopedics</h4>
+              <p class="text-xs text-white/50">Bones &amp; joints</p>
+            </div>
+            <!-- Service 4 -->
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all cursor-pointer group">
+              <div class="w-12 h-12 rounded-xl bg-pink-500/20 text-pink-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <iconify-icon icon="solar:cosmetic-linear" width="28" height="28" stroke-width="1.5"></iconify-icon>
+              </div>
+              <h4 class="font-medium text-white mb-1">Dermatology</h4>
+              <p class="text-xs text-white/50">Skin care &amp; beauty</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Specialists (Slider) -->
+        <div class="w-full">
+          <div class="flex mb-8 items-center justify-between">
+            <div>
+              <h3 class="text-2xl font-serif text-white">Top Specialists</h3>
+              <p class="text-sm text-white/60 mt-1">Book directly with our highest rated doctors</p>
+            </div>
+            <div class="flex gap-2">
+              <button id="prevBtn" class="p-2 rounded-lg bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors">
+                <iconify-icon icon="solar:alt-arrow-left-linear" width="20" height="20" stroke-width="1.5"></iconify-icon>
+              </button>
+              <button id="nextBtn" class="p-2 rounded-lg bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors">
+                <iconify-icon icon="solar:alt-arrow-right-linear" width="20" height="20" stroke-width="1.5"></iconify-icon>
+              </button>
+            </div>
+          </div>
+          
+          <div id="cardTrack" class="flex gap-6 overflow-x-auto scrollbar-hide pb-4 snap-x snap-mandatory">
+            <!-- Doctor Card 1 -->
+            <div class="min-w-[300px] md:min-w-[340px] snap-center bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-medical-500/30 transition-all duration-300 group overflow-hidden">
+              <div class="p-5">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-semibold text-white">Dr. Sarah Lin</h4>
+                    <p class="text-sm text-white/60">Cardiologist</p>
+                  </div>
+                  <div class="flex items-center gap-1 px-2.5 py-1 bg-green-500/10 text-green-300 rounded-full text-[10px] font-medium border border-green-500/20">
+                    <div class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></div>
+                    Available
+                  </div>
+                </div>
+                <div class="rounded-xl overflow-hidden aspect-[4/3] mb-4 relative">
+                  <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Dr Lin">
+                  <div class="absolute bottom-2 left-2 flex gap-1">
+                    <div class="px-2 py-1 bg-black/60 backdrop-blur-md rounded-lg text-xs flex items-center gap-1">
+                       <iconify-icon icon="solar:star-linear" class="text-yellow-400" width="12" height="12"></iconify-icon> 4.9
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between text-sm mb-4 border-b border-white/10 pb-4">
+                  <div class="flex items-center gap-3 text-white/60">
+                    <span class="flex items-center gap-1.5 text-xs">
+                      <iconify-icon icon="solar:clock-circle-linear" width="14" height="14"></iconify-icon> 10:00 - 16:00
+                    </span>
+                    <span class="flex items-center gap-1.5 text-xs">
+                      <iconify-icon icon="solar:users-group-rounded-linear" width="14" height="14"></iconify-icon> 12 Patients
+                    </span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-lg font-semibold text-white">$120</span>
+                    <span class="text-xs text-white/50">/consult</span>
+                  </div>
+                  <button class="px-5 py-2.5 bg-medical-500 text-white text-xs font-semibold rounded-xl hover:bg-medical-600 transition-colors shadow-lg shadow-medical-500/20">
+                    Book Visit
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Doctor Card 2 -->
+            <div class="min-w-[300px] md:min-w-[340px] snap-center bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-medical-500/30 transition-all duration-300 group overflow-hidden">
+              <div class="p-5">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-semibold text-white">Dr. Mark Roberts</h4>
+                    <p class="text-sm text-white/60">Neurologist</p>
+                  </div>
+                  <div class="flex items-center gap-1 px-2.5 py-1 bg-blue-500/10 text-blue-300 rounded-full text-[10px] font-medium border border-blue-500/20">
+                    Top Rated
+                  </div>
+                </div>
+                <div class="rounded-xl overflow-hidden aspect-[4/3] mb-4 relative">
+                  <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Dr Roberts">
+                  <div class="absolute bottom-2 left-2 flex gap-1">
+                    <div class="px-2 py-1 bg-black/60 backdrop-blur-md rounded-lg text-xs flex items-center gap-1">
+                       <iconify-icon icon="solar:star-linear" class="text-yellow-400" width="12" height="12"></iconify-icon> 5.0
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between text-sm mb-4 border-b border-white/10 pb-4">
+                  <div class="flex items-center gap-3 text-white/60">
+                    <span class="flex items-center gap-1.5 text-xs">
+                      <iconify-icon icon="solar:clock-circle-linear" width="14" height="14"></iconify-icon> 09:00 - 14:00
+                    </span>
+                    <span class="flex items-center gap-1.5 text-xs">
+                      <iconify-icon icon="solar:users-group-rounded-linear" width="14" height="14"></iconify-icon> 8 Patients
+                    </span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-lg font-semibold text-white">$150</span>
+                    <span class="text-xs text-white/50">/consult</span>
+                  </div>
+                  <button class="px-5 py-2.5 bg-white/10 border border-white/10 text-white text-xs font-semibold rounded-xl hover:bg-white/20 transition-colors">
+                    Book Visit
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Doctor Card 3 -->
+            <div class="min-w-[300px] md:min-w-[340px] snap-center bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-medical-500/30 transition-all duration-300 group overflow-hidden">
+              <div class="p-5">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-semibold text-white">Dr. Lisa Wong</h4>
+                    <p class="text-sm text-white/60">Pediatrician</p>
+                  </div>
+                  <div class="flex items-center gap-1 px-2.5 py-1 bg-purple-500/10 text-purple-300 rounded-full text-[10px] font-medium border border-purple-500/20">
+                    Popular
+                  </div>
+                </div>
+                <div class="rounded-xl overflow-hidden aspect-[4/3] mb-4 relative">
+                  <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Dr Wong">
+                  <div class="absolute bottom-2 left-2 flex gap-1">
+                    <div class="px-2 py-1 bg-black/60 backdrop-blur-md rounded-lg text-xs flex items-center gap-1">
+                       <iconify-icon icon="solar:star-linear" class="text-yellow-400" width="12" height="12"></iconify-icon> 4.8
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between text-sm mb-4 border-b border-white/10 pb-4">
+                  <div class="flex items-center gap-3 text-white/60">
+                    <span class="flex items-center gap-1.5 text-xs">
+                      <iconify-icon icon="solar:clock-circle-linear" width="14" height="14"></iconify-icon> 11:00 - 18:00
+                    </span>
+                    <span class="flex items-center gap-1.5 text-xs">
+                      <iconify-icon icon="solar:users-group-rounded-linear" width="14" height="14"></iconify-icon> 15 Patients
+                    </span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-lg font-semibold text-white">$100</span>
+                    <span class="text-xs text-white/50">/consult</span>
+                  </div>
+                  <button class="px-5 py-2.5 bg-white/10 border border-white/10 text-white text-xs font-semibold rounded-xl hover:bg-white/20 transition-colors">
+                    Book Visit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Card slider functionality
+    const track = document.getElementById('cardTrack');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: 340, behavior: 'smooth' });
+    });
+    
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -340, behavior: 'smooth' });
+    });
+  </script>
+
+</body></html>

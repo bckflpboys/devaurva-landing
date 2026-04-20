@@ -1,0 +1,336 @@
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Medical Journal - Digital Edition</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>
+/* Typography System */
+.font-masthead { font-family: 'Playfair Display', serif; }
+.font-headline { font-family: 'Playfair Display', serif; }
+.font-body { font-family: 'Old Standard TT', serif; }
+.font-sans-tech { font-family: 'Inter', sans-serif; } /* Added for modern UI elements */
+
+/* Paper Texture */
+.newsprint-bg {
+    background-color: #fcfbf8;
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+/* Custom Scrollbar */
+.paper-scroll::-webkit-scrollbar { width: 4px; }
+.paper-scroll::-webkit-scrollbar-track { background: transparent; }
+.paper-scroll::-webkit-scrollbar-thumb { background-color: #000; }
+
+/* Interactive Spotlight */
+.spotlight-card { --x: 0px; --y: 0px; }
+.spotlight-bg {
+    background: radial-gradient(
+    600px circle at var(--x) var(--y),
+    rgba(0, 0, 0, 0.04),
+    transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.group:hover .spotlight-bg { opacity: 1; }
+
+/* Marquee Animation */
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+.animate-ticker { animation: ticker 30s linear infinite; }
+
+/* Utility */
+.drop-cap::first-letter {
+    font-size: 3.2em;
+    font-weight: 600;
+    float: left;
+    line-height: 0.8;
+    padding-right: 0.15em;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Image Filters */
+.editorial-img { filter: grayscale(100%) contrast(1.1) brightness(1.05); transition: filter 0.5s ease; }
+.editorial-img:hover { filter: grayscale(0%) contrast(1) brightness(1); }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#dcdcdc] h-screen w-full flex items-center justify-center p-0 md:p-4 font-body overflow-hidden">
+
+    <!-- Desk Background -->
+    <div class="fixed inset-0 z-0 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] opacity-10 mix-blend-multiply pointer-events-none"></div>
+
+    <!-- Main Container -->
+    <main class="paper-scroll relative z-10 w-full max-w-[1400px] h-full md:h-[96vh] newsprint-bg shadow-2xl flex flex-col border border-stone-400 overflow-y-auto">
+        
+        <!-- Top Bar: Ticker -->
+        <div class="bg-black text-[#fcfbf8] overflow-hidden whitespace-nowrap py-1 border-b border-black shrink-0 z-40 sticky top-0">
+            <div class="inline-block animate-ticker">
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-4">BREAKING: NEW RADIOLOGY WING OPENS NEXT MONTH</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-4">+++</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-4">FLU SHOTS AVAILABLE DAILY 9AM-5PM</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-4">+++</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-4">DR. CHEN APPOINTED CHIEF OF SURGERY</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-4">+++</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-4">TELEHEALTH SERVICES EXPANDED</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-4">+++</span>
+                <span class="font-sans-tech text-[10px] uppercase tracking-widest font-medium mx-4">BREAKING: NEW RADIOLOGY WING OPENS NEXT MONTH</span>
+            </div>
+        </div>
+
+        <!-- Header Area -->
+        <header class="px-6 py-8 border-b-2 border-black flex flex-col md:flex-row justify-between items-end md:items-center bg-[#fcfbf8]">
+            <div class="text-left">
+                <p class="font-sans-tech text-[10px] font-semibold uppercase tracking-[0.3em] text-stone-500 mb-1">Vol. 84 — Issue 12</p>
+                <h1 class="text-5xl md:text-7xl font-masthead font-semibold tracking-tighter leading-none text-black">The Medical Journal.</h1>
+            </div>
+            <div class="hidden md:flex flex-col items-end gap-2">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-green-600 animate-pulse"></div>
+                    <span class="font-sans-tech text-xs font-medium uppercase tracking-wider text-stone-800">Clinic Open</span>
+                </div>
+                <p class="font-body italic text-stone-500 text-sm">Est. 1992 • London / New York</p>
+            </div>
+        </header>
+
+        <!-- Bento Grid Layout -->
+        <!-- We use bg-black with gap-px to create perfect thin borders between cells -->
+        <div class="flex-grow bg-black gap-px grid grid-cols-1 md:grid-cols-12 auto-rows-min md:auto-rows-auto border-b border-black">
+            
+            <!-- Cell 1: Hero Article (Text) -->
+            <div class="newsprint-bg col-span-1 md:col-span-4 p-6 md:p-8 flex flex-col justify-between group spotlight-card relative overflow-hidden">
+                <div class="absolute inset-0 spotlight-bg pointer-events-none"></div>
+                <div class="relative z-10">
+                    <span class="inline-block px-2 py-0.5 border border-black text-[10px] font-sans-tech font-semibold uppercase tracking-widest mb-4">Lead Story</span>
+                    <h2 class="font-headline font-semibold text-3xl md:text-4xl leading-tight mb-4 tracking-tight">The Modernization of Family Practice</h2>
+                    <p class="font-body text-stone-800 text-base leading-relaxed drop-cap text-justify">
+                        In an era dominated by rapid technological advancement, we examine the intersection of artificial intelligence and bedside manner. Can algorithms truly replace the intuitive touch of a seasoned practitioner? Our latest study suggests a hybrid approach is the future.
+                    </p>
+                </div>
+                <div class="mt-6 flex items-center justify-between border-t border-stone-300 pt-3 relative z-10">
+                    <span class="font-sans-tech text-xs text-stone-500">4 min read</span>
+                    <iconify-icon icon="solar:arrow-right-linear" width="20" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                </div>
+            </div>
+
+            <!-- Cell 2: Hero Image -->
+            <div class="bg-stone-100 col-span-1 md:col-span-5 relative overflow-hidden group h-64 md:h-auto">
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&amp;w=2053&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover editorial-img" alt="Surgery Prep">
+                <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                    <p class="text-white font-sans-tech text-xs uppercase tracking-widest font-medium">Fig 1.1 — Sterile Environment Protocols</p>
+                </div>
+                <button class="absolute top-4 right-4 bg-white/90 p-2 hover:bg-white transition-colors">
+                     <iconify-icon icon="solar:maximize-square-linear" width="20"></iconify-icon>
+                </button>
+            </div>
+
+            <!-- Cell 3: Quick Actions / Stats -->
+            <div class="newsprint-bg col-span-1 md:col-span-3 flex flex-col gap-px bg-black">
+                <!-- Stat Top -->
+                <div class="bg-[#fcfbf8] p-6 flex-1 flex flex-col justify-center items-center text-center hover:bg-[#f5f4f0] transition-colors relative">
+                    <iconify-icon icon="solar:users-group-two-rounded-linear" width="32" class="mb-2 text-stone-400"></iconify-icon>
+                    <span class="text-4xl font-headline font-semibold tracking-tighter">12.5k</span>
+                    <span class="font-sans-tech text-[10px] uppercase tracking-widest text-stone-500 mt-1">Patients Served</span>
+                </div>
+                <!-- Stat Bottom -->
+                 <div class="bg-[#fcfbf8] p-6 flex-1 flex flex-col justify-center items-center text-center hover:bg-[#f5f4f0] transition-colors relative">
+                    <iconify-icon icon="solar:heart-pulse-linear" width="32" class="mb-2 text-stone-400"></iconify-icon>
+                    <span class="text-4xl font-headline font-semibold tracking-tighter">98%</span>
+                    <span class="font-sans-tech text-[10px] uppercase tracking-widest text-stone-500 mt-1">Satisfaction Rate</span>
+                </div>
+                <!-- Action -->
+                <div class="bg-stone-900 p-6 flex-1 flex flex-col justify-center items-center text-center cursor-pointer group hover:bg-black transition-colors">
+                    <span class="text-white font-sans-tech text-xs uppercase tracking-widest font-semibold group-hover:underline underline-offset-4">Book Appointment</span>
+                    <iconify-icon icon="solar:calendar-add-linear" class="text-white mt-2 group-hover:scale-110 transition-transform" width="24"></iconify-icon>
+                </div>
+            </div>
+
+            <!-- Cell 4: Secondary Article -->
+            <div class="newsprint-bg col-span-1 md:col-span-3 p-6 flex flex-col justify-between group cursor-pointer hover:bg-stone-100 transition-colors">
+                <div>
+                     <div class="flex justify-between items-start mb-3">
+                        <iconify-icon icon="solar:test-tube-linear" width="24" class="text-stone-800"></iconify-icon>
+                        <span class="font-body italic text-xs text-stone-500">Lab Results</span>
+                     </div>
+                     <h3 class="font-headline font-semibold text-xl leading-tight mb-2">Bloodwork Analysis Turnaround</h3>
+                     <p class="font-body text-sm text-stone-600 leading-snug">New equipment reduces wait times by 40%. Full report available in patient portal.</p>
+                </div>
+                <div class="w-full bg-stone-200 h-px mt-4 group-hover:bg-black transition-colors"></div>
+            </div>
+
+            <!-- Cell 5: Team Profile (Image) -->
+            <div class="col-span-1 md:col-span-3 h-64 md:h-auto relative group overflow-hidden bg-stone-200">
+                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&amp;w=1964&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover editorial-img" alt="Dr. Richardson">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+                <div class="absolute bottom-4 left-4 bg-[#fcfbf8] border border-black px-3 py-2 shadow-lg">
+                    <p class="font-headline font-semibold text-sm leading-none">Dr. A. Richardson</p>
+                    <p class="font-sans-tech text-[10px] uppercase tracking-wider text-stone-500 leading-none mt-1">Chief Physician</p>
+                </div>
+            </div>
+
+            <!-- Cell 6: Services List -->
+            <div class="newsprint-bg col-span-1 md:col-span-6 p-0 flex flex-col">
+                <div class="border-b border-stone-200 p-3 bg-stone-50">
+                    <h4 class="font-sans-tech text-[10px] uppercase tracking-[0.2em] font-semibold text-stone-500">Departments &amp; Services</h4>
+                </div>
+                <div class="flex-grow grid grid-cols-2 divide-x divide-stone-200">
+                    <!-- Service Item -->
+                    <label class="p-5 hover:bg-stone-100 transition-colors cursor-pointer group flex flex-col justify-center">
+                        <input type="radio" name="dept" class="hidden">
+                        <div class="flex items-center gap-3 mb-2">
+                             <div class="w-8 h-8 rounded-full border border-stone-300 flex items-center justify-center bg-white group-hover:border-black transition-colors">
+                                <iconify-icon icon="solar:bone-linear" class="text-stone-600 group-hover:text-black"></iconify-icon>
+                             </div>
+                             <span class="font-headline font-semibold text-lg group-hover:underline decoration-1 underline-offset-2">Orthopedics</span>
+                        </div>
+                        <p class="text-xs font-body text-stone-500 pl-11">Joint reconstruction &amp; physio.</p>
+                    </label>
+                    
+                    <!-- Service Item -->
+                    <label class="p-5 hover:bg-stone-100 transition-colors cursor-pointer group flex flex-col justify-center border-b border-stone-200 md:border-b-0">
+                        <input type="radio" name="dept" class="hidden">
+                        <div class="flex items-center gap-3 mb-2">
+                             <div class="w-8 h-8 rounded-full border border-stone-300 flex items-center justify-center bg-white group-hover:border-black transition-colors">
+                                <iconify-icon icon="solar:brain-linear" class="text-stone-600 group-hover:text-black"></iconify-icon>
+                             </div>
+                             <span class="font-headline font-semibold text-lg group-hover:underline decoration-1 underline-offset-2">Neurology</span>
+                        </div>
+                        <p class="text-xs font-body text-stone-500 pl-11">Advanced brain mapping.</p>
+                    </label>
+
+                    <!-- Service Item -->
+                    <label class="p-5 hover:bg-stone-100 transition-colors cursor-pointer group flex flex-col justify-center border-t border-stone-200 md:border-t-0">
+                        <input type="radio" name="dept" class="hidden">
+                        <div class="flex items-center gap-3 mb-2">
+                             <div class="w-8 h-8 rounded-full border border-stone-300 flex items-center justify-center bg-white group-hover:border-black transition-colors">
+                                <iconify-icon icon="solar:eye-linear" class="text-stone-600 group-hover:text-black"></iconify-icon>
+                             </div>
+                             <span class="font-headline font-semibold text-lg group-hover:underline decoration-1 underline-offset-2">Ophthalmology</span>
+                        </div>
+                        <p class="text-xs font-body text-stone-500 pl-11">Vision correction surgery.</p>
+                    </label>
+
+                    <!-- Service Item -->
+                    <label class="p-5 hover:bg-stone-100 transition-colors cursor-pointer group flex flex-col justify-center border-t border-stone-200 md:border-t-0">
+                        <input type="radio" name="dept" class="hidden">
+                        <div class="flex items-center gap-3 mb-2">
+                             <div class="w-8 h-8 rounded-full border border-stone-300 flex items-center justify-center bg-white group-hover:border-black transition-colors">
+                                <iconify-icon icon="solar:shield-check-linear" class="text-stone-600 group-hover:text-black"></iconify-icon>
+                             </div>
+                             <span class="font-headline font-semibold text-lg group-hover:underline decoration-1 underline-offset-2">Immunology</span>
+                        </div>
+                        <p class="text-xs font-body text-stone-500 pl-11">Allergy &amp; vaccine clinic.</p>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Lower Section: Chart & Info -->
+        <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x border-b border-black divide-black">
+            
+            <!-- Custom Graph Area -->
+            <div class="newsprint-bg p-6 md:p-8">
+                <div class="flex justify-between items-end mb-6">
+                    <div>
+                        <h3 class="font-headline font-semibold text-xl">Seasonal Trends</h3>
+                        <p class="font-body text-sm text-stone-500 italic">Flu cases vs. Recoveries (Q4)</p>
+                    </div>
+                    <div class="flex gap-4">
+                         <div class="flex items-center gap-1">
+                             <div class="w-2 h-2 bg-black"></div>
+                             <span class="text-[10px] uppercase font-sans-tech">Cases</span>
+                         </div>
+                         <div class="flex items-center gap-1">
+                             <div class="w-2 h-2 border border-black"></div>
+                             <span class="text-[10px] uppercase font-sans-tech">Recovered</span>
+                         </div>
+                    </div>
+                </div>
+                
+                <!-- CSS Grid Bar Chart -->
+                <div class="h-32 flex items-end gap-2 md:gap-4 border-b border-black pb-1">
+                    <!-- Bar 1 -->
+                    <div class="flex-1 flex flex-col gap-1 h-full justify-end group">
+                        <div class="w-full bg-stone-300 h-[40%] relative"><div class="absolute bottom-0 w-full bg-black h-[60%] transition-all duration-500 group-hover:h-[70%]"></div></div>
+                        <span class="text-[10px] text-center font-mono pt-1">OCT</span>
+                    </div>
+                    <!-- Bar 2 -->
+                    <div class="flex-1 flex flex-col gap-1 h-full justify-end group">
+                        <div class="w-full bg-stone-300 h-[60%] relative"><div class="absolute bottom-0 w-full bg-black h-[50%] transition-all duration-500 group-hover:h-[55%]"></div></div>
+                        <span class="text-[10px] text-center font-mono pt-1">NOV</span>
+                    </div>
+                    <!-- Bar 3 -->
+                    <div class="flex-1 flex flex-col gap-1 h-full justify-end group">
+                        <div class="w-full bg-stone-300 h-[85%] relative"><div class="absolute bottom-0 w-full bg-black h-[40%] transition-all duration-500 group-hover:h-[45%]"></div></div>
+                        <span class="text-[10px] text-center font-mono pt-1">DEC</span>
+                    </div>
+                    <!-- Bar 4 -->
+                    <div class="flex-1 flex flex-col gap-1 h-full justify-end group">
+                         <div class="w-full bg-stone-300 h-[30%] relative"><div class="absolute bottom-0 w-full bg-black h-[80%] transition-all duration-500 group-hover:h-[90%]"></div></div>
+                        <span class="text-[10px] text-center font-mono pt-1">JAN</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="bg-stone-100 p-6 md:p-8 flex flex-col justify-center">
+                <h3 class="font-headline font-semibold text-2xl mb-2">The Weekly Rounds</h3>
+                <p class="font-body text-sm text-stone-600 mb-4 max-w-md">Subscribe to our curated digest of medical news, practice updates, and health tips delivered every Sunday morning.</p>
+                
+                <form class="flex gap-0 border border-black w-full max-w-md">
+                    <input type="email" placeholder="Email Address" class="bg-white px-4 py-3 font-body text-sm outline-none w-full placeholder:text-stone-400 text-black">
+                    <button type="button" class="bg-black text-white px-6 py-3 font-sans-tech text-[10px] uppercase tracking-widest font-semibold hover:bg-stone-800 transition-colors whitespace-nowrap">
+                        Subscribe
+                    </button>
+                </form>
+                <div class="mt-4 flex gap-4 text-stone-500">
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-black">
+                         <input type="checkbox" id="terms" class="accent-black">
+                         <label for="terms" class="text-[10px] uppercase font-sans-tech cursor-pointer">I agree to terms</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-[#fcfbf8] p-4 md:p-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-sans-tech uppercase tracking-widest text-stone-500 shrink-0">
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-black transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-black transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-black transition-colors">Sitemap</a>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full border border-stone-400"></span>
+                <span>All Systems Operational</span>
+            </div>
+            <div>
+                © 2024 The Medical Journal Group.
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Spotlight Effect Logic
+        const container = document.querySelector('main');
+        const cards = document.querySelectorAll('.spotlight-card');
+
+        container.addEventListener('mousemove', (e) => {
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            });
+        });
+    </script>
+
+</body></html>
