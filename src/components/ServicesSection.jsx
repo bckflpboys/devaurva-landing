@@ -597,6 +597,109 @@ const WebsiteDevelopmentBento = () => {
     );
 };
 
+const ExtensionsShowcase = () => {
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+    const y2 = useTransform(scrollYProgress, [0, 1], [50, -50]);
+    const y3 = useTransform(scrollYProgress, [0, 1], [150, -150]);
+
+    return (
+        <section ref={containerRef} className="py-32 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    {/* Left Side: Content */}
+                    <div className="lg:col-span-5 z-20">
+                        <motion.span 
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            className="text-xs font-black uppercase tracking-[0.5em] text-orange-500 mb-6 block"
+                        >
+                            Case Studies
+                        </motion.span>
+                        <motion.h2 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9] mb-8"
+                        >
+                            BROWSER <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-rose-500 to-amber-500">EXTENSIONS</span>
+                        </motion.h2>
+                        <motion.p 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                            className="text-zinc-400 text-lg md:text-xl font-medium leading-relaxed mb-12"
+                        >
+                            Transforming the web experience with high-performance Chrome and browser extensions. From productivity tools to complex data scrapers, we build capabilities that feel native to the browser.
+                        </motion.p>
+
+                        <div className="flex flex-wrap gap-4 mb-12">
+                            {['Auto-Automation', 'Data Intelligence', 'Safe Browsing', 'Real-time Sync'].map((tag, i) => (
+                                <span key={i} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-widest text-zinc-300">
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex items-center gap-2 group font-bold text-lg border-b-2 pb-2 transition-all duration-300 text-white border-orange-500/50"
+                        >
+                            View All Extensions <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </motion.button>
+                    </div>
+
+                    {/* Right Side: Creative Visual Stack */}
+                    <div className="lg:col-span-7 relative min-h-[500px] md:min-h-[700px] flex items-center justify-center pt-20 lg:pt-0">
+                        {/* Core Glass Card 1 */}
+                        <motion.div 
+                            style={{ y: y1 }}
+                            className="absolute z-30 left-0 top-0 w-3/4 md:w-3/5 aspect-video rounded-2xl overflow-hidden border border-white/20 shadow-2xl rotate-[-4deg] group hover:rotate-0 transition-transform duration-700"
+                        >
+                            <img src="/web-sec/ext 1.jpg" alt="Extension v1" className="w-full h-full object-cover" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <span className="text-white font-bold text-lg">AI Smart Assistant</span>
+                            </div>
+                        </motion.div>
+
+                        {/* Core Glass Card 2 */}
+                        <motion.div 
+                            style={{ y: y2 }}
+                            className="absolute z-20 right-0 top-1/4 w-3/4 md:w-3/5 aspect-video rounded-2xl overflow-hidden border border-white/20 shadow-2xl rotate-[6deg] group hover:rotate-0 transition-transform duration-700 delay-75"
+                        >
+                            <img src="/web-sec/ext 2.jpg" alt="Extension v2" className="w-full h-full object-cover" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <span className="text-white font-bold text-lg">Web Scraper Pro</span>
+                            </div>
+                        </motion.div>
+
+                        {/* Core Glass Card 3 */}
+                        <motion.div 
+                            style={{ y: y3 }}
+                            className="absolute z-10 left-1/4 bottom-0 w-3/4 md:w-3/5 aspect-video rounded-2xl overflow-hidden border border-white/20 shadow-2xl rotate-[-2deg] group hover:rotate-0 transition-transform duration-700"
+                        >
+                            <img src="/web-sec/ext 3.jpg" alt="Extension v3" className="w-full h-full object-cover" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <span className="text-white font-bold text-lg">Dashboard Hub</span>
+                            </div>
+                        </motion.div>
+
+                        {/* Background Ambient Glow */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-[80%] h-[80%] bg-orange-500/10 blur-[120px] rounded-full animate-pulse" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
 const ServicesSection = ({ onInView, onOutView }) => {
     const sectionRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -642,21 +745,9 @@ const ServicesSection = ({ onInView, onOutView }) => {
                     color="from-sky-400 via-blue-300 to-indigo-100"
                 />
 
-                <ServiceFeature
-                    title="EXTENSIONS"
-                    subtitle="Browser Capabilities"
-                    description="Powerful Chrome and browser extensions that add unique functionality and value to your user's web experience."
-                    image="/devaura/trans tick app 2.png"
-                    color="from-rose-400 via-red-300 to-orange-100"
-                />
+                <ExtensionsShowcase />
 
-                <ServiceFeature
-                    title="GAMES"
-                    subtitle="Interactive Experiences"
-                    description="Engaging 2D and 3D web-based games and interactive experiences that captivating your audience and drive engagement."
-                    image="/devaura/trans tick app 3.png"
-                    color="from-violet-400 via-purple-300 to-fuchsia-100"
-                />
+
             </div>
         </motion.div>
     );
