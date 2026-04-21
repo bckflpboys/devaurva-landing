@@ -10,7 +10,14 @@ const iconMap = {
     Share2: <Share2 className="w-8 h-8 text-indigo-600" />
 };
 
-const QuickServicesSection = () => {
+const QuickServicesSection = ({ onEnquire }) => {
+    const serviceCategoryMap = {
+        "Business Email Setup": "Email Hosting",
+        "Premium Hosting": "Webhosting",
+        "SEO Boost": "SEO Boost",
+        "Social Media Management": "Social Media Management"
+    };
+
     return (
         <section id="quick-services" className="py-20 bg-gradient-to-b from-indigo-50/30 to-white relative" role="region" aria-labelledby="quick-services-heading">
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
@@ -48,16 +55,16 @@ const QuickServicesSection = () => {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 className={`bg-white rounded-2xl p-8 ring-1 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col relative group text-left h-full ${isPrimary
-                                        ? 'ring-indigo-200 border border-indigo-200 shadow-indigo-100'
-                                        : 'ring-gray-200 border border-gray-200'
+                                    ? 'ring-indigo-200 border border-indigo-200 shadow-indigo-100'
+                                    : 'ring-gray-200 border border-gray-200'
                                     }`}
                             >
                                 {/* We no longer need the gradient line if we mirror the pricing cards, or we can keep it inside for flavor */}
 
                                 {service.tag && (
                                     <div className={`tag absolute -top-4 left-1/2 -translate-x-1/2 ${isPrimary
-                                            ? 'bg-indigo-600'
-                                            : 'bg-gray-700'
+                                        ? 'bg-indigo-600'
+                                        : 'bg-gray-700'
                                         } text-white px-4 py-1 rounded-full text-sm font-medium whitespace-nowrap`}>
                                         {service.tag}
                                     </div>
@@ -96,10 +103,13 @@ const QuickServicesSection = () => {
                                 </ul>
 
                                 <button
-                                    onClick={() => {/* Will usually redirect to contact or open form */ window.location.href = '#contact' }}
+                                    onClick={() => onEnquire({
+                                        category: serviceCategoryMap[service.title] || "Enquire/Get Quotes",
+                                        message: `I'm interested in: ${service.features.join(', ')}`
+                                    })}
                                     className={`group flex items-center justify-center gap-2 w-full mt-8 px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ${isPrimary
-                                            ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-                                            : 'bg-gray-400 text-white hover:bg-gray-500'
+                                        ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                                        : 'bg-gray-400 text-white hover:bg-gray-500'
                                         }`}
                                 >
                                     Request Service

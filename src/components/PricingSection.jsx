@@ -3,7 +3,7 @@ import PlanCard from "./PlanCard";
 import TagLine from "./TagLine";
 import { motion } from "framer-motion";
 
-const PricingSection = () => {
+const PricingSection = ({ onEnquire }) => {
     return (
         <section id="pricing" className="py-20 bg-gradient-to-b from-white to-indigo-50/30" role="region" aria-labelledby="pricing-heading">
             <TagLine>Pricing Plans</TagLine>
@@ -53,6 +53,7 @@ const PricingSection = () => {
                     <PlanCard
                         key={index}
                         {...plan}
+                        onEnquire={onEnquire}
                         role="listitem"
                         aria-label={`${plan.name} plan`}
                     />

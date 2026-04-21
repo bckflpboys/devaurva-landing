@@ -37,12 +37,12 @@ const Home = ({ theme, setTheme }) => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       animate={{ backgroundColor: theme === 'dark' ? '#050505' : '#ffffff' }}
       transition={{ duration: 1 }}
       className="relative min-h-screen"
     >
-      <motion.div 
+      <motion.div
         animate={{ opacity: theme === 'dark' ? 0.3 : 1 }}
         transition={{ duration: 1 }}
         className="w-screen min-h-screen fixed z-0 justify-center px-6 py-40 pointer-events-none"
@@ -56,10 +56,10 @@ const Home = ({ theme, setTheme }) => {
         <ServicesSection onInView={() => setTheme('dark')} onOutView={() => setTheme('light')} />
         <Slider />
         <RoadMapSection />
-        <FeaturesSection />
+        {/* <FeaturesSection /> */}
         <ProjectsSection />
-        <PricingSection />
-        <QuickServicesSection />
+        <PricingSection onEnquire={handleEnquire} />
+        <QuickServicesSection onEnquire={handleEnquire} />
         <MarketingSalesSection onEnquire={handleEnquire} />
 
         <Contact preFill={contactPreFill} />

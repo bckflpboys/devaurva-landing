@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { websiteTypes } from "../data/websiteTypes";
 
-const PlanCard = ({ priceRange, title, description, features, isPopular, isCustom, tag }) => {
+const PlanCard = ({ priceRange, title, description, features, isPopular, isCustom, tag, onEnquire }) => {
     const navigate = useNavigate();
     const [showForm, setShowForm] = useState(false);
     const [submitting, setSubmitting] = useState(false);
@@ -91,6 +91,11 @@ const PlanCard = ({ priceRange, title, description, features, isPopular, isCusto
     const handleClick = () => {
         if (isCustom) {
             navigate('/custom-plan');
+        } else if (onEnquire) {
+            onEnquire({
+                category: title === 'Professional' ? ["Ecommerce", "Software (SaaS)"] : ["Website Development"],
+                message: `I'm interested in the ${title} Plan (${priceRange}).\n\nFeatures included:\n- ${features.join('\n- ')}`
+            });
         } else {
             setShowForm(true);
         }
