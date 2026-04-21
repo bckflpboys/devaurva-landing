@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 
 import './App.css';
 import NavBar from './components/NavBar';
@@ -74,6 +75,7 @@ function App() {
 
   return (
     <Router>
+      <Analytics />
       <ScrollToTop />
       <div className="relative">
         <NavBar isHidden={theme === 'dark'} />
