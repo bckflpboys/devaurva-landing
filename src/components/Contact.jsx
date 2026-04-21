@@ -155,7 +155,7 @@ const Contact = ({ preFill }) => {
                                         </div>
                                         <div>
                                             <div className="text-[10px] font-black uppercase tracking-widest text-orange-600 mb-1">Location</div>
-                                            <div className="font-extrabold text-lg text-gray-900">Cape Town, SA</div>
+                                            <div className="font-extrabold text-lg text-gray-900">Kimberley, South Africa</div>
                                         </div>
                                     </div>
                                 </div>

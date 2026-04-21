@@ -69,7 +69,7 @@ const RoadMapSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="font-black text-5xl md:text-7xl mb-8 tracking-tighter text-gray-900"
+                        className="font-black text-4xl md:text-7xl mb-8 tracking-tighter text-gray-900"
                     >
                         How We Bring Your <br />
                         <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">Ideas to Life</span>
@@ -79,7 +79,7 @@ const RoadMapSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-gray-500 text-xl md:text-2xl leading-relaxed font-medium"
+                        className="text-gray-500 text-lg md:text-2xl leading-relaxed font-medium px-4 md:px-0"
                     >
                         A systematic approach designed for speed, precision, and <br className="hidden md:block"/>
                         uncompromising quality in every line of code.
@@ -110,13 +110,13 @@ const RoadMapSection = () => {
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="flex flex-col md:flex-row items-center justify-center gap-6 mt-32"
+                    className="flex flex-col md:flex-row items-center justify-center gap-6 mt-20 md:mt-32"
                 >
                     {/* Start Your Roadmap Button with Blue-Orange Gradient Border */}
-                    <div className="inline-block p-[2px] rounded-[2rem] bg-gradient-to-r from-blue-600 to-orange-500 shadow-xl shadow-blue-500/10 hover:shadow-blue-500/20 transition-shadow duration-500">
+                    <div className="inline-block p-[2px] rounded-[2rem] bg-gradient-to-r from-blue-600 to-orange-500 shadow-xl shadow-blue-500/10 hover:shadow-blue-500/20 transition-shadow duration-500 w-full md:w-auto">
                         <button 
                             onClick={scrollToPricing}
-                            className="bg-white text-black px-10 py-5 rounded-[1.85rem] font-bold text-lg hover:bg-transparent hover:text-white transition-all duration-500 flex items-center gap-3"
+                            className="bg-white text-black px-10 py-5 rounded-[1.85rem] font-bold text-lg hover:bg-transparent hover:text-white transition-all duration-500 flex items-center justify-center gap-3 w-full"
                         >
                             Start Your Roadmap
                             <ChevronRight className="w-6 h-6" />
@@ -126,7 +126,7 @@ const RoadMapSection = () => {
                     {/* Contact Us Button (Orange) */}
                     <a 
                         href="#contact"
-                        className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 shadow-xl shadow-orange-500/20 hover:scale-105 flex items-center gap-3 border-2 border-orange-400/20"
+                        className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 shadow-xl shadow-orange-500/20 hover:scale-105 flex items-center justify-center gap-3 border-2 border-orange-400/20 w-full md:w-auto"
                     >
                         Contact Us
                         <div className="w-2 h-2 bg-white rounded-full animate-pulse" />

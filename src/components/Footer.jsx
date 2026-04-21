@@ -103,7 +103,7 @@ const Footer = () => {
                                 <li>
                                     <a href="#" className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors text-sm">
                                         <MapPin size={16} className="mr-2" />
-                                        Cape Town, South Africa
+                                        Kimberley, South Africa
                                     </a>
                                 </li>
                             </ul>

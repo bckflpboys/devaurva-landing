@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 import { projects } from '../data/projects';
 
 const ProjectCard = ({ project }) => {
@@ -34,7 +34,7 @@ const ProjectCard = ({ project }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             style={{ borderColor }}
-            className="flex-none w-[400px] md:w-full h-full bg-white/70 backdrop-blur-xl rounded-t-2xl rounded-b-[2.5rem] border relative overflow-hidden group transition-all duration-700 flex flex-col"
+            className="flex-none w-[85vw] md:w-full h-full bg-white/70 backdrop-blur-xl rounded-t-2xl rounded-b-[2.5rem] border relative overflow-hidden group transition-all duration-700 flex flex-col"
             role="listitem"
         >
             <motion.div
@@ -57,7 +57,7 @@ const ProjectCard = ({ project }) => {
                     />
                 </AnimatePresence>
                 <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-700" />
-                
+
                 {/* Category Tag */}
                 {project.category && (
                     <div className="absolute top-4 right-4 z-20">
@@ -95,6 +95,14 @@ const ProjectCard = ({ project }) => {
 };
 
 const ProjectsSection = () => {
+    const scrollContainerRef = useRef(null);
+
+    const scrollRight = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollBy({ left: 350, behavior: 'smooth' });
+        }
+    };
+
     return (
         <section id="projects" className="py-32 relative overflow-hidden bg-white" role="region" aria-labelledby="projects-heading">
             <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -116,10 +124,28 @@ const ProjectsSection = () => {
                     </p>
                 </div>
 
-                <div className="flex overflow-x-auto gap-8 pb-12 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 justify-center no-scrollbar" role="list" aria-label="Projects list">
-                    {projects.map((project) => (
-                        <ProjectCard key={project.id} project={project} />
-                    ))}
+                <div className="relative">
+                    <div 
+                        ref={scrollContainerRef}
+                        className="flex overflow-x-auto gap-8 pb-12 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 justify-start md:justify-center no-scrollbar" 
+                        role="list" 
+                        aria-label="Projects list"
+                    >
+                        {projects.map((project) => (
+                            <ProjectCard key={project.id} project={project} />
+                        ))}
+                    </div>
+
+                    {/* Side Scroll Button (Mobile Only) */}
+                    <div className="md:hidden absolute right-0 top-1/2 -translate-y-1/2 z-20 pr-2 pointer-events-none">
+                        <button 
+                            onClick={scrollRight}
+                            className="w-14 h-14 rounded-full bg-yellow-400 border-2 border-black/10 shadow-2xl flex items-center justify-center pointer-events-auto active:scale-95 transition-transform"
+                            aria-label="Scroll right"
+                        >
+                            <ArrowRight size={24} className="text-black" />
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>

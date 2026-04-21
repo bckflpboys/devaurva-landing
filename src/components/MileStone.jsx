@@ -10,9 +10,9 @@ const MileStone = ({ title, description, lastItem, icon, index, gif, side }) => 
     });
 
     return (
-        <div ref={ref} className="flex flex-col md:flex-row w-full mb-48 last:mb-0 relative group items-start perspective-1000">
+        <div ref={ref} className="flex flex-col md:flex-row w-full mb-20 md:mb-48 last:mb-0 relative group items-start perspective-1000">
             {/* Timeline track and node */}
-            <div className="flex md:flex-col items-center mr-0 md:mr-16 mb-8 md:mb-0">
+            <div className="flex md:flex-col items-center mr-0 md:mr-16 mb-4 md:mb-0">
                 <div className="relative flex flex-col items-center">
                     {/* Node Aura - Peaking at Center */}
                     <motion.div 
@@ -64,12 +64,12 @@ const MileStone = ({ title, description, lastItem, icon, index, gif, side }) => 
 
             {/* Content Container (Card + GIF) - Popping at Center */}
             <motion.div 
-                className={`flex-1 flex flex-col md:flex-row gap-12 items-center ${side === 'left' ? 'md:flex-row-reverse' : ''}`}
+                className={`flex-1 flex flex-col md:flex-row gap-8 md:gap-12 items-center ${side === 'left' ? 'md:flex-row-reverse' : ''}`}
                 style={{
-                    scale: useTransform(scrollYProgress, [0, 0.4, 0.5, 0.6, 1], [0.7, 0.8, 1.15, 1, 0.9]),
+                    scale: useTransform(scrollYProgress, [0, 0.4, 0.5, 0.6, 1], [0.8, 0.9, 1.05, 1, 0.9]),
                     opacity: useTransform(scrollYProgress, [0, 0.4, 0.5, 0.6, 1], [0, 0.5, 1, 0.8, 0]),
-                    y: useTransform(scrollYProgress, [0.3, 0.5], [100, 0]),
-                    rotateX: useTransform(scrollYProgress, [0.3, 0.5], [20, 0]),
+                    y: useTransform(scrollYProgress, [0.3, 0.5], [50, 0]),
+                    rotateX: useTransform(scrollYProgress, [0.3, 0.5], [10, 0]),
                     transformPerspective: 1000
                 }}
             >
@@ -77,21 +77,23 @@ const MileStone = ({ title, description, lastItem, icon, index, gif, side }) => 
                 <motion.div 
                     className="w-full md:w-2/3"
                     style={{
-                        x: useTransform(scrollYProgress, [0.3, 0.5], [side === 'right' ? 80 : -80, 0])
+                        x: typeof window !== 'undefined' && window.innerWidth > 768 
+                            ? useTransform(scrollYProgress, [0.3, 0.5], [side === 'right' ? 80 : -80, 0])
+                            : 0
                     }}
                 >
-                    <div className="relative p-10 rounded-[2.5rem] bg-white/60 backdrop-blur-xl border-2 border-indigo-100 shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_rgba(99,102,241,0.1)] transition-all duration-700 group-hover:border-indigo-400 group-hover:-translate-y-2">
+                    <div className="relative p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white/60 backdrop-blur-xl border-2 border-indigo-100 shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_rgba(99,102,241,0.1)] transition-all duration-700 group-hover:border-indigo-400 group-hover:-translate-y-2">
                         {/* Corner Decoration */}
                         <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-20 transition-opacity">
                             <CheckCircle2 className="w-16 h-16 text-indigo-600" />
                         </div>
 
-                        <div className="mb-6">
-                            <span className="text-[10px] font-black tracking-[0.2em] uppercase text-indigo-600 mb-2 block">PHASE 0{index}</span>
-                            <h3 className="text-3xl font-black text-gray-900 tracking-tight leading-none">{title}</h3>
+                        <div className="mb-4 md:mb-6">
+                            <span className="text-[10px] font-black tracking-[0.2em] uppercase text-indigo-600 mb-1 md:mb-2 block">PHASE 0{index}</span>
+                            <h3 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tight leading-none">{title}</h3>
                         </div>
 
-                        <p className="text-gray-600 text-xl leading-relaxed mb-8 font-medium">
+                        <p className="text-gray-600 text-lg md:text-xl leading-relaxed mb-6 md:mb-8 font-medium">
                             {description}
                         </p>
 
