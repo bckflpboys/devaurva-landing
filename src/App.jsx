@@ -21,6 +21,7 @@ import Terms from './pages/terms';
 import Refund from './pages/refund';
 import Privacy from './pages/privacy';
 import Landing from './pages/landing';
+import Portfolio from './pages/portfolio';
 import MarketingSalesSection from './components/MarketingSalesSection';
 
 
@@ -82,6 +83,7 @@ function App() {
           <Route path="/terms" element={<Terms />} />
           <Route path="/refund" element={<Refund />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/landing" element={<Landing />} />
         </Routes>
         <Footer />

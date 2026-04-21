@@ -7,7 +7,7 @@ const Footer = () => {
         <footer className="relative mt-20">
             {/* Background decoration */}
             <div className="absolute inset-0 bg-gradient-to-b from-white via-indigo-50/30 to-indigo-100/30" />
-            
+
             <div className="relative border-t border-indigo-100">
                 <div className="max-w-screen-xl mx-auto px-6 py-12">
                     {/* Main footer content */}
@@ -49,8 +49,13 @@ const Footer = () => {
                                     </li>
                                 ))}
                                 <li>
-                                    <Link 
-                                        to="/custom-plan" 
+                                    <Link to="/portfolio" className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
+                                        Portfolio
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        to="/custom-plan"
                                         className="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient text-sm"
                                     >
                                         Customized Pricing

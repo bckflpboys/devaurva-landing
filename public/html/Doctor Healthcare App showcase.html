@@ -1,0 +1,517 @@
+<html lang="en" class="dark"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Aura Health | Next Gen Patient Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: white; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(45, 212, 191, 0); } 100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0); } }
+        
+        .animate-fade-up { animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-teal-500/30 selection:text-teal-200">
+
+    <!-- Background Gradients -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-teal-500/10 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[800px] h-[600px] bg-blue-600/5 rounded-full blur-[120px]"></div>
+        <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 pt-6 px-4 flex justify-center">
+        <div class="flex items-center justify-between w-full max-w-5xl bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-2xl animate-fade-up">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-teal-400 to-blue-500 flex items-center justify-center text-black">
+                    <iconify-icon icon="solar:heart-pulse-bold" width="18"></iconify-icon>
+                </div>
+                <span class="text-lg font-medium tracking-tight text-white font-heading">Aura Health</span>
+            </div>
+
+            <!-- Links -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Features</a>
+                <a href="#" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Doctors</a>
+                <a href="#" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Patient Stories</a>
+                <a href="#" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Pricing</a>
+            </div>
+
+            <!-- CTA -->
+            <div class="flex items-center gap-4">
+                <a href="#" class="hidden md:flex text-sm font-medium text-white hover:text-teal-300 transition-colors">Log in</a>
+                <a href="#" class="bg-white text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors tracking-tight">
+                    Download App
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 flex flex-col items-center pt-32 px-6">
+        
+        <!-- Hero Section -->
+        <div class="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8 animate-fade-up">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-500/20 bg-teal-500/10 text-teal-300 text-xs font-medium tracking-wide">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+                </span>
+                Accepting New Patients
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-light tracking-tight text-white leading-[1.1]">
+                Healthcare, reimagined <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-200 to-blue-400 font-normal">
+                    around your life.
+                </span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Connect with top-tier specialists, track your vitals in real-time, and manage prescriptions—all from the comfort of your pocket.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center gap-4 pt-4">
+                <button class="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-medium text-sm flex items-center justify-center gap-2 hover:scale-105 transition-transform duration-300">
+                    <iconify-icon icon="solar:apple-bold" width="20"></iconify-icon>
+                    Get on App Store
+                </button>
+                <button class="w-full sm:w-auto px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-medium text-sm flex items-center justify-center gap-2 hover:bg-white/10 transition-colors">
+                    <iconify-icon icon="solar:play-circle-linear" width="20"></iconify-icon>
+                    See how it works
+                </button>
+            </div>
+        </div>
+
+        <!-- Phone Visual Area -->
+        <div class="relative mt-24 w-full max-w-6xl mx-auto h-[800px] flex justify-center items-start">
+            
+            <!-- Floating Widget: Heart Rate (Left) -->
+            <div class="absolute left-4 lg:left-24 top-20 z-20 hidden md:flex items-center gap-4 p-3 pr-6 bg-[#0A0A0A]/90 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl animate-float delay-100">
+                <div class="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center text-rose-500">
+                    <iconify-icon icon="solar:heart-pulse-bold" width="24"></iconify-icon>
+                </div>
+                <div>
+                    <div class="text-xs text-gray-400 font-medium">Heart Rate</div>
+                    <div class="text-sm font-semibold text-white">72 BPM <span class="text-teal-400 text-[10px] ml-1">Normal</span></div>
+                </div>
+            </div>
+
+            <!-- Floating Widget: Appointment (Right) -->
+            <div class="absolute right-4 lg:right-24 top-40 z-20 hidden md:flex items-center gap-4 p-3 pr-6 bg-[#0A0A0A]/90 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl animate-float delay-300">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400">
+                    <iconify-icon icon="solar:calendar-bold" width="24"></iconify-icon>
+                </div>
+                <div>
+                    <div class="text-xs text-gray-400 font-medium">Next Visit</div>
+                    <div class="text-sm font-semibold text-white">Tomorrow, 10:00 AM</div>
+                </div>
+            </div>
+
+            <!-- Phone Mockup -->
+            <div class="relative w-[360px] h-[720px] bg-[#050505] rounded-[3rem] border-[8px] border-[#1a1a1a] ring-1 ring-white/10 shadow-2xl overflow-hidden z-10">
+                <!-- Status Bar -->
+                <div class="absolute top-0 w-full px-6 py-3 flex justify-between items-center z-20 text-white text-xs font-medium">
+                    <span>9:41</span>
+                    <div class="flex gap-1">
+                        <iconify-icon icon="solar:signal-bold"></iconify-icon>
+                        <iconify-icon icon="solar:wifi-bold"></iconify-icon>
+                        <iconify-icon icon="solar:battery-full-bold"></iconify-icon>
+                    </div>
+                </div>
+                
+                <!-- Dynamic Island -->
+                <div class="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-7 bg-black rounded-full z-20"></div>
+
+                <!-- App Content -->
+                <div class="pt-12 px-5 h-full overflow-y-auto no-scrollbar pb-20 bg-gradient-to-b from-[#0f172a] to-[#050505]">
+                    
+                    <!-- App Header -->
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gray-700 overflow-hidden border border-white/10">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&amp;fit=crop&amp;q=80&amp;w=100" class="w-full h-full object-cover opacity-80" alt="User">
+                            </div>
+                            <div>
+                                <div class="text-[10px] text-gray-400 uppercase tracking-wider">Welcome back</div>
+                                <div class="text-base font-medium text-white">Sarah Jenkins</div>
+                            </div>
+                        </div>
+                        <button class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white border border-white/10">
+                            <iconify-icon icon="solar:bell-linear" width="20"></iconify-icon>
+                        </button>
+                    </div>
+
+                    <!-- Vitals Card -->
+                    <div class="w-full bg-[#131318] border border-white/5 rounded-3xl p-5 mb-4 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-5 opacity-20 text-rose-500">
+                             <iconify-icon icon="solar:heart-pulse-bold-duotone" width="80"></iconify-icon>
+                        </div>
+                        <div class="relative z-10">
+                            <div class="text-xs text-gray-400 font-medium mb-1">Average Heart Rate</div>
+                            <div class="flex items-baseline gap-2 mb-4">
+                                <span class="text-3xl font-light text-white tracking-tight">72</span>
+                                <span class="text-sm text-gray-500">bpm</span>
+                            </div>
+                            <!-- Simple CSS Chart -->
+                            <div class="flex items-end gap-1.5 h-12 w-full">
+                                <div class="flex-1 bg-rose-500/20 rounded-t-sm h-[40%]"></div>
+                                <div class="flex-1 bg-rose-500/20 rounded-t-sm h-[60%]"></div>
+                                <div class="flex-1 bg-rose-500/20 rounded-t-sm h-[50%]"></div>
+                                <div class="flex-1 bg-rose-500 rounded-t-sm h-[75%] shadow-[0_0_10px_rgba(244,63,94,0.5)]"></div>
+                                <div class="flex-1 bg-rose-500/20 rounded-t-sm h-[55%]"></div>
+                                <div class="flex-1 bg-rose-500/20 rounded-t-sm h-[45%]"></div>
+                                <div class="flex-1 bg-rose-500/20 rounded-t-sm h-[60%]"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions Grid -->
+                    <div class="grid grid-cols-2 gap-3 mb-4">
+                        <button class="bg-[#131318] border border-white/5 p-4 rounded-3xl flex flex-col gap-3 hover:bg-white/5 transition-colors text-left group">
+                            <div class="w-10 h-10 rounded-full bg-teal-500/10 text-teal-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <iconify-icon icon="solar:videocamera-record-linear" width="20"></iconify-icon>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-white">Telehealth</div>
+                                <div class="text-[10px] text-gray-500">Call Doctor</div>
+                            </div>
+                        </button>
+                        <button class="bg-[#131318] border border-white/5 p-4 rounded-3xl flex flex-col gap-3 hover:bg-white/5 transition-colors text-left group">
+                            <div class="w-10 h-10 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <iconify-icon icon="solar:pill-linear" width="20"></iconify-icon>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-white">Pharmacy</div>
+                                <div class="text-[10px] text-gray-500">Refill Rx</div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Upcoming Appointment -->
+                    <div class="bg-gradient-to-br from-teal-900/40 to-[#131318] border border-teal-500/20 rounded-3xl p-5 relative overflow-hidden">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <div class="text-[10px] font-semibold text-teal-400 uppercase tracking-wider mb-1">Up Next</div>
+                                <div class="text-base font-medium text-white">Dr. Emily Chen</div>
+                                <div class="text-xs text-gray-400">Cardiologist • Video Call</div>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&amp;fit=crop&amp;q=80&amp;w=100" alt="Doc" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-black/20 rounded-xl p-3 backdrop-blur-sm">
+                            <div class="text-center px-2 border-r border-white/10">
+                                <div class="text-[10px] text-gray-400">OCT</div>
+                                <div class="text-sm font-bold text-white">24</div>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-white">10:00 AM</div>
+                                <div class="text-[10px] text-gray-400">30 min session</div>
+                            </div>
+                            <button class="ml-auto w-8 h-8 rounded-full bg-teal-500 text-black flex items-center justify-center hover:bg-teal-400 transition-colors">
+                                <iconify-icon icon="solar:videocamera-bold" width="16"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Dock -->
+                <div class="absolute bottom-0 w-full px-6 pb-6 pt-4 bg-[#050505]/90 backdrop-blur-xl border-t border-white/5 z-20 flex justify-between items-end">
+                    <button class="flex flex-col items-center gap-1 text-teal-400">
+                        <iconify-icon icon="solar:home-smile-bold" width="24"></iconify-icon>
+                    </button>
+                    <button class="flex flex-col items-center gap-1 text-gray-500 hover:text-white transition-colors">
+                        <iconify-icon icon="solar:calendar-linear" width="24"></iconify-icon>
+                    </button>
+                    <button class="flex flex-col items-center gap-1 text-gray-500 hover:text-white transition-colors">
+                        <iconify-icon icon="solar:chat-round-dots-linear" width="24"></iconify-icon>
+                    </button>
+                    <button class="flex flex-col items-center gap-1 text-gray-500 hover:text-white transition-colors">
+                        <iconify-icon icon="solar:user-circle-linear" width="24"></iconify-icon>
+                    </button>
+                </div>
+
+                <!-- Home Bar -->
+                <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/20 rounded-full z-30"></div>
+            </div>
+
+            <!-- Background Glow behind phone -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[700px] bg-teal-500/20 blur-[100px] -z-10"></div>
+        </div>
+
+        <!-- Bento Grid / Features -->
+        <section class="w-full max-w-6xl mt-20 mb-32">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-light text-white tracking-tight mb-4">Complete Health Ecosystem</h2>
+                <p class="text-gray-400 font-light">Everything you need to manage your well-being in one secure place.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
+                
+                <!-- Card 1: Vitals -->
+                <div class="md:col-span-2 relative group bg-[#0A0A0C] border border-white/10 rounded-3xl p-8 overflow-hidden hover:border-teal-500/30 transition-colors duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10 flex flex-col h-full justify-between">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-2xl font-medium text-white">Real-time Vitals</h3>
+                                <p class="text-gray-400 text-sm mt-2 max-w-sm font-light">Sync with Apple Watch, Oura, and Fitbit to visualize your health trends instantly.</p>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-teal-500/10 flex items-center justify-center text-teal-400">
+                                <iconify-icon icon="solar:graph-up-linear" width="24"></iconify-icon>
+                            </div>
+                        </div>
+                        <!-- Decorative Graph -->
+                        <div class="w-full h-32 mt-4 relative">
+                            <svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 50">
+                                <path d="M0 40 Q 20 45 40 20 T 80 30 T 100 10" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" class="drop-shadow-[0_0_10px_rgba(45,212,191,0.5)]"></path>
+                                <path d="M0 40 Q 20 45 40 20 T 80 30 T 100 10 V 50 H 0 Z" fill="url(#gradient)" opacity="0.2"></path>
+                                <defs>
+                                    <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+                                        <stop offset="0%" stop-color="#2dd4bf"></stop>
+                                        <stop offset="100%" stop-color="transparent"></stop>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Security -->
+                <div class="bg-[#0A0A0C] border border-white/10 rounded-3xl p-8 relative overflow-hidden group hover:border-blue-500/30 transition-colors duration-500">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-blue-500/20 blur-[50px] rounded-full"></div>
+                    <div class="relative z-10 flex flex-col h-full items-center justify-center text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-500/20">
+                            <iconify-icon icon="solar:shield-check-bold" width="32"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-medium text-white mb-2">HIPAA Compliant</h3>
+                        <p class="text-gray-400 text-sm font-light">End-to-end encryption ensures your medical data remains private and secure.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: AI Doctor -->
+                <div class="bg-[#0A0A0C] border border-white/10 rounded-3xl p-8 relative overflow-hidden group hover:border-purple-500/30 transition-colors duration-500">
+                    <div class="relative z-10">
+                        <div class="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400 mb-4">
+                            <iconify-icon icon="solar:magic-stick-3-linear" width="24"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-medium text-white mb-2">Aura AI Assistant</h3>
+                        <p class="text-gray-400 text-sm font-light">Symptom checking and triage powered by advanced medical LLMs.</p>
+                        
+                        <!-- Chat Bubble Visual -->
+                        <div class="mt-6 space-y-3">
+                            <div class="bg-white/5 rounded-2xl rounded-tl-sm p-3 text-xs text-gray-300 w-[90%] border border-white/5">
+                                I've had a headache for 2 days...
+                            </div>
+                            <div class="bg-purple-500/20 rounded-2xl rounded-tr-sm p-3 text-xs text-purple-200 w-[90%] ml-auto border border-purple-500/20">
+                                Let's check a few other symptoms. Are you sensitive to light?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Specialists -->
+                <div class="md:col-span-2 bg-[#0A0A0C] border border-white/10 rounded-3xl p-8 relative overflow-hidden group hover:border-orange-500/30 transition-colors duration-500 flex flex-col md:flex-row items-center gap-8">
+                     <div class="flex-1">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-500/20 bg-orange-500/10 text-orange-300 text-[10px] font-semibold tracking-wide uppercase mb-4">
+                            Network
+                        </div>
+                        <h3 class="text-2xl font-medium text-white mb-3">Top-tier Specialists</h3>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">
+                            Access a curated network of board-certified doctors across 50+ specialties. From cardiology to dermatology, help is one tap away.
+                        </p>
+                        <div class="flex items-center gap-2 mt-6">
+                            <div class="flex -space-x-3">
+                                <img class="w-8 h-8 rounded-full border-2 border-[#0A0A0C]" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&amp;fit=crop&amp;q=80&amp;w=100" alt="">
+                                <img class="w-8 h-8 rounded-full border-2 border-[#0A0A0C]" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&amp;fit=crop&amp;q=80&amp;w=100" alt="">
+                                <img class="w-8 h-8 rounded-full border-2 border-[#0A0A0C]" src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&amp;fit=crop&amp;q=80&amp;w=100" alt="">
+                            </div>
+                            <span class="text-xs text-gray-500 font-medium">+200 Specialists online</span>
+                        </div>
+                     </div>
+                     <div class="w-full md:w-1/2 h-full min-h-[150px] relative bg-gradient-to-b from-white/5 to-transparent rounded-2xl border border-white/5 p-4 flex items-center justify-center">
+                        <div class="grid grid-cols-2 gap-3 w-full">
+                            <div class="bg-[#111] p-3 rounded-xl border border-white/10 flex items-center gap-3">
+                                <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400">
+                                    <iconify-icon icon="solar:stethoscope-linear"></iconify-icon>
+                                </div>
+                                <div class="text-xs text-white">General</div>
+                            </div>
+                            <div class="bg-[#111] p-3 rounded-xl border border-white/10 flex items-center gap-3">
+                                <div class="w-8 h-8 bg-rose-500/20 rounded-lg flex items-center justify-center text-rose-400">
+                                    <iconify-icon icon="solar:heart-pulse-linear"></iconify-icon>
+                                </div>
+                                <div class="text-xs text-white">Cardio</div>
+                            </div>
+                            <div class="bg-[#111] p-3 rounded-xl border border-white/10 flex items-center gap-3">
+                                <div class="w-8 h-8 bg-amber-500/20 rounded-lg flex items-center justify-center text-amber-400">
+                                    <iconify-icon icon="solar:brain-linear"></iconify-icon>
+                                </div>
+                                <div class="text-xs text-white">Neuro</div>
+                            </div>
+                            <div class="bg-[#111] p-3 rounded-xl border border-white/10 flex items-center gap-3">
+                                <div class="w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center text-emerald-400">
+                                    <iconify-icon icon="solar:leaf-linear"></iconify-icon>
+                                </div>
+                                <div class="text-xs text-white">Holistic</div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Section -->
+        <section class="w-full max-w-5xl mb-32 relative">
+            <div class="absolute -top-20 -left-20 w-64 h-64 bg-teal-500/10 rounded-full blur-[80px]"></div>
+            
+            <div class="bg-[#0A0A0C] border border-white/10 rounded-[3rem] p-8 md:p-16 flex flex-col md:flex-row gap-12 items-center relative z-10 overflow-hidden">
+                <div class="absolute top-0 right-0 w-[500px] h-full bg-gradient-to-l from-teal-900/10 to-transparent pointer-events-none"></div>
+                
+                <div class="w-full md:w-1/3 relative">
+                    <div class="aspect-square rounded-[2rem] overflow-hidden border border-white/10 relative group">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&amp;fit=crop&amp;q=80&amp;w=600" alt="Patient" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                </div>
+
+                <div class="w-full md:w-2/3">
+                    <div class="text-teal-400 mb-6">
+                        <iconify-icon icon="solar:quote-up-square-bold" width="48"></iconify-icon>
+                    </div>
+                    <blockquote class="text-2xl md:text-4xl font-light text-white leading-tight mb-8">
+                        "The ability to text my doctor and get a prescription refill in minutes, not days, has been completely life-changing."
+                    </blockquote>
+                    <div class="flex items-center gap-4">
+                        <div>
+                            <div class="text-lg font-medium text-white">Elena Rodriguez</div>
+                            <div class="text-sm text-gray-500">Patient since 2023</div>
+                        </div>
+                        <div class="h-px flex-1 bg-white/10"></div>
+                        <div class="flex text-amber-400">
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Doctor Offer / Plans -->
+        <section class="w-full max-w-4xl mb-32 text-center">
+            <h2 class="text-3xl md:text-5xl font-light text-white mb-12">Care Plans</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Basic -->
+                <div class="p-8 rounded-3xl border border-white/10 bg-[#0A0A0C] flex flex-col items-start hover:border-white/20 transition-colors">
+                    <div class="text-gray-400 font-medium text-sm mb-4">Aura Basic</div>
+                    <div class="text-4xl font-light text-white mb-6">Free</div>
+                    <ul class="space-y-3 mb-8 text-left w-full">
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <iconify-icon icon="solar:check-circle-linear" class="text-teal-400"></iconify-icon> Symptom Checker
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <iconify-icon icon="solar:check-circle-linear" class="text-teal-400"></iconify-icon> Medication Reminders
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <iconify-icon icon="solar:check-circle-linear" class="text-teal-400"></iconify-icon> Vitals Tracking
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 rounded-full border border-white/20 text-white font-medium text-sm hover:bg-white/5 transition-colors mt-auto">
+                        Download Free
+                    </button>
+                </div>
+
+                <!-- Premium -->
+                <div class="p-8 rounded-3xl border border-teal-500/30 bg-gradient-to-b from-teal-900/10 to-[#0A0A0C] flex flex-col items-start relative overflow-hidden">
+                    <div class="absolute top-0 right-0 px-3 py-1 bg-teal-500 text-black text-[10px] font-bold uppercase rounded-bl-xl">Most Popular</div>
+                    <div class="text-teal-400 font-medium text-sm mb-4">Aura Plus</div>
+                    <div class="text-4xl font-light text-white mb-6">$19<span class="text-lg text-gray-500 font-normal">/mo</span></div>
+                    <ul class="space-y-3 mb-8 text-left w-full">
+                        <li class="flex items-center gap-3 text-sm text-white">
+                            <iconify-icon icon="solar:check-circle-bold" class="text-teal-400"></iconify-icon> Unlimited Doctor Chat
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-white">
+                            <iconify-icon icon="solar:check-circle-bold" class="text-teal-400"></iconify-icon> 24/7 Video Consults
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-white">
+                            <iconify-icon icon="solar:check-circle-bold" class="text-teal-400"></iconify-icon> Family Coverage (up to 4)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-white">
+                            <iconify-icon icon="solar:check-circle-bold" class="text-teal-400"></iconify-icon> Priority Lab Results
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 rounded-full bg-teal-500 text-black font-medium text-sm hover:bg-teal-400 transition-colors mt-auto shadow-[0_0_20px_rgba(45,212,191,0.3)]">
+                        Start 14-Day Trial
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-[#050505] py-16 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-12">
+            <div class="max-w-xs">
+                <div class="flex items-center gap-2 mb-6">
+                    <div class="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center text-black">
+                         <iconify-icon icon="solar:heart-pulse-bold" width="14"></iconify-icon>
+                    </div>
+                    <span class="text-base font-medium text-white">Aura Health</span>
+                </div>
+                <p class="text-sm text-gray-500 font-light leading-relaxed">
+                    Democratizing access to world-class healthcare through technology and compassion.
+                </p>
+            </div>
+            
+            <div class="flex gap-16">
+                <div>
+                    <h4 class="text-white font-medium text-sm mb-4">Patient Care</h4>
+                    <ul class="space-y-2 text-sm text-gray-500 font-light">
+                        <li><a href="#" class="hover:text-teal-400 transition-colors">Find a Doctor</a></li>
+                        <li><a href="#" class="hover:text-teal-400 transition-colors">Urgent Care</a></li>
+                        <li><a href="#" class="hover:text-teal-400 transition-colors">Mental Health</a></li>
+                        <li><a href="#" class="hover:text-teal-400 transition-colors">Lab Tests</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium text-sm mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-500 font-light">
+                        <li><a href="#" class="hover:text-teal-400 transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-teal-400 transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-teal-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-teal-400 transition-colors">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 font-light">
+            <p>© 2024 Aura Health Inc. All rights reserved.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors"><iconify-icon icon="solar:brand-twitter-linear" width="16"></iconify-icon></a>
+                <a href="#" class="hover:text-white transition-colors"><iconify-icon icon="solar:brand-instagram-linear" width="16"></iconify-icon></a>
+                <a href="#" class="hover:text-white transition-colors"><iconify-icon icon="solar:brand-linkedin-linear" width="16"></iconify-icon></a>
+            </div>
+        </div>
+    </footer>
+
+
+</body></html>
