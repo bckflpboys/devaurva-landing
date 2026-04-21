@@ -151,7 +151,7 @@ export const projects = [
         image: "/web-sec/st 1.png",
         hoverImage: "/web-sec/st 2.png",
         technologies: ["React", "Node.js", "Tailwind"],
-        liveUrl: "https://staatsprimary.co.za",
+        liveUrl: "https://staats.vercel.app",
         githubUrl: "https://github.com/bckflpboys",
     },
     {
@@ -162,7 +162,7 @@ export const projects = [
         image: "/web-sec/kk 1.png",
         hoverImage: "/web-sec/kk 2.png",
         technologies: ["Next.js", "Express", "MongoDB"],
-        liveUrl: "https://kimkgoloprimary.co.za",
+        liveUrl: "https://kimkgolo.vercel.app",
         githubUrl: "https://github.com/bckflpboys",
     },
     {
@@ -173,7 +173,7 @@ export const projects = [
         image: "/web-sec/ka 1.png",
         hoverImage: "/web-sec/ka 2.png",
         technologies: ["React", "FastAPI", "PostgreSQL"],
-        liveUrl: "https://kimberleyacademy.co.za",
+        liveUrl: "https://kimberley-academy.vercel.app",
         githubUrl: "https://github.com/bckflpboys",
     },
     {
