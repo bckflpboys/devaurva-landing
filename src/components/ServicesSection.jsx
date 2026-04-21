@@ -143,7 +143,7 @@ const AppDevelopmentBento = () => {
     const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
     return (
-        <section ref={containerRef} className="relative min-h-screen py-20 md:py-40 mb-20 scroll-mt-20 overflow-hidden">
+        <section id="apps-bento" ref={containerRef} className="relative min-h-screen py-20 md:py-40 mb-20 scroll-mt-20 overflow-hidden">
             {/* Background Halo Glow - Indigo version for App Dev */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] md:w-[70%] md:h-[70%] bg-indigo-500/10 blur-[160px] rounded-full pointer-events-none" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-purple-500/5 blur-[100px] rounded-full pointer-events-none" />
@@ -620,7 +620,7 @@ const ExtensionsShowcase = () => {
     const y3 = useTransform(scrollYProgress, [0, 1], [150, -150]);
 
     return (
-        <section ref={containerRef} className="py-32 relative overflow-hidden">
+        <section id="extensions-bento" ref={containerRef} className="py-32 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     {/* Left Side: Content */}
@@ -722,7 +722,7 @@ const EcommerceShowcase = () => {
     const scrollScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
 
     return (
-        <section ref={containerRef} className="py-40 relative overflow-hidden bg-[#06060c]">
+        <section id="ecommerce-bento" ref={containerRef} className="py-40 relative overflow-hidden bg-[#06060c]">
             {/* Massive Background Moon Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full aspect-square max-w-4xl bg-emerald-500/5 blur-[180px] rounded-full pointer-events-none" />
 
@@ -845,7 +845,7 @@ const SystemsShowcase = () => {
     const rotate = useTransform(scrollYProgress, [0, 1], [0, 10]);
 
     return (
-        <section ref={containerRef} className="py-40 relative overflow-hidden bg-[#05050a]">
+        <section id="systems-bento" ref={containerRef} className="py-40 relative overflow-hidden bg-[#05050a]">
             {/* Command Center Visual: Grid and Core */}
             <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10 pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-b from-[#05050a] via-transparent to-[#05050a]" />

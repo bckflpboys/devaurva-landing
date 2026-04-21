@@ -96,7 +96,7 @@ const ProjectCard = ({ project }) => {
 
 const ProjectsSection = () => {
     return (
-        <section id="clientprojects" className="py-32 relative overflow-hidden bg-white" role="region" aria-labelledby="projects-heading">
+        <section id="projects" className="py-32 relative overflow-hidden bg-white" role="region" aria-labelledby="projects-heading">
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-20">
                     <motion.span

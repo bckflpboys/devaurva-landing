@@ -159,7 +159,11 @@ const MarketingSalesSection = ({ onEnquire }) => {
                     const isAds = category.category === "Digital Paid Advertising";
                     const isGrowth = category.category === "Digital Marketing";
                     return (
-                        <div key={catIdx} className={catIdx > 0 ? "mt-32 md:mt-48" : ""}>
+                        <div 
+                            key={catIdx} 
+                            id={category.category === "Digital Paid Advertising" ? "paid-advertising" : "digital-marketing"}
+                            className={(catIdx > 0 ? "mt-32 md:mt-48" : "") + " scroll-mt-24"}
+                        >
                             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 px-4">
                                 <div className="max-w-2xl">
                                     <div className="flex items-center gap-4 mb-4">
