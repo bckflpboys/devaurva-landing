@@ -59,15 +59,25 @@ const Portfolio = () => {
                             whileHover={{ y: -8 }}
                             className="relative group bg-white rounded-[2.5rem] p-1 border-2 border-slate-100 hover:border-indigo-500/30 transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(99,102,241,0.15)] flex flex-col"
                         >
-                            {/* Decorative Preview Area */}
-                            <div className="relative aspect-[4/3] rounded-[2rem] bg-indigo-50/50 overflow-hidden flex items-center justify-center border-2 border-white group-hover:bg-indigo-600 transition-colors duration-500">
-                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.8),transparent)] pointer-events-none group-hover:opacity-0 transition-opacity" />
-                                <div className="z-10 transform group-hover:scale-125 transition-transform duration-700">
-                                    <Layout className="w-16 h-16 text-indigo-200 group-hover:text-white/40" />
+                            {/* Live Website Preview (iFrame) */}
+                            <div className="relative aspect-[4/3] rounded-[2rem] bg-slate-100 overflow-hidden border-2 border-white group-hover:border-indigo-500/10 transition-all duration-500">
+                                <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-white/10 to-transparent" />
+                                <div className="w-full h-full scale-[0.35] origin-top-left">
+                                    <iframe 
+                                        src={`/html/${template.file}`}
+                                        className="w-[1000px] h-[800px] border-none pointer-events-none bg-white"
+                                        title={template.name}
+                                        loading="lazy"
+                                        scrolling="no"
+                                    />
                                 </div>
-                                <div className="absolute bottom-6 right-6">
+                                
+                                {/* Overlay hover effect */}
+                                <div className="absolute inset-0 bg-indigo-600/0 group-hover:bg-indigo-600/10 transition-colors duration-500 z-20" />
+                                
+                                <div className="absolute bottom-6 right-6 z-30">
                                     <span className="px-4 py-2 bg-white/90 backdrop-blur-md text-[10px] font-black uppercase tracking-widest rounded-full text-indigo-600 shadow-sm">
-                                        HTML5
+                                        LIVE PREVIEW
                                     </span>
                                 </div>
                             </div>
