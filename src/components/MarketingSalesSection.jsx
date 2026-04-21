@@ -66,7 +66,7 @@ const MarketingCard = ({ item, index, isDark, isOrange, isGreen, onContactClick 
     );
 };
 
-const MarketingSalesSection = () => {
+const MarketingSalesSection = ({ onEnquire }) => {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -100,12 +100,8 @@ const MarketingSalesSection = () => {
         if (latest <= 0.4 && isDark) setIsDark(false);
     });
 
-    const scrollToContact = () => {
-        const contactSection = document.getElementById('contact');
-        if (contactSection) {
-            contactSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+    // Removed local scrollToContact to use parent onEnquire logic
+
 
     return (
         <motion.section
@@ -207,7 +203,10 @@ const MarketingSalesSection = () => {
                                         isDark={isDark} 
                                         isOrange={isAds} 
                                         isGreen={isGrowth} 
-                                        onContactClick={scrollToContact}
+                                        onContactClick={() => onEnquire({
+                                            category: isAds ? "Digital Paid Ads" : (item.title.includes("Social") || item.title.includes("Distribution") ? "Social Media Management" : "Digital Marketing/Branding"),
+                                            message: item.title
+                                        })}
                                     />
                                 ))}
                             </div>
@@ -265,7 +264,10 @@ const MarketingSalesSection = () => {
                             Our team is ready to deploy custom marketing solutions tailored to your unique business objectives. Let's start the journey.
                         </motion.p>
                         <motion.button
-                            onClick={scrollToContact}
+                            onClick={() => onEnquire({ 
+                                category: ["Digital Marketing/Branding", "Digital Paid Ads"], 
+                                message: "Ready to scale my brand" 
+                            })}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className={`inline-flex items-center gap-4 px-10 py-5 rounded-full font-black uppercase tracking-widest text-sm transition-all duration-700 ${isDark

@@ -26,6 +26,16 @@ import MarketingSalesSection from './components/MarketingSalesSection';
 
 // Home page component
 const Home = ({ theme, setTheme }) => {
+  const [contactPreFill, setContactPreFill] = useState(null);
+
+  const handleEnquire = (selection) => {
+    setContactPreFill(selection);
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <motion.div 
       animate={{ backgroundColor: theme === 'dark' ? '#050505' : '#ffffff' }}
@@ -50,9 +60,9 @@ const Home = ({ theme, setTheme }) => {
         <ProjectsSection />
         <PricingSection />
         <QuickServicesSection />
-        <MarketingSalesSection />
+        <MarketingSalesSection onEnquire={handleEnquire} />
 
-        <Contact />
+        <Contact preFill={contactPreFill} />
       </div>
     </motion.div>
   );

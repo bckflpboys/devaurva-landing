@@ -36,24 +36,33 @@ const transporter = nodemailer.createTransport({
 // Contact form endpoint
 app.post('/api/contact', async (req, res) => {
     try {
-        const { firstName, email, message } = req.body;
+        const { firstName, email, message, categories } = req.body;
         
         // Email options
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_RECIPIENT || process.env.EMAIL_USER, // Send to specified recipient or self
-            subject: `New Contact Form Message from ${firstName}`,
+            to: process.env.EMAIL_RECIPIENT || process.env.EMAIL_USER,
+            subject: `New DevAura Enquiry from ${firstName}`,
             text: `
 Name: ${firstName}
 Email: ${email}
+Services: ${categories ? categories.join(', ') : 'None selected'}
 Message: ${message}
             `,
             html: `
-<h2>New Contact Form Submission</h2>
-<p><strong>Name:</strong> ${firstName}</p>
-<p><strong>Email:</strong> ${email}</p>
-<p><strong>Message:</strong></p>
-<p>${message}</p>
+<div style="font-family: sans-serif; max-width: 600px; padding: 20px; border: 1px solid #eee;">
+    <h2 style="color: #4f46e5;">New Website Enquiry</h2>
+    <p><strong>Name:</strong> ${firstName}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Selected Services:</strong></p>
+    <div style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 15px;">
+        ${categories ? categories.map(cat => `<span style="background: #f3f4f6; padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold; color: #374151;">${cat}</span>`).join(' ') : 'None'}
+    </div>
+    <p><strong>Message:</strong></p>
+    <div style="background: #f9fafb; padding: 15px; border-radius: 10px; border-left: 4px solid #4f46e5;">
+        ${message}
+    </div>
+</div>
             `
         };
 
@@ -62,7 +71,7 @@ Message: ${message}
         
         console.log('Email sent successfully');
         res.status(200).json({ 
-            code: 200,
+            success: true,
             message: 'Message sent successfully' 
         });
     } catch (error) {
