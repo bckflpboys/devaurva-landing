@@ -21,7 +21,8 @@ import Terms from './pages/terms';
 import Refund from './pages/refund';
 import Privacy from './pages/privacy';
 import Landing from './pages/landing';
-import PartnersSection from './components/PartnersSection';
+import MarketingSalesSection from './components/MarketingSalesSection';
+
 
 // Home page component
 const Home = ({ theme, setTheme }) => {
@@ -49,7 +50,8 @@ const Home = ({ theme, setTheme }) => {
         <ProjectsSection />
         <PricingSection />
         <QuickServicesSection />
-        <PartnersSection />
+        <MarketingSalesSection />
+
         <Contact />
       </div>
     </motion.div>

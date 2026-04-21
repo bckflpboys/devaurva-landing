@@ -18,7 +18,7 @@ const Footer = () => {
                             <p className="text-gray-600 text-sm leading-relaxed">
                                 Transforming ideas into exceptional web experiences. Your vision, our expertise.
                             </p>
-                            <div className="flex space-x-4 pt-2">
+                            {/* <div className="flex space-x-4 pt-2">
                                 <a href="#" className="text-gray-600 hover:text-indigo-600 transition-colors">
                                     <Facebook size={20} />
                                 </a>
@@ -34,7 +34,7 @@ const Footer = () => {
                                 <a href="#" className="text-gray-600 hover:text-indigo-600 transition-colors">
                                     <Github size={20} />
                                 </a>
-                            </div>
+                            </div> */}
                         </div>
 
                         {/* Quick Links */}
@@ -114,7 +114,7 @@ const Footer = () => {
                     <div className="mt-12 pt-8 border-t border-gray-200">
                         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                             <p className="text-gray-600 text-sm">
-                                &copy; {new Date().getFullYear()} DevAurva. All rights reserved.
+                                &copy; {new Date().getFullYear()} DevAura. All rights reserved.
                             </p>
                             <div className="flex space-x-6">
                                 <Link to="/privacy" className="text-gray-600 hover:text-indigo-600 transition-colors text-sm">
