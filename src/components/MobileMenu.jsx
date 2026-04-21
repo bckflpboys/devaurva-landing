@@ -26,6 +26,11 @@ const navItems = [
         url: "/#projects",
     },
     {
+        title: "Portfolio",
+        url: "/portfolio",
+        isCustomLink: true
+    },
+    {
         title: "Pricing",
         url: "/#pricing",
     },
